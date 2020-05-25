@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IDieable : MonoBehaviour
+namespace platformer.attributes
 {
-    // Start is called before the first frame update
-    void Start()
+    public interface IDieable
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        void die();
     }
 }
