@@ -5,7 +5,7 @@ using UnityEngine;
 public class PhysicsObject : MonoBehaviour
 {
     public float gravityModifier = 1f;
-    public float minGroundNormalY = 0.65f;
+    public float minGroundNormalY = 0.9f;
 
     protected Vector2 targetVelocity;
     protected bool isGrounded;
@@ -17,6 +17,17 @@ public class PhysicsObject : MonoBehaviour
     protected ContactFilter2D contactFilter;
     protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
     protected List<RaycastHit2D>hitBufferList = new List<RaycastHit2D>(16);
+    protected GameObject groundDetector = null; //TODO: might be removed
+    protected bool hasFloorChanged = false; //TODO: might be removed
+    protected float maxWalkableRotation = 0.3f; //TODO: might be removed
+    protected bool isGroundWalkable = true; //TODO: might be removed
+
+    private GameObject currentFloor = null; //TODO: might be removed
+
+    protected virtual void Awake()
+    {
+        groundDetector = this.transform.GetChild(0).gameObject;
+    }
 
     void OnEnable()
     {
@@ -48,6 +59,8 @@ public class PhysicsObject : MonoBehaviour
 
         isGrounded = false;
 
+       // CheckIfGroundHasChanged();  //TODO: If not needed, remove after testing
+
         Vector2 deltaPosition = velocity * Time.deltaTime;
 
         Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
@@ -59,6 +72,8 @@ public class PhysicsObject : MonoBehaviour
         move = Vector2.up * deltaPosition.y;
 
         Movement(move, true);
+
+
     }
 
     private void Movement(Vector2 move, bool yMovement) //yMovement - vertical movement
@@ -77,13 +92,17 @@ public class PhysicsObject : MonoBehaviour
             for (int i = 0; i < hitBufferList.Count; i++)
             {
                 Vector2 currentNormal = hitBufferList[i].normal;
+                var currentRotation = hitBufferList[i].transform.rotation;
                 if (currentNormal.y > minGroundNormalY)
                 {
                     isGrounded = true;
-                    if (yMovement)
+
+                    SetIsGroundWalkable(currentRotation.z);
+                    if (yMovement) //TODO: Check if not causing null reference exepctions
                     {
                         groundNormal = currentNormal;
                         currentNormal.x = 0;
+                        Debug.Log("ground normal changed");
                     }
                 }
 
@@ -99,6 +118,56 @@ public class PhysicsObject : MonoBehaviour
 
         }
 
+        if (!isGroundWalkable)
+        {
+            gravityModifier = 10f;
+        }
+
         rigidBody2D.position = rigidBody2D.position + move.normalized * distance;
+        
+       
+    }
+
+    private void SetIsGroundWalkable(float zRotation)
+    {
+        print(zRotation);
+        if (Mathf.Abs(zRotation) > maxWalkableRotation)
+        {
+            isGroundWalkable = false;
+            print("ground not walkable");
+        }
+        else
+        {
+            isGroundWalkable = true;
+            print("ground walkable");
+        }
+    }
+
+    private void CheckIfGroundHasChanged() //TODO: remove function
+    {
+        //Debug.DrawRay(groundDetector.transform.position, Vector2.down, Color.green); // TODO: Remove this line
+
+        var hitInfo = Physics2D.Raycast(groundDetector.transform.position, Vector2.down);
+        if (hitInfo.collider == null)
+        {
+            return;
+        }
+        
+        if (hitInfo.collider.gameObject == currentFloor)
+        {
+            return;
+        }
+        if (hitInfo.collider == this.GetComponent<BoxCollider2D>())
+        { 
+            Debug.LogError("in PhysicsObject Raycast hit player - should not happen");
+            return;
+        }
+
+        currentFloor = hitInfo.collider.gameObject;
+        hasFloorChanged = true;
+
+        print(currentFloor);
+
+
     }
 }
