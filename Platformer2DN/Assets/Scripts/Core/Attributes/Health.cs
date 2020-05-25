@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+namespace platformer.attributes
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Health : MonoBehaviour
     {
-        
-    }
+        public int maxHealth;
+        private int health;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void TakeDamage(int damage)
+        {
+            health-=damage;
+            if (health<=0)
+            {
+                IDieable dieObject = this.GetComponentInParent<IDieable>();
+                if (dieObject!=null)
+                {
+                    dieObject.die();
+                }
+            }
+        }
+
     }
 }
