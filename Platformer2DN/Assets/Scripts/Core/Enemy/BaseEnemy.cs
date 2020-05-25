@@ -10,7 +10,7 @@ public class BaseEnemy : MonoBehaviour, IDieable
 
     public void die() 
     {
-        
+        Destroy( this.gameObject );
     }
 
     // Start is called before the first frame update
@@ -23,12 +23,15 @@ public class BaseEnemy : MonoBehaviour, IDieable
     protected virtual void Update()
     {
         time+=Time.deltaTime;
-
         if (time>=interpolationPeriod)
         {
             time=0.0f;
-
-            this.GetComponentInChildren<Health>().TakeDamage( 1 );
+            Health enemyHealth = this.GetComponent<Health>();
+            if (enemyHealth!=null)
+            {
+                Debug.Log( "Take dmg" );
+                enemyHealth.TakeDamage( 1 );
+            }
         }
     }
 }
