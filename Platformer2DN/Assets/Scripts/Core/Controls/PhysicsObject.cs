@@ -120,7 +120,7 @@ public class PhysicsObject : MonoBehaviour
 
         if (!isGroundWalkable)
         {
-            gravityModifier = 10f;
+           // gravityModifier = 10f;
         }
 
         rigidBody2D.position = rigidBody2D.position + move.normalized * distance;
