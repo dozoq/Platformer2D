@@ -9,6 +9,7 @@ namespace platformer.attributes
     {
         public int maxHealth;
         private int health;
+        [HideInInspector]
         public bool isDead;
 
         private void Awake()

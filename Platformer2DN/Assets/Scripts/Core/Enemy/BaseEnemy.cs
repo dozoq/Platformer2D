@@ -1,37 +1,105 @@
-﻿using platformer.attributes;
+﻿using Pathfinding;
+using platformer.attributes;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class BaseEnemy : MonoBehaviour, IDieable
+namespace platformer.enemy
 {
-    private float time = 0.0f;
-    private float interpolationPeriod = 0.1f;
+    public class BaseEnemy : MonoBehaviour, IDieable
+    { 
+        public float maxDetectionRange;
+        public GameObject[] patrolPaths;
+        private int pointnumber;
+        public GameObject target;
+        private bool isChasing;
+        private AIDestinationSetter destinationSetter;
+        private AIPath aipath;
 
-    public void die() 
-    {
-        Destroy( this.gameObject );
-    }
-
-    // Start is called before the first frame update
-    protected virtual void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-        time+=Time.deltaTime;
-        if (time>=interpolationPeriod)
+        public void behave() 
         {
-            time=0.0f;
-            Health enemyHealth = this.GetComponent<Health>();
-            if (enemyHealth!=null)
+            if (target==null)
             {
-                Debug.Log( "Take dmg" );
-                enemyHealth.TakeDamage( 1 );
+                throw new System.Exception("Instantiate player first");
             }
+            float tempX;
+            float tempY;
+            if (target.transform.position.x>this.gameObject.transform.position.x)
+            {
+                tempX=target.transform.position.x-this.gameObject.transform.position.x;
+            }
+            else
+            {
+                tempX=this.gameObject.transform.position.x-target.transform.position.x;
+            }
+            if (target.transform.position.x>this.gameObject.transform.position.x)
+            {
+                tempY=target.transform.position.y-this.gameObject.transform.position.y;
+            }
+            else
+            {
+                tempY=this.gameObject.transform.position.y-target.transform.position.y;
+            }
+
+            if (
+                tempX<maxDetectionRange &&
+                tempY<maxDetectionRange
+                )
+            {
+                isChasing=true;
+            }
+            else
+            {
+                isChasing=false;
+            }
+            if (isChasing)
+            {
+                destinationSetter.target=this.target.transform;
+                //Sprawdź czy w zasięgu
+                    //zaatakuj
+
+            }
+            else
+            {
+                if (aipath.reachedEndOfPath)
+                {
+                    if (pointnumber<(patrolPaths.Length-1))
+                    {
+                        pointnumber++;
+                    }
+                    else
+                    {
+                        pointnumber=0;
+                    }
+                }
+                destinationSetter.target=patrolPaths[ pointnumber ].transform;
+            }
+
         }
+
+        public void die()
+        {
+            Destroy( this.gameObject );
+        }
+
+        // Start is called before the first frame update
+        protected virtual void Start()
+        {
+            aipath=GetComponent<AIPath>();
+            destinationSetter=GetComponent<AIDestinationSetter>();
+            target=GameObject.FindGameObjectWithTag( "Player" );
+            pointnumber=0;
+            isChasing=false;
+        }
+
+        // Update is called once per frame
+        protected virtual void Update()
+        {
+            this.behave();
+        }
+
     }
 }
