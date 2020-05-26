@@ -2,6 +2,7 @@
 using platformer.attributes;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 using UnityEngine;
@@ -13,35 +14,36 @@ namespace platformer.enemy
     { 
         public float maxDetectionRange;
         public GameObject[] patrolPaths;
-        private int pointnumber;
-        public GameObject target;
+        public GameObject Target;
+        public bool isFlying = false;
+
+        private int pointNumber;
         private bool isChasing;
         private AIDestinationSetter destinationSetter;
         private AIPath aipath;
 
         public void behave() 
-        {
-            if (target==null)
+        {            if (Target==null)
             {
                 throw new System.Exception("Instantiate player first");
             }
             float tempX;
             float tempY;
-            if (target.transform.position.x>this.gameObject.transform.position.x)
+            if (Target.transform.position.x>this.gameObject.transform.position.x)
             {
-                tempX=target.transform.position.x-this.gameObject.transform.position.x;
+                tempX=Target.transform.position.x-this.gameObject.transform.position.x;
             }
             else
             {
-                tempX=this.gameObject.transform.position.x-target.transform.position.x;
+                tempX=this.gameObject.transform.position.x-Target.transform.position.x;
             }
-            if (target.transform.position.x>this.gameObject.transform.position.x)
+            if (Target.transform.position.x>this.gameObject.transform.position.x)
             {
-                tempY=target.transform.position.y-this.gameObject.transform.position.y;
+                tempY=Target.transform.position.y-this.gameObject.transform.position.y;
             }
             else
             {
-                tempY=this.gameObject.transform.position.y-target.transform.position.y;
+                tempY=this.gameObject.transform.position.y-Target.transform.position.y;
             }
 
             if (
@@ -57,7 +59,7 @@ namespace platformer.enemy
             }
             if (isChasing)
             {
-                destinationSetter.target=this.target.transform;
+                destinationSetter.target=this.Target.transform;
                 //Sprawdź czy w zasięgu
                     //zaatakuj
 
@@ -66,17 +68,35 @@ namespace platformer.enemy
             {
                 if (aipath.reachedEndOfPath)
                 {
-                    if (pointnumber<(patrolPaths.Length-1))
+                    if (pointNumber<(patrolPaths.Length-1))
                     {
-                        pointnumber++;
+                        pointNumber++;
                     }
                     else
                     {
-                        pointnumber=0;
+                        pointNumber=0;
                     }
                 }
-                destinationSetter.target=patrolPaths[ pointnumber ].transform;
+                destinationSetter.target=patrolPaths[ pointNumber ].transform;
             }
+            //jeżeli przeszkoda
+            //skacz
+
+            //FT
+            //RaycastHit2D[] hits = null;
+            //Vector3 temp = new Vector3(gameObject.transform.position.x+2,gameObject.transform.position.y,0);
+            //hits = Physics2D.RaycastAll(new Vector2(gameObject.transform.position.x,gameObject.transform.position.y+2.75f) ,new Vector2(gameObject.transform.position.x+2,gameObject.transform.position.y+2.75f),3f);
+            ////Debug raycast line
+            //Debug.DrawLine(gameObject.transform.position, temp);
+            //foreach(var hit in hits)
+            //{
+            //    if(hit.collider.gameObject.layer==10)
+            //    {
+            //        Debug.Log("We have a wall:"+hit.point);
+                    
+            //    }
+            //}
+
 
         }
 
@@ -90,15 +110,16 @@ namespace platformer.enemy
         {
             aipath=GetComponent<AIPath>();
             destinationSetter=GetComponent<AIDestinationSetter>();
-            target=GameObject.FindGameObjectWithTag( "Player" );
-            pointnumber=0;
+            Target=GameObject.FindGameObjectWithTag( "Player" );
+            pointNumber=0;
             isChasing=false;
+            
         }
 
         // Update is called once per frame
         protected virtual void Update()
         {
-            this.behave();
+            behave();
         }
 
     }
