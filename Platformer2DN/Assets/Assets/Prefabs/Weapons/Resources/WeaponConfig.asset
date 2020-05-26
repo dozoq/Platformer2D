@@ -19,4 +19,4 @@ MonoBehaviour:
   delayBetweenAttacks: 0.5
   equippedPrefab: {fileID: 2135583107846086721, guid: 31b2642f0bc61294cb98b798ec7ece0d,
     type: 3}
-  bullet: {fileID: 0}
+  bullet: {fileID: 53573946345011400, guid: bf27b6e8d7fd3cf4c9d27dfa82de2d96, type: 3}
