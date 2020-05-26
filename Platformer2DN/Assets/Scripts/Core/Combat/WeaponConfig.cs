@@ -12,10 +12,13 @@ namespace platformer.combat
         [SerializeField] private AnimatorOverrideController animatorOverride = null; // Will be used later on;
 
         [Tooltip("Damage applied to enemy")]
-        [SerializeField] private float weaponDamage = 1f;
+        [SerializeField] private int weaponDamage = 1;
 
         [Tooltip("How far will raycast be / how far bullet will fly")]
         [SerializeField] private float weaponRange = 1f; //Raycast range
+
+        [Tooltip("(Height) of the radius that will be passed to raycast")]
+        [SerializeField] private float weaponRadius = 0.5f;
 
         [Tooltip("How much delay between attacks")]
         [SerializeField] private float delayBetweenAttacks = 0.5f;
@@ -65,7 +68,7 @@ namespace platformer.combat
             return bullet != null;
         }
 
-        public float GetWeaponDamage()
+        public int GetWeaponDamage()
         {
             return weaponDamage;
         }
@@ -78,6 +81,11 @@ namespace platformer.combat
         public float GetDelayBetweenAttacks()
         {
             return delayBetweenAttacks;
+        }
+
+        public float GetWeaponRadius()
+        {
+            return weaponRadius;
         }
     }
 }

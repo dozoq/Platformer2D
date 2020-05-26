@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using platformer.combat;
 using UnityEngine;
 
 public class PlayerController : PhysicsObject
@@ -10,10 +11,28 @@ public class PlayerController : PhysicsObject
 
     [SerializeField] private GameObject bulletPreFab;
 
+    private Fighter fighter;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        fighter = GetComponent<Fighter>();
+    }
+
     protected override void Update()
     {
         base.Update();
-        print("test");
+        if (fighter == null)
+        {
+            Debug.LogError("Fighter not initialized in PlayerController (Possible race conditions)");
+            return;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            fighter.Attack(Camera.main.ScreenPointToRay(Input.mousePosition));
+        }
+        
     }
 
     protected override void ComputeVelocity()

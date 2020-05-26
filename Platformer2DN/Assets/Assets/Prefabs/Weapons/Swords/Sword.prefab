@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5743733855119154935}
   - component: {fileID: 5829193005076397791}
   - component: {fileID: 2135583107846086721}
+  - component: {fileID: 468430671583344010}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -94,3 +95,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c122dcdd766a7e42b9ef65094d2a84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &468430671583344010
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477427320650341006}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2e3dc4d32d81394a9331ffa31b379ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
