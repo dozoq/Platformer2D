@@ -28,7 +28,7 @@ public class PlayerController : PhysicsObject
 
         if (Input.GetMouseButtonDown(0))
         {
-            fighter.Shoot(Camera.main.ScreenPointToRay(Input.mousePosition));
+            fighter.Shoot(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
         
     }

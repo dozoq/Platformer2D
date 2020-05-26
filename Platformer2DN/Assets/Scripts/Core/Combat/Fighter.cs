@@ -25,11 +25,12 @@ namespace platformer.combat
             return defaultWeaponConfig.Spawn(handTransform, animator);
         }
 
-        public void Shoot(Ray ray)
+        public void Shoot(Vector3 worldPoint)
         {
+            var vectorPostion = new Vector2(worldPoint.x, worldPoint.y);
             if(currentWeaponConfig.HasProjectile())
             {
-                currentWeaponConfig.LaunchBullet(handTransform, ToVector2(ray.origin), currentWeaponConfig.GetWeaponDamage());
+                currentWeaponConfig.LaunchBullet(handTransform, vectorPostion, currentWeaponConfig.GetWeaponDamage());
 
             }
         }
