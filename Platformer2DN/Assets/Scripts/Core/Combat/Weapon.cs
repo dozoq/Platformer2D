@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+namespace platformer.combat
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Weapon : MonoBehaviour
     {
-        
+        // Class will be attached to weapon prefab
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

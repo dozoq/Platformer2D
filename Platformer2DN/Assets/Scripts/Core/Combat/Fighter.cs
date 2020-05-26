@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fighter : MonoBehaviour
+namespace platformer.combat
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Fighter : MonoBehaviour
     {
-        
+        public WeaponConfig weaponConfig = null;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
