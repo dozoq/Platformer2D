@@ -367,6 +367,12 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!4 &1201310737 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5875217167318005488, guid: 3c0b8203810104349bac8000faae98dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7857493898842715651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1783247943
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +498,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1946272554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7857493898386600276, guid: 3c0b8203810104349bac8000faae98dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7857493898842715651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1946272555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946272554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be4a6f587e81d1479421d05b13a8054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  weaponConfig: {fileID: 11400000, guid: e95de18ff11cdd748a71338c1bae10b2, type: 2}
+  handTransform: {fileID: 1201310737}
 --- !u!1001 &2498619463587284056
 PrefabInstance:
   m_ObjectHideFlags: 0

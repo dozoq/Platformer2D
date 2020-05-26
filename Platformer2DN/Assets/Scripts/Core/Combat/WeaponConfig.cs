@@ -8,13 +8,76 @@ namespace platformer.combat
     public class WeaponConfig : ScriptableObject
     {
         // PRIVATE
+        [Tooltip("Animator override for this weapon")]
+        [SerializeField] private AnimatorOverrideController animatorOverride = null; // Will be used later on;
+
+        [Tooltip("Damage applied to enemy")]
         [SerializeField] private float weaponDamage = 1f;
+
+        [Tooltip("How far will raycast be / how far bullet will fly")]
         [SerializeField] private float weaponRange = 1f; //Raycast range
+
+        [Tooltip("How much delay between attacks")]
+        [SerializeField] private float delayBetweenAttacks = 0.5f;
+
+        [Tooltip("Prefab to spawn at hand transform")]
+        [SerializeField] private Weapon equippedPrefab;
+
+        [Tooltip("If set, will use bullet instead of melee attacks")]
         [SerializeField] private Bullet bullet = null;
 
         /// <summary>
         /// Rename all instansiated weapons to Weapon so it`s easier to delete them
         /// </summary>
         private const string weaponName = "Weapon"; 
+
+        // PUBLIC
+
+        public Weapon Spawn(Transform handTransform, Animator animator)
+        {
+            DestroyOldWeapon(handTransform);
+            Weapon weapon = null;
+
+            if (equippedPrefab != null)
+            {
+                weapon = Instantiate(equippedPrefab, handTransform);
+                weapon.gameObject.name = weaponName;
+            }
+
+            //TODO: add override for runtime animator controller
+
+            return weapon;
+
+        }
+
+        private void DestroyOldWeapon(Transform handTransform)
+        {
+            Transform weaponToDestroy = handTransform.Find(weaponName);
+
+            if (weaponToDestroy == null) return;
+
+            weaponToDestroy.name = "DESTROY";
+            Destroy(weaponToDestroy.gameObject);
+        }
+
+        public bool HasProjectile()
+        {
+            return bullet != null;
+        }
+
+        public float GetWeaponDamage()
+        {
+            return weaponDamage;
+        }
+
+        public float GetWeaponRange()
+        {
+            return weaponRange;
+        }
+
+        public float GetDelayBetweenAttacks()
+        {
+            return delayBetweenAttacks;
+        }
     }
 }
