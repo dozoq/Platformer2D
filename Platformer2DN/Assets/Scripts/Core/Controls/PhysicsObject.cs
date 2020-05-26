@@ -102,7 +102,7 @@ public class PhysicsObject : MonoBehaviour
                     {
                         groundNormal = currentNormal;
                         currentNormal.x = 0;
-                        Debug.Log("ground normal changed");
+                       // Debug.Log("ground normal changed");
                     }
                 }
 
@@ -130,16 +130,16 @@ public class PhysicsObject : MonoBehaviour
 
     private void SetIsGroundWalkable(float zRotation)
     {
-        print(zRotation);
+      //  print(zRotation);
         if (Mathf.Abs(zRotation) > maxWalkableRotation)
         {
             isGroundWalkable = false;
-            print("ground not walkable");
+            //print("ground not walkable");
         }
         else
         {
             isGroundWalkable = true;
-            print("ground walkable");
+            //print("ground walkable");
         }
     }
 

@@ -19,7 +19,10 @@ namespace platformer.attributes
 
         public void TakeDamage(int damage)
         {
-            health-=damage;
+            if (isDead) return;
+
+            print("Health before attack: " + health);
+            health -=damage;
             if (health<=0)
             {
                 IDieable dieObject = this.GetComponent<IDieable>();
@@ -29,6 +32,8 @@ namespace platformer.attributes
                     isDead=true;
                 }
             }
+
+            print("Health afteer attack: " + health);
         }
 
     }
