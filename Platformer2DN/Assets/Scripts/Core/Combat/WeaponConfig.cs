@@ -53,6 +53,12 @@ namespace platformer.combat
 
         }
 
+        public void LaunchBullet(Transform handTransform, Vector2 direction, int bulletDamage)
+        {
+            Bullet bulletInstance = Instantiate(bullet, handTransform.position, Quaternion.identity);
+            bulletInstance.SetTarget(direction, bulletDamage);
+        }
+
         private void DestroyOldWeapon(Transform handTransform)
         {
             Transform weaponToDestroy = handTransform.Find(weaponName);

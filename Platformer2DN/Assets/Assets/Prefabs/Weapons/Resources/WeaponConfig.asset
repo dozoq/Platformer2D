@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: WeaponConfig
   m_EditorClassIdentifier: 
   animatorOverride: {fileID: 0}
-  weaponDamage: 1
-  weaponRange: 2
-  weaponRadius: 0.5
+  weaponDamage: 2
+  weaponRange: 3.39
+  weaponRadius: 2.17
   delayBetweenAttacks: 0.5
   equippedPrefab: {fileID: 2135583107846086721, guid: 31b2642f0bc61294cb98b798ec7ece0d,
     type: 3}

@@ -25,44 +25,13 @@ namespace platformer.combat
             return defaultWeaponConfig.Spawn(handTransform, animator);
         }
 
-        public void Attack(Ray ray)
+        public void Shoot(Ray ray)
         {
-            var colliders = GetAllCollidersInAttackRange(ray);
-            if (colliders == null) return; // Didn`t hit anything
-
-            foreach (var collider in colliders)
+            if(currentWeaponConfig.HasProjectile())
             {
-                if (collider.transform.gameObject == this.gameObject)
-                {
-                    print("Hit player, continue");
-                    continue;
-                }
-
-                float distanceToCollider = Vector2.Distance(ToVector2(this.transform.position),
-                    ToVector2(collider.transform.position));
-
-                if (distanceToCollider > currentWeaponConfig.GetWeaponRange())
-                {
-                    continue;
-                }
-
-                var healthComponent = collider.transform.GetComponent<Health>();
-
-                if (healthComponent != null)
-                {
-                    healthComponent.TakeDamage(currentWeaponConfig.GetWeaponDamage());
-                }
-
+                currentWeaponConfig.LaunchBullet(handTransform, ToVector2(ray.origin), currentWeaponConfig.GetWeaponDamage());
 
             }
-        }
-
-        private RaycastHit2D[] GetAllCollidersInAttackRange(Ray ray)
-        {
-            Vector2 currentPostionVector2 = new Vector2(transform.position.x, transform.position.y);
-            Vector2 direction = new Vector2(ray.origin.x, ray.origin.y);
-            float weaponRadius = currentWeaponConfig.GetWeaponRadius();
-            return Physics2D.CircleCastAll(currentPostionVector2, weaponRadius, direction);
         }
 
 

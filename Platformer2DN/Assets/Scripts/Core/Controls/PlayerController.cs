@@ -9,8 +9,6 @@ public class PlayerController : PhysicsObject
     public float maxSpeed = 7f;
     public float jumpTakeOffSpeed = 8f;
 
-    [SerializeField] private GameObject bulletPreFab;
-
     private Fighter fighter;
 
     protected override void Awake()
@@ -30,7 +28,7 @@ public class PlayerController : PhysicsObject
 
         if (Input.GetMouseButtonDown(0))
         {
-            fighter.Attack(Camera.main.ScreenPointToRay(Input.mousePosition));
+            fighter.Shoot(Camera.main.ScreenPointToRay(Input.mousePosition));
         }
         
     }
