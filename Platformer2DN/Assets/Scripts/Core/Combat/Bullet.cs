@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rb;
     public int Damage;
     public float Lifespan;
+    public float Speed;
 
     private float time = 0.0f;
     public float interpolationPeriod = 0.1f;
@@ -37,18 +38,20 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void ConfigBullet(int damage = 1, float lifespan = .5f)
+    public void ConfigBullet(int damage = 1, float lifespan = .5f, float speed = 10f)
     {
         Damage=damage;
         Lifespan=lifespan;
         alifespan=Lifespan;
+        Speed=speed;
     }
 
     // Called from fighter -> weapon config at instantiate time
     public void SetTarget(Vector2 origin, Vector2 direction)
     {
         Vector2 calculatedTarget = CalculateDirection(origin, direction);
-        rb.velocity = calculatedTarget;
+
+        rb.velocity = calculatedTarget.normalized*Speed;
     }
 
     private Vector2 CalculateDirection(Vector2 origin, Vector2 direction)
