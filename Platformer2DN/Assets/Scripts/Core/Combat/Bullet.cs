@@ -7,6 +7,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Rigidbody2D rb;
+    [SerializeField] public int Damage;
+    [SerializeField] public float Lifespan;
     
 
     void Awake()
@@ -14,13 +16,14 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); 
     }
 
-    public void ConfigBullet()
+    public void ConfigBullet(int damage = 1, float lifespan = .5f)
     {
-
+        Damage=damage;
+        Lifespan=lifespan;
     }
 
     // Called from fighter -> weapon config at instantiate time
-    public void SetTarget(Vector2 origin, Vector2 direction, int bulletDamage)
+    public void SetTarget(Vector2 origin, Vector2 direction)
     {
         Vector2 calculatedTarget = CalculateDirection(origin, direction);
         rb.velocity = calculatedTarget;
