@@ -6,6 +6,6 @@ namespace platformer.attributes
 {
     public interface IDieable
     {
-        void die();
+        void Die();
     }
 }
