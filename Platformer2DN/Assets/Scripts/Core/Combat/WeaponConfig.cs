@@ -14,6 +14,9 @@ namespace platformer.combat
         [Tooltip("Damage applied to enemy")]
         [SerializeField] private int weaponDamage = 1;
 
+        [Tooltip("Damage applied to enemy")]
+        [SerializeField] private bool weaponCanDamagePlayer = false;
+
         [Tooltip("How far will raycast be / how far bullet will fly")]
         [SerializeField] private float weaponRange = 1f; //Raycast range
 
@@ -61,7 +64,7 @@ namespace platformer.combat
         public void LaunchBullet(Vector3 spawnTransform, Vector2 direction)
         {
             Bullet bulletInstance = Instantiate(bullet, spawnTransform, Quaternion.identity);
-            bulletInstance.ConfigBullet(weaponDamage,bulletLifespan);
+            bulletInstance.ConfigBullet(weaponDamage,bulletLifespan,bulletSpeed,weaponCanDamagePlayer);
             Vector2 spawnTransfromAsVector2 = new Vector2(spawnTransform.x, spawnTransform.y);
             bulletInstance.SetTarget(spawnTransfromAsVector2, direction);
         }

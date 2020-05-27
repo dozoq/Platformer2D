@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     public int Damage;
     public float Lifespan;
     public float Speed;
+    public bool canDamagePlayer;
 
     private float time = 0.0f;
     public float interpolationPeriod = 0.1f;
@@ -38,12 +39,13 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void ConfigBullet(int damage = 1, float lifespan = .5f, float speed = 10f)
+    public void ConfigBullet(int damage = 1, float lifespan = .5f, float speed = 15f, bool canDoDamageToPlayer = false)
     {
         Damage=damage;
         Lifespan=lifespan;
         alifespan=Lifespan;
         Speed=speed;
+        canDamagePlayer=canDoDamageToPlayer;
     }
 
     // Called from fighter -> weapon config at instantiate time
@@ -67,10 +69,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Triggered with:"+other.gameObject);
-        Destroy(gameObject);
+        if(other.tag!="Player"||canDamagePlayer)
+        {
+            Destroy(gameObject);
+        }
         var health =other.gameObject.GetComponent<Health>();
-        if(health!=null && other.tag != "Player")
+        if(health!=null && (other.tag != "Player" || canDamagePlayer))
         {
             health.TakeDamage(Damage);
         }
