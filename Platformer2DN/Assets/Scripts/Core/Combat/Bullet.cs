@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
+    [SerializeField] float lifespane = 0.5f;
     [SerializeField] float speed = 0.5f;
 
     Rigidbody2D rb;
