@@ -50,11 +50,11 @@ public class PlayerController : PhysicsObject
                 velocity.y = velocity.y * 0.5f;
             }
         }
-        if(velocity.x>=-0.01f)
+        if(velocity.x>=0.01f)
         {
             transform.localScale=new Vector3(-1f, 1f, 1f);
         }
-        else if(velocity.x<=0.01f)
+        else if(velocity.x<=-0.01f)
         {
             transform.localScale=new Vector3(1f, 1f, 1f);
         }
