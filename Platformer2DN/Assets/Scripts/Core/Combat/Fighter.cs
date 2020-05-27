@@ -40,7 +40,7 @@ namespace platformer.combat
             if(currentWeaponConfig.HasProjectile())
             {
                 //TODO: Change handtransform + 2 into barrel transform of weapon
-                Vector3 weaponBarrelTransform = new Vector3(handTransform.position.x + 2, handTransform.position.y, 0);
+                Vector3 weaponBarrelTransform = new Vector3(handTransform.position.x, handTransform.position.y, 0);
                 currentWeaponConfig.LaunchBullet(weaponBarrelTransform, vectorPostion);
 
             }

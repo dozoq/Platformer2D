@@ -26,8 +26,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187894228}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.1541462, y: 0.014942169, z: -7.69}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7857493898386600283}
@@ -169,7 +169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6592566228880212767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.665, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7857493898386600283}
@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 7857493898386600280}
   - component: {fileID: 7857493898386600287}
   - component: {fileID: 1946272555}
+  - component: {fileID: 1519359044}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -341,3 +342,17 @@ MonoBehaviour:
   animator: {fileID: 0}
   weaponConfig: {fileID: 11400000, guid: e95de18ff11cdd748a71338c1bae10b2, type: 2}
   handTransform: {fileID: 5875217167318005488}
+--- !u!114 &1519359044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7857493898386600276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf54292d79f25242838f8670e3c523c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  isDead: 0
