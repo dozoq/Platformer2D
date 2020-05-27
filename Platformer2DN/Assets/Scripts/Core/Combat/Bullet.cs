@@ -31,11 +31,23 @@ public class Bullet : MonoBehaviour
 
     private Vector2 CalculateDirection(Vector2 origin, Vector2 direction)
     {
+
         float x = direction.x - origin.x;
         float y = direction.y - origin.y;
         Vector2 calculatedDirection = new Vector2(x, y);
         
 
         return calculatedDirection;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Triggered with:"+other.gameObject);
+        Destroy(gameObject);
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("Triggered with:"+other.gameObject);
+        Destroy(gameObject);
     }
 }
