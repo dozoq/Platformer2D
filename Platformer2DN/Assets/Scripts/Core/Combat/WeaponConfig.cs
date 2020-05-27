@@ -20,6 +20,9 @@ namespace platformer.combat
         [Tooltip("(Height) of the radius that will be passed to raycast")]
         [SerializeField] private float weaponRadius = 0.5f;
 
+        [Tooltip("(Time) which bullet will live")]
+        [SerializeField] private float bulletLifespan = 6f;
+
         [Tooltip("How much delay between attacks")]
         [SerializeField] private float delayBetweenAttacks = 0.5f;
 
@@ -58,7 +61,7 @@ namespace platformer.combat
         public void LaunchBullet(Vector3 spawnTransform, Vector2 direction)
         {
             Bullet bulletInstance = Instantiate(bullet, spawnTransform, Quaternion.identity);
-            bulletInstance.ConfigBullet();
+            bulletInstance.ConfigBullet(weaponDamage,bulletLifespan);
             Vector2 spawnTransfromAsVector2 = new Vector2(spawnTransform.x, spawnTransform.y);
             bulletInstance.SetTarget(spawnTransfromAsVector2, direction);
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using platformer.attributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -7,19 +8,41 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Rigidbody2D rb;
-    [SerializeField] public int Damage;
-    [SerializeField] public float Lifespan;
-    
+    public int Damage;
+    public float Lifespan;
+
+    int interval = 1;
+    float nextTime = 0;
+    float alifespan;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
+        
+    }
+
+    private void Update()
+    {
+        if(Time.time>=nextTime)
+        {
+            print(alifespan);
+            alifespan-=1;
+            if(alifespan<=0)
+            {
+
+                Destroy(gameObject);
+            }
+
+            nextTime+=interval;
+
+        }
     }
 
     public void ConfigBullet(int damage = 1, float lifespan = .5f)
     {
         Damage=damage;
         Lifespan=lifespan;
+        alifespan=Lifespan;
     }
 
     // Called from fighter -> weapon config at instantiate time
@@ -40,14 +63,15 @@ public class Bullet : MonoBehaviour
         return calculatedDirection;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Triggered with:"+other.gameObject);
         Destroy(gameObject);
+        var health =other.gameObject.GetComponent<Health>();
+        if(health!=null)
+        {
+            health.TakeDamage(Damage);
+        }
     }
-    private void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("Triggered with:"+other.gameObject);
-        Destroy(gameObject);
-    }
+   
 }
