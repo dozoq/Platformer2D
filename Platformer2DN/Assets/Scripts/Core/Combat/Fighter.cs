@@ -36,11 +36,5 @@ namespace platformer.combat
             }
         }
 
-
-        //Helper function
-        private Vector2 ToVector2(Vector3 vector3)
-        {
-            return new Vector2(vector3.x, vector3.y);
-        }
     }
 }

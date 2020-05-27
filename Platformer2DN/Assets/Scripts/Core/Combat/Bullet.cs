@@ -40,10 +40,14 @@ public class Bullet : MonoBehaviour
         return calculatedDirection;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered with:"+other.gameObject);
+        Debug.Log("Triggered with:" + collision.gameObject);
         Destroy(gameObject);
+    }
+    private void OnTrigger(Collider other)
+    {
+        
     }
     private void OnCollisionEnter(Collision other)
     {
