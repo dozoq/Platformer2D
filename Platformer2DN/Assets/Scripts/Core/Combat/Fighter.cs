@@ -31,7 +31,7 @@ namespace platformer.combat
             if(currentWeaponConfig.HasProjectile())
             {
                 Vector3 weaponBarrelTransform = new Vector3(handTransform.position.x + 2, handTransform.position.y, 0);
-                currentWeaponConfig.LaunchBullet(weaponBarrelTransform, vectorPostion, currentWeaponConfig.GetWeaponDamage());
+                currentWeaponConfig.LaunchBullet(weaponBarrelTransform, vectorPostion);
 
             }
         }
