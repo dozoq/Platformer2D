@@ -23,6 +23,8 @@ namespace platformer.combat
         [Tooltip("How much delay between attacks")]
         [SerializeField] private float delayBetweenAttacks = 0.5f;
 
+        [SerializeField] private float bulletSpeed = 5f;
+
         [Tooltip("Prefab to spawn at hand transform")]
         [SerializeField] private Weapon equippedPrefab;
 
@@ -53,10 +55,12 @@ namespace platformer.combat
 
         }
 
-        public void LaunchBullet(Transform handTransform, Vector2 direction, int bulletDamage)
+        public void LaunchBullet(Vector3 spawnTransform, Vector2 direction, int bulletDamage)
         {
-            Bullet bulletInstance = Instantiate(bullet, handTransform.position, Quaternion.identity);
-            bulletInstance.SetTarget(direction, bulletDamage);
+            Bullet bulletInstance = Instantiate(bullet, spawnTransform, Quaternion.identity);
+
+            Vector2 spawnTransfromAsVector2 = new Vector2(spawnTransform.x, spawnTransform.y);
+            bulletInstance.SetTarget(spawnTransfromAsVector2, direction, bulletDamage);
         }
 
         private void DestroyOldWeapon(Transform handTransform)

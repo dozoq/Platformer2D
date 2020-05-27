@@ -30,7 +30,8 @@ namespace platformer.combat
             var vectorPostion = new Vector2(worldPoint.x, worldPoint.y);
             if(currentWeaponConfig.HasProjectile())
             {
-                currentWeaponConfig.LaunchBullet(handTransform, vectorPostion, currentWeaponConfig.GetWeaponDamage());
+                Vector3 weaponBarrelTransform = new Vector3(handTransform.position.x + 2, handTransform.position.y, 0);
+                currentWeaponConfig.LaunchBullet(weaponBarrelTransform, vectorPostion, currentWeaponConfig.GetWeaponDamage());
 
             }
         }
