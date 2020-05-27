@@ -67,7 +67,7 @@ public class Bullet : MonoBehaviour
         Debug.Log("Triggered with:"+other.gameObject);
         Destroy(gameObject);
         var health =other.gameObject.GetComponent<Health>();
-        if(health!=null)
+        if(health!=null && other.tag != "Player")
         {
             health.TakeDamage(Damage);
         }
