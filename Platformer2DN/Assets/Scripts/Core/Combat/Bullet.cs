@@ -7,10 +7,16 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Rigidbody2D rb;
+    
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>(); 
+    }
+
+    public void ConfigBullet()
+    {
+
     }
 
     // Called from fighter -> weapon config at instantiate time
