@@ -6,36 +6,17 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
-    [SerializeField] float speed = 0.5f;
-
     Rigidbody2D rb;
-    Vector2 target;
 
-    // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>(); 
     }
 
-    private void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // Called from fighter -> weapon config at instantiate time
     public void SetTarget(Vector2 origin, Vector2 direction, int bulletDamage)
     {
-        print(origin);
-        print(direction);
         Vector2 calculatedTarget = CalculateDirection(origin, direction);
-        print(calculatedTarget);
         rb.velocity = calculatedTarget;
     }
 
