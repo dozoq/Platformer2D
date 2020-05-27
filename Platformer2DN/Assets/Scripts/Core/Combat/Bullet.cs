@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Bullet : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class Bullet : MonoBehaviour
     public float Lifespan;
     public float Speed;
     public bool canDamagePlayer;
+    public VisualEffectAsset vfx;
+    public GameObject vfxObject;
 
+    [SerializeField]private VisualEffect vfxManager; 
     private float time = 0.0f;
     public float interpolationPeriod = 0.1f;
     float alifespan;
@@ -39,13 +43,19 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void ConfigBullet(int damage = 1, float lifespan = .5f, float speed = 15f, bool canDoDamageToPlayer = false)
+    public void ConfigBullet(int damage = 1, float lifespan = .5f, float speed = 15f, bool canDoDamageToPlayer = false, GameObject bulletVFX = null)
     {
         Damage=damage;
         Lifespan=lifespan;
         alifespan=Lifespan;
         Speed=speed;
         canDamagePlayer=canDoDamageToPlayer;
+        //vfx=bulletVFX;
+        //vfxManager.visualEffectAsset=vfx;
+        //vfxManager.Play();
+        vfxObject=bulletVFX;
+        var vfxTemp= Instantiate(vfxObject,new Vector3(transform.position.x,transform.position.y,transform.position.z-0.1f),Quaternion.identity);
+        vfxTemp.transform.parent=gameObject.transform;
     }
 
     // Called from fighter -> weapon config at instantiate time
