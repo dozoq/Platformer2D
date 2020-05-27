@@ -28,9 +28,12 @@ public class Bullet : MonoBehaviour
 
     private Vector2 CalculateDirection(Vector2 origin, Vector2 direction)
     {
+        print("hand: " +origin);
+        print("mouse direction" +direction);
         float x = direction.x - origin.x;
         float y = direction.y - origin.y;
         Vector2 calculatedDirection = new Vector2(x, y);
+        print("direction calculated "  + calculatedDirection);
         
 
         return calculatedDirection;
