@@ -11,8 +11,8 @@ public class Bullet : MonoBehaviour
     public int Damage;
     public float Lifespan;
 
-    int interval = 1;
-    float nextTime = 0;
+    private float time = 0.0f;
+    public float interpolationPeriod = 0.1f;
     float alifespan;
 
     void Awake()
@@ -23,18 +23,17 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time>=nextTime)
+        time+=Time.deltaTime;
+
+        if(time>=interpolationPeriod)
         {
-            print(alifespan);
-            alifespan-=1;
+            time=0.0f;
+
+            alifespan-=0.1f;
             if(alifespan<=0)
             {
-
                 Destroy(gameObject);
             }
-
-            nextTime+=interval;
-
         }
     }
 
