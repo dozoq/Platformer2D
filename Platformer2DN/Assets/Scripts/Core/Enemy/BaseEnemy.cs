@@ -12,6 +12,8 @@ namespace platformer.enemy
          *Path - is full path form object to a destination
          *Waypoint - is path from object to (determined by pathfinding) node
              */
+
+            //ToDo can't reach path
         [Tooltip("Max range within which enemy start chasing player")]
         public float maxDetectionRange;
         [Tooltip("Container of all patrol paths")]
@@ -37,6 +39,7 @@ namespace platformer.enemy
         protected bool isChasing;
         //Actual path container
         protected Path path;
+        protected int lastPoint = -1;
         //Actual point of patrol path
         protected int pointNumber;
         //Actual waypoint in path
@@ -46,7 +49,11 @@ namespace platformer.enemy
         //Rigidbody2D that is use to handle movement
         protected Rigidbody2D rb;
 
-
+        //Timer properties
+        //Time on start of timer
+        private float time = 0.0f;
+        //how many seconds must pass to do tick
+        public float interpolationPeriod = 6;
         //Handles all base anamy behavior: moving, chasing, jumping etc.
         protected virtual void Behave() 
         {    
@@ -105,24 +112,34 @@ namespace platformer.enemy
             //If not chasing
             else
             {
-                //check if reached end of his actual path
-                if(reachedEndOfPath)
-                {
-                    //If so, check if there are more points in patrol nodes container
-                    if(pointNumber<(patrolPaths.Length-1))
-                    {
-                        //if so, set actual point to the next
-                        pointNumber++;
-                    }
-                    else
-                    {
-                        //if not, set actual point to first
-                        pointNumber=0;
-                    }
-                }
-                //set path to actual point from patrol nodes
-                seeker.StartPath(rb.position, patrolPaths[pointNumber].transform.position, OnPathComplete);
+                GoToTheNextPoint();
             }
+        }
+
+        protected void GoToTheNextPoint(bool debug = false)
+        {
+            //check if reached end of his actual path
+            if(reachedEndOfPath || debug)
+            {
+                //If so, check if there are more points in patrol nodes container
+                if(pointNumber<(patrolPaths.Length-1))
+                {
+                    //if so, set actual point to the next
+                    pointNumber++;
+                }
+                else
+                {
+                    //if not, set actual point to first
+                    pointNumber=0;
+                }
+            }
+            //If there are any patrol paths
+            if(patrolPaths.Length>0)
+            {
+                //set path to actual point from patrol nodes
+                seeker.StartPath(rb.position, patrolPaths[ pointNumber ].transform.position, OnPathComplete);
+            }
+            Debug.Log(pointNumber);
         }
 
         //implementation of die interface
@@ -176,6 +193,37 @@ namespace platformer.enemy
         // Update is called once per frame
         protected virtual void Update()
         {
+            time+=Time.deltaTime;
+
+            //check if timer passed interpolation period
+            if(time>=interpolationPeriod)
+            {
+                //Timer reset
+                time=0.0f;
+
+                //if there is no last point
+                if(lastPoint==-1)
+                {
+                    //set last point to this point
+                    lastPoint=pointNumber;
+                    //exit
+                    return;
+                }
+                //if last point is the same as {Period} ago
+                if(lastPoint==pointNumber)
+                {
+                    //Then go to the next point with debug flag
+                    GoToTheNextPoint(true);
+                    //Log where node is bugged
+                    Debug.LogError($"Can't reach from {lastPoint} to {lastPoint+1} Patrol waypoints");
+                }
+                //if they are diffrent
+                else
+                {
+                    //Save this point as last
+                    lastPoint=pointNumber;
+                }
+            }
         }
 
         //Function that handles enemy movement

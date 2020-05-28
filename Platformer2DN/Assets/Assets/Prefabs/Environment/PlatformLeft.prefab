@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7289999638237972998}
   - component: {fileID: 7204410412418766339}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: tile096
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7386864617949395797}
   - component: {fileID: 9009448011529664344}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: tile097
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3812303836466288769}
   - component: {fileID: 7239704019795905044}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlatformLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
