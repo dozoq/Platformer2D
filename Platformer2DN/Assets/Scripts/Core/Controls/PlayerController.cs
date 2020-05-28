@@ -26,15 +26,14 @@ namespace platformer.control
             fighter = GetComponent<Fighter>();
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
-
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
                 Shoot(); // Launch Bullet
             }
+            
         }
-
         private void FixedUpdate()
         {
             SetIsPlayerGrounded(); // Check whether player is on ground or not
@@ -83,13 +82,13 @@ namespace platformer.control
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
             }
-
             //If player release space, he`s in the air and not falling down, stop jumping higher
             if (Input.GetKeyUp(KeyCode.Space) && !isGrounded && rb.velocity.y > 0)
             {
                 print(rb.velocity.y);
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * lowJumpGravityModifier);
             }
+
         }
 
 
