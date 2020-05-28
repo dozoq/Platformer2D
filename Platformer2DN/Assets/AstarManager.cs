@@ -8,6 +8,10 @@ public class AstarManager : MonoBehaviour
     void Awake()
     {
         InvokeRepeating("GraphUpdate",1f,1f);
+        #if UNITY_EDITOR
+                QualitySettings.vSyncCount=0;  // VSync must be disabled
+                Application.targetFrameRate=60;
+        #endif
     }
 
     // Update is called once per frame
