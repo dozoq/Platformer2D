@@ -19,8 +19,12 @@ public class AstarManager : MonoBehaviour
     {
         
     }
+    private void FixedUpdate()
+    {
+        
+    }
     private void GraphUpdate()
     {
-        AstarPath.active.Scan();
+        AstarPath.active.ScanAsync();
     }
 }
