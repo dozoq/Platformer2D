@@ -45,7 +45,7 @@ namespace platformer.control
         // Check whether player is on the ground or not. Called each fixed update
         private void SetIsPlayerGrounded()
         {
-            if (Physics2D.Linecast(transform.position, groundDetector.position, 1 << LayerMask.NameToLayer("Ground")))
+            if (Physics2D.Linecast(transform.position, groundDetector.position, 1 << LayerMask.NameToLayer("Obstacles")))
             {
                 isGrounded = true;
             }
