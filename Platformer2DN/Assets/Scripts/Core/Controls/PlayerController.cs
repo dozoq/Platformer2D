@@ -1,66 +1,106 @@
-﻿using System;
+﻿using platformer.combat;
 using System.Collections;
 using System.Collections.Generic;
-using platformer.combat;
 using UnityEngine;
 
-public class PlayerController : PhysicsObject
+// New player controller from scratch
+namespace platformer.control
 {
-    public float maxSpeed = 7f;
-    public float jumpTakeOffSpeed = 8f;
-
-    private Fighter fighter;
-
-    protected override void Awake()
+    public class PlayerController : MonoBehaviour
     {
-        base.Awake();
-        fighter = GetComponent<Fighter>();
-    }
+        [SerializeField] private float maxSpeed = 6f;
+        [SerializeField] private float jumpHeight = 8f;
+        [SerializeField] private Transform groundDetector = null;
 
-    protected override void Update()
-    {
-        base.Update();
-        if (fighter == null)
+        [Range(0, 1)]
+        [SerializeField] private float lowJumpGravityModifier = 0.5f;
+
+        private bool isGrounded = false;
+        private Rigidbody2D rb = null;
+        private Fighter fighter;
+        private SpriteRenderer spriteRenderer;
+
+        private void Awake()
         {
-            Debug.LogError("Fighter not initialized in PlayerController (Possible race conditions)");
-            return;
+            rb = GetComponent<Rigidbody2D>();
+            fighter = GetComponent<Fighter>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        if (Input.GetMouseButtonDown(0))
+        private void Update()
         {
-            fighter.Shoot(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-   Input.mousePosition.y, Camera.main.nearClipPlane)));
-        }
-        
-    }
-
-    protected override void ComputeVelocity()
-    {
-        Vector2 move = Vector2.zero;
-        move.x = Input.GetAxis("Horizontal");
-
-        if (Input.GetButtonDown("Jump") && isGrounded) // TODO: Change to getButtownDown and getbuttonDown to Jump from project settings
-        {
-            velocity.y = jumpTakeOffSpeed;
-        }
-        else if (Input.GetButtonUp("Jump"))
-        {
-            if (velocity.y > 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                velocity.y = velocity.y * 0.5f;
+                Shoot(); // Launch Bullet
             }
         }
-        if(velocity.x>=0.01f)
+
+        private void FixedUpdate()
         {
-            transform.localScale=new Vector3(1f, 1f, 1f);
-           // transform.GetChild(1).localScale = new Vector3(1f, 1f, 1f);
-        }
-        else if(velocity.x<=-0.01f)
-        {
-            transform.localScale=new Vector3(-1f, 1f, 1f);
-           // transform.GetChild(1).localScale = new Vector3(-1f, 1f, 1f);
+            SetIsPlayerGrounded(); // Check whether player is on ground or not
+            InteractWithMovement(); // along X axis
+            InteractWithJumping(); // along Y axis
         }
 
-        targetVelocity = move * maxSpeed;
+        // Check whether player is on the ground or not. Called each fixed update
+        private void SetIsPlayerGrounded()
+        {
+            if (Physics2D.Linecast(transform.position, groundDetector.position, 1 << LayerMask.NameToLayer("Ground")))
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+            }
+        }
+
+        //Called each fixed update
+        private void InteractWithMovement()
+        {
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.velocity = new Vector2(-maxSpeed, rb.velocity.y); // No overriding y velocity
+                spriteRenderer.flipX = true;
+
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
+                spriteRenderer.flipX = false;
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+        }
+
+        //Called each fixed update
+        private void InteractWithJumping()
+        {
+            // If player pressed space and is on the ground, jump
+            if (Input.GetKey(KeyCode.Space) && isGrounded)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+            }
+
+            //If player release space, he`s in the air and not falling down, stop jumping higher
+            if (Input.GetKeyUp(KeyCode.Space) && !isGrounded && rb.velocity.y > 0)
+            {
+                print(rb.velocity.y);
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * lowJumpGravityModifier);
+            }
+        }
+
+
+        //Launch bullet. Called each update if the button is pressed
+        private void Shoot()
+        {
+             fighter.Shoot(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
+       Input.mousePosition.y, Camera.main.nearClipPlane)));
+        }
+
+
     }
+
 }
