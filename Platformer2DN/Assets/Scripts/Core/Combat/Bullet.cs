@@ -26,6 +26,8 @@ public class Bullet : MonoBehaviour
     //Standard Rigidbody2D to handle bullet moving
     Rigidbody2D rb;
 
+
+
     //Timer properties
     //Time on start of timer
     private float time = 0.0f;
@@ -35,6 +37,7 @@ public class Bullet : MonoBehaviour
     //bullet util proporties
     //Actual life of bullet
     float alifespan;
+    private Vector2 bulletDirection;
 
     void Awake()
     {
@@ -90,8 +93,8 @@ public class Bullet : MonoBehaviour
     // Called from fighter -> weapon config at instantiate time
     public void SetTarget(Vector2 origin, Vector2 direction)
     {
-        Vector2 calculatedTarget = CalculateDirection(origin, direction);
-        rb.velocity = calculatedTarget.normalized*Speed;
+        bulletDirection = CalculateDirection(origin, direction).normalized;
+        rb.velocity = bulletDirection*Speed;
     }
 
 
@@ -121,6 +124,12 @@ public class Bullet : MonoBehaviour
         {
             //Do damage
             health.TakeDamage(Damage);
+        }
+
+        var targetrb = other.gameObject.GetComponent<Rigidbody2D>();
+        if(targetrb!=null&&(!other.CompareTag("Player")||canDamagePlayer))
+        {
+            targetrb.AddForce(bulletDirection*Damage, ForceMode2D.Impulse);
         }
     }
    

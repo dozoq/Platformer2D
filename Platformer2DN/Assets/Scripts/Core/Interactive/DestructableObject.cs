@@ -1,18 +1,28 @@
-﻿using System.Collections;
+﻿using platformer.attributes;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestructableObject : MonoBehaviour
+namespace platformer.interactive
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public class DestructableObject : MonoBehaviour, IDieable
     {
-        
+        public void Die()
+        {
+            Destroy(gameObject);
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }
