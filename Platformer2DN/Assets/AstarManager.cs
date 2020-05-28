@@ -1,15 +1,17 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AstarManager : MonoBehaviour
 {
+    private IEnumerator coroutine;
     // Start is called before the first frame update
     void Awake()
     {
-        InvokeRepeating("GraphUpdate",1f,5f);
-        #if UNITY_EDITOR
-                QualitySettings.vSyncCount=0;  // VSync must be disabled
+        StartCoroutine("UpdateGraph");
+    #if UNITY_EDITOR
+        QualitySettings.vSyncCount=0;  // VSync must be disabled
                 Application.targetFrameRate=60;
         #endif
     }
@@ -23,8 +25,12 @@ public class AstarManager : MonoBehaviour
     {
         
     }
-    private void GraphUpdate()
+    private IEnumerator UpdateGraph()
     {
-        AstarPath.active.ScanAsync();
+        while(true)
+        {
+            yield return new WaitForSeconds(5f);
+            AstarPath.active.Scan();
+        }
     }
 }
