@@ -2,22 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using platformer.combat;
+using platformer.control;
 using UnityEngine;
 
-public class PlayerControllerOld : PhysicsObject
+/// <summary>
+/// OLD PLAYER CONTROLLER, WILL REMOVE IN LATER STAGE
+/// </summary>
+/*public class PlayerControllerOld : PhysicsObject
 {
     public float maxSpeed = 7f;
     public float jumpTakeOffSpeed = 8f;
 
     private Fighter fighter;
 
-    protected override void Awake()
+     void Awake()
     {
         base.Awake();
         fighter = GetComponent<Fighter>();
     }
 
-    protected override void Update()
+     void Update()
     {
         base.Update();
         if (fighter == null)
@@ -34,7 +38,7 @@ public class PlayerControllerOld : PhysicsObject
         
     }
 
-    protected override void ComputeVelocity()
+     void ComputeVelocity()
     {
         Vector2 move = Vector2.zero;
         move.x = Input.GetAxis("Horizontal");
@@ -64,3 +68,4 @@ public class PlayerControllerOld : PhysicsObject
         targetVelocity = move * maxSpeed;
     }
 }
+*/
