@@ -91,19 +91,16 @@ public class Bullet : MonoBehaviour
     public void SetTarget(Vector2 origin, Vector2 direction)
     {
         Vector2 calculatedTarget = CalculateDirection(origin, direction);
-
         rb.velocity = calculatedTarget.normalized*Speed;
     }
 
+
+    // Calculate direction where bullet should go, where origin - barrel position, direction - mouse position
     private Vector2 CalculateDirection(Vector2 origin, Vector2 direction)
     {
-
         float x = direction.x - origin.x;
         float y = direction.y - origin.y;
-        Vector2 calculatedDirection = new Vector2(x, y);
-        
-
-        return calculatedDirection;
+        return new Vector2(x, y);   
     }
 
     //Handles collision effect
@@ -120,7 +117,7 @@ public class Bullet : MonoBehaviour
         //take (C) health from hitted target(if exists)
         var health =other.gameObject.GetComponent<Health>();
         //If health exists and it's not player or if health exists and bullet can damage player
-        if(health!=null && (other.tag != "Player" || canDamagePlayer))
+        if(health!=null && (!other.CompareTag("Player") || canDamagePlayer))
         {
             //Do damage
             health.TakeDamage(Damage);

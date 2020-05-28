@@ -48,6 +48,7 @@ namespace platformer.combat
 
         // PUBLIC
 
+        // Called from Figther whenever switching weapon.
         public Weapon Spawn(Transform handTransform, Animator animator)
         {
             DestroyOldWeapon(handTransform);
@@ -65,6 +66,7 @@ namespace platformer.combat
 
         }
 
+        //Called from PlayerController when shooting
         public void LaunchBullet(Vector3 spawnTransform, Vector2 direction)
         {
             Bullet bulletInstance = Instantiate(bullet, spawnTransform, Quaternion.identity);
@@ -73,6 +75,8 @@ namespace platformer.combat
             bulletInstance.SetTarget(spawnTransfromAsVector2, direction);
         }
 
+
+        //Called when weapon is switching to destroy old prefab
         private void DestroyOldWeapon(Transform handTransform)
         {
             Transform weaponToDestroy = handTransform.Find(weaponName);
