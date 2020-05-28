@@ -7,7 +7,7 @@ public class AstarManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        InvokeRepeating("GraphUpdate",1f,1f);
+        InvokeRepeating("GraphUpdate",1f,5f);
         #if UNITY_EDITOR
                 QualitySettings.vSyncCount=0;  // VSync must be disabled
                 Application.targetFrameRate=60;
