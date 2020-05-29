@@ -1,0 +1,899 @@
+fileFormatVersion: 2
+guid: 7fd333acaad7bdc48a95be9733d91d58
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8306466837436976897
+    second: Bird_Attack_0
+  - first:
+      213: 1385588947783571890
+    second: Bird_Attack_1
+  - first:
+      213: 6355105037114612203
+    second: Bird_Attack_2
+  - first:
+      213: 4186544739937798017
+    second: Bird_Attack_3
+  - first:
+      213: -3237603126508192935
+    second: Bird_Attack_4
+  - first:
+      213: 1027621715468844346
+    second: Bird_Attack_5
+  - first:
+      213: -6561924641317669508
+    second: Bird_Attack_6
+  - first:
+      213: -4778022458378116102
+    second: Bird_Attack_7
+  - first:
+      213: -6630229084760262451
+    second: Bird_Attack_8
+  - first:
+      213: 1456570519113348930
+    second: Bird_Attack_9
+  - first:
+      213: 1172891756599313748
+    second: Bird_Attack_10
+  - first:
+      213: 2153139477393137400
+    second: Bird_Attack_11
+  - first:
+      213: 5456955329924511148
+    second: Bird_Attack_12
+  - first:
+      213: 2626830119738665838
+    second: Bird_Attack_13
+  - first:
+      213: 6842793721284838249
+    second: Bird_Attack_14
+  - first:
+      213: 3637793944492968775
+    second: Bird_Attack_15
+  - first:
+      213: 6883744134695076565
+    second: Bird_Attack_16
+  - first:
+      213: 4042012954674376882
+    second: Bird_Attack_17
+  - first:
+      213: 5323076005025846257
+    second: Bird_Attack_18
+  - first:
+      213: 4088916896415268161
+    second: Bird_Attack_19
+  - first:
+      213: -47668055523934044
+    second: Bird_Attack_20
+  - first:
+      213: -9101538593175539425
+    second: Bird_Attack_21
+  - first:
+      213: 4318075781932820914
+    second: Bird_Attack_22
+  - first:
+      213: 7103624896744464489
+    second: Bird_Attack_23
+  - first:
+      213: 398120968998260679
+    second: Bird_Attack_24
+  - first:
+      213: 6977441249697844955
+    second: Bird_Attack_25
+  - first:
+      213: -447365022613086626
+    second: Bird_Attack_26
+  - first:
+      213: 4345195659924889314
+    second: Bird_Attack_27
+  - first:
+      213: -3828147360086056133
+    second: Bird_Attack_28
+  - first:
+      213: 6940073694824561489
+    second: Bird_Attack_29
+  - first:
+      213: -8385777431055348513
+    second: Bird_Attack_30
+  - first:
+      213: 8110656170638879775
+    second: Bird_Attack_31
+  - first:
+      213: 7353202048238113174
+    second: Bird_Attack_32
+  - first:
+      213: -7043301517074346225
+    second: Bird_Attack_33
+  - first:
+      213: -7216266097779583077
+    second: Bird_Attack_34
+  - first:
+      213: 6158728814310048052
+    second: Bird_Attack_35
+  - first:
+      213: 6923678517014399839
+    second: Bird_Attack_36
+  - first:
+      213: 904695657169391420
+    second: Bird_Attack_37
+  - first:
+      213: -2742005753489548855
+    second: Bird_Attack_38
+  - first:
+      213: 4923105755016349473
+    second: Bird_Attack_39
+  - first:
+      213: -7107878683466588257
+    second: Bird_Attack_40
+  - first:
+      213: 4581834440546342438
+    second: Bird_Attack_41
+  - first:
+      213: -7350982744468358962
+    second: Bird_Attack_42
+  - first:
+      213: 7343786002888481463
+    second: Bird_Attack_43
+  - first:
+      213: 4227974406127161422
+    second: Bird_Attack_44
+  - first:
+      213: -5441672454927613243
+    second: Bird_Attack_45
+  - first:
+      213: -3106567677778589811
+    second: Bird_Attack_46
+  - first:
+      213: 6376700558714293203
+    second: Bird_Attack_47
+  - first:
+      213: 5438025005543917004
+    second: Bird_Attack_48
+  - first:
+      213: 5714903689342097675
+    second: Bird_Attack_0
+  - first:
+      213: 372797992092211593
+    second: Bird_Attack_1
+  - first:
+      213: -2519517979177185941
+    second: Bird_Attack_2
+  - first:
+      213: -3987400074469646006
+    second: Bird_Attack_3
+  - first:
+      213: 870118283825878315
+    second: Bird_Attack_4
+  - first:
+      213: -1784087177264963440
+    second: Bird_Attack_5
+  - first:
+      213: -7494516719836176640
+    second: Bird_Attack_6
+  - first:
+      213: -190051929825761807
+    second: Bird_Attack_7
+  - first:
+      213: 8029519097706824856
+    second: Bird_Attack_8
+  - first:
+      213: -6604495693356930194
+    second: Bird_Attack_9
+  - first:
+      213: 8216659257849531592
+    second: Bird_Attack_10
+  - first:
+      213: 1714416451844808611
+    second: Bird_Attack_11
+  - first:
+      213: -1382845102229869908
+    second: Bird_Attack_12
+  - first:
+      213: -3408754511257577881
+    second: Bird_Attack_13
+  - first:
+      213: -4307456031177449406
+    second: Bird_Attack_14
+  - first:
+      213: -263153155816980912
+    second: Bird_Attack_15
+  - first:
+      213: 7672991614665059926
+    second: Bird_Attack_16
+  - first:
+      213: 7287922328557164924
+    second: Bird_Attack_17
+  - first:
+      213: 3064481379983385191
+    second: Bird_Attack_18
+  - first:
+      213: 8592312072898682146
+    second: Bird_Attack_19
+  - first:
+      213: -6029248408552001949
+    second: Bird_Attack_20
+  - first:
+      213: -4567970028981209926
+    second: Bird_Attack_21
+  - first:
+      213: 3881689470923476038
+    second: Bird_Attack_22
+  - first:
+      213: -3828165663035564432
+    second: Bird_Attack_23
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bird_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b091ec860aa6f4f40800000000000000
+      internalID: 5714903689342097675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98992a37cc17c2500800000000000000
+      internalID: 372797992092211593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6d0fe53fbfd80dd0800000000000000
+      internalID: -2519517979177185941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a41eed722c8e9a8c0800000000000000
+      internalID: -3987400074469646006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b25930418f7431c00800000000000000
+      internalID: 870118283825878315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 090eace2a26ad37e0800000000000000
+      internalID: -1784087177264963440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00f50fe30c02ef790800000000000000
+      internalID: -7494516719836176640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f5abd9d6cccc5df0800000000000000
+      internalID: -190051929825761807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 894c700c3159e6f60800000000000000
+      internalID: 8029519097706824856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6becd4b82e1854a0800000000000000
+      internalID: -6604495693356930194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cccb80bf00770270800000000000000
+      internalID: 8216659257849531592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3af9b49fda4dac710800000000000000
+      internalID: 1714416451844808611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_12
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa2336c4b52fcce0800000000000000
+      internalID: -1382845102229869908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_13
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7665bf515dba1b0d0800000000000000
+      internalID: -3408754511257577881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_14
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 240ed00cf87d834c0800000000000000
+      internalID: -4307456031177449406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e710a5997195cf0800000000000000
+      internalID: -263153155816980912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e69a46831fb7a60800000000000000
+      internalID: 7672991614665059926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c799948aeb6e32560800000000000000
+      internalID: 7287922328557164924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_18
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76265ba2499378a20800000000000000
+      internalID: 3064481379983385191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_19
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22d1d686e460e3770800000000000000
+      internalID: 8592312072898682146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e2ba9448ec35ca0800000000000000
+      internalID: -6029248408552001949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_21
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab4b1f5f57f4b90c0800000000000000
+      internalID: -4567970028981209926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64c84caf1088ed530800000000000000
+      internalID: 3881689470923476038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_Attack_23
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07eda69ac9f9fdac0800000000000000
+      internalID: -3828165663035564432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

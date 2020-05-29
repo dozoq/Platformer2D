@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4436075436265066427}
   m_Layer: 0
   m_Name: Demon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,15 +100,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de34e215d93b8947b0e4b06182e1762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDetectionRange: 10
-  patrolPaths:
+  MaxDetectionRange: 10
+  PatrolPaths:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   isFlying: 0
-  speed: 600
-  nextWaypointDistance: 1
+  Speed: 600
+  MaxAttackRange: 5
+  NextWaypointDistance: 3
+  EnemyDamage: 2
+  Projectile: {fileID: 53573946345011400, guid: bf27b6e8d7fd3cf4c9d27dfa82de2d96,
+    type: 3}
+  ProjectileLifespan: 3
+  ProjectileSpeed: 3
+  ProjectileVFX: {fileID: 1259561624112962100, guid: 4b8cb66ef82503f42bc9e8259e0371b8,
+    type: 3}
+  FireRate: 0.5
   behaveRefreshTime: 0.2
   jumpforce: 4
   jumpDetectionStart: 0.3

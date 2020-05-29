@@ -1,0 +1,1436 @@
+fileFormatVersion: 2
+guid: 9b336bf129c68ec48b0f2d66c2c4a5ba
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3731191079951799436
+    second: Bird_ActiveIdle_0
+  - first:
+      213: -1964811700055707013
+    second: Bird_ActiveIdle_1
+  - first:
+      213: -6923368277257643738
+    second: Bird_ActiveIdle_2
+  - first:
+      213: -4366839081860890399
+    second: Bird_ActiveIdle_3
+  - first:
+      213: -4022905512307185275
+    second: Bird_ActiveIdle_4
+  - first:
+      213: 3664569214949295105
+    second: Bird_ActiveIdle_5
+  - first:
+      213: 3547503415738344324
+    second: Bird_ActiveIdle_6
+  - first:
+      213: 7474584694429577490
+    second: Bird_ActiveIdle_7
+  - first:
+      213: -2258843642480604668
+    second: Bird_ActiveIdle_8
+  - first:
+      213: -5970097422106610726
+    second: Bird_ActiveIdle_9
+  - first:
+      213: 6069543655259035948
+    second: Bird_ActiveIdle_10
+  - first:
+      213: 1199825803771241154
+    second: Bird_ActiveIdle_11
+  - first:
+      213: -1388476009705193698
+    second: Bird_ActiveIdle_12
+  - first:
+      213: -6238531437337349639
+    second: Bird_ActiveIdle_13
+  - first:
+      213: 4361175323677962719
+    second: Bird_ActiveIdle_14
+  - first:
+      213: -5236328970373803989
+    second: Bird_ActiveIdle_15
+  - first:
+      213: 6782112251404147411
+    second: Bird_ActiveIdle_16
+  - first:
+      213: 6120058233349942003
+    second: Bird_ActiveIdle_17
+  - first:
+      213: 8770766326917572167
+    second: Bird_ActiveIdle_18
+  - first:
+      213: -9109676165009681097
+    second: Bird_ActiveIdle_19
+  - first:
+      213: 200898106729189313
+    second: Bird_ActiveIdle_20
+  - first:
+      213: -3641545235992155685
+    second: Bird_ActiveIdle_21
+  - first:
+      213: 7713113120836297781
+    second: Bird_ActiveIdle_22
+  - first:
+      213: -7806357213458118509
+    second: Bird_ActiveIdle_23
+  - first:
+      213: -66940844385513779
+    second: Bird_ActiveIdle_24
+  - first:
+      213: -8020811042587472304
+    second: Bird_ActiveIdle_25
+  - first:
+      213: 1384173918076489061
+    second: Bird_ActiveIdle_26
+  - first:
+      213: -4182551818837804580
+    second: Bird_ActiveIdle_27
+  - first:
+      213: 8761556177699956173
+    second: Bird_ActiveIdle_28
+  - first:
+      213: -6800339679092992870
+    second: Bird_ActiveIdle_29
+  - first:
+      213: 4983465807762313391
+    second: Bird_ActiveIdle_30
+  - first:
+      213: -5344551885742775195
+    second: Bird_ActiveIdle_31
+  - first:
+      213: 3830839409556175236
+    second: Bird_ActiveIdle_32
+  - first:
+      213: 1355975223547481220
+    second: Bird_ActiveIdle_33
+  - first:
+      213: 7103088057952650811
+    second: Bird_ActiveIdle_34
+  - first:
+      213: 9176445306571772254
+    second: Bird_ActiveIdle_35
+  - first:
+      213: -4961561303977110720
+    second: Bird_ActiveIdle_36
+  - first:
+      213: 5761674221662950444
+    second: Bird_ActiveIdle_37
+  - first:
+      213: -6326180122405039357
+    second: Bird_ActiveIdle_38
+  - first:
+      213: -9220865798073509036
+    second: Bird_ActiveIdle_39
+  - first:
+      213: 9150884027120266467
+    second: Bird_ActiveIdle_40
+  - first:
+      213: 8875512709672469513
+    second: Bird_ActiveIdle_41
+  - first:
+      213: 1848557817058124474
+    second: Bird_ActiveIdle_42
+  - first:
+      213: 5347751089421648055
+    second: Bird_ActiveIdle_43
+  - first:
+      213: 5184515950554564465
+    second: Bird_ActiveIdle_44
+  - first:
+      213: -7060859895242138350
+    second: Bird_ActiveIdle_45
+  - first:
+      213: 4672906370535143309
+    second: Bird_ActiveIdle_46
+  - first:
+      213: 6401014579939474078
+    second: Bird_ActiveIdle_47
+  - first:
+      213: -7566998033324647266
+    second: Bird_ActiveIdle_48
+  - first:
+      213: 3725272729857408434
+    second: Bird_ActiveIdle_49
+  - first:
+      213: 8125665798334483085
+    second: Bird_ActiveIdle_50
+  - first:
+      213: 1588180875767236242
+    second: Bird_ActiveIdle_51
+  - first:
+      213: 7099592139456044392
+    second: Bird_ActiveIdle_52
+  - first:
+      213: -8546395973412009075
+    second: Bird_ActiveIdle_53
+  - first:
+      213: 4727151865181046176
+    second: Bird_ActiveIdle_54
+  - first:
+      213: 652771563648011823
+    second: Bird_ActiveIdle_55
+  - first:
+      213: -4402553989399792906
+    second: Bird_ActiveIdle_56
+  - first:
+      213: -6942324491286557737
+    second: Bird_ActiveIdle_57
+  - first:
+      213: -2891667377045843871
+    second: Bird_ActiveIdle_58
+  - first:
+      213: 1732803722516698953
+    second: Bird_ActiveIdle_59
+  - first:
+      213: -3159514587355396383
+    second: Bird_ActiveIdle_60
+  - first:
+      213: -2099791199676862262
+    second: Bird_ActiveIdle_61
+  - first:
+      213: -3942783553747090593
+    second: Bird_ActiveIdle_62
+  - first:
+      213: -4853454436529488149
+    second: Bird_ActiveIdle_63
+  - first:
+      213: -5237781655175081001
+    second: Bird_ActiveIdle_64
+  - first:
+      213: 3467953428451790870
+    second: Bird_ActiveIdle_65
+  - first:
+      213: -6061573584296352305
+    second: Bird_ActiveIdle_66
+  - first:
+      213: -8309786285914768703
+    second: Bird_ActiveIdle_67
+  - first:
+      213: 5139116918150663852
+    second: Bird_ActiveIdle_68
+  - first:
+      213: -3814942948562974126
+    second: Bird_ActiveIdle_69
+  - first:
+      213: -2813357632401333073
+    second: Bird_ActiveIdle_70
+  - first:
+      213: -5123973141968588376
+    second: Bird_ActiveIdle_71
+  - first:
+      213: 2086540626694820310
+    second: Bird_ActiveIdle_72
+  - first:
+      213: 7334909639504368300
+    second: Bird_ActiveIdle_73
+  - first:
+      213: -4864589759898983685
+    second: Bird_ActiveIdle_74
+  - first:
+      213: -7697862016615026259
+    second: Bird_ActiveIdle_75
+  - first:
+      213: 1018408618269061267
+    second: Bird_ActiveIdle_76
+  - first:
+      213: -5353913778135079709
+    second: Bird_ActiveIdle_77
+  - first:
+      213: -4777341669643905961
+    second: Bird_ActiveIdle_78
+  - first:
+      213: 6642833842024525437
+    second: Bird_ActiveIdle_79
+  - first:
+      213: -7490795352461087299
+    second: Bird_ActiveIdle_80
+  - first:
+      213: -1249966121530103014
+    second: Bird_ActiveIdle_81
+  - first:
+      213: 4506414706174653773
+    second: Bird_ActiveIdle_82
+  - first:
+      213: 1346048669030874458
+    second: Bird_ActiveIdle_83
+  - first:
+      213: -4396132976150306217
+    second: Bird_ActiveIdle_0
+  - first:
+      213: 5635948285114282631
+    second: Bird_ActiveIdle_1
+  - first:
+      213: -2398676603986654371
+    second: Bird_ActiveIdle_2
+  - first:
+      213: -1714356098148040518
+    second: Bird_ActiveIdle_3
+  - first:
+      213: -2338800532259086986
+    second: Bird_ActiveIdle_4
+  - first:
+      213: 6910139433048809074
+    second: Bird_ActiveIdle_5
+  - first:
+      213: -7889313882940574716
+    second: Bird_ActiveIdle_6
+  - first:
+      213: 8620469716238761946
+    second: Bird_ActiveIdle_7
+  - first:
+      213: -3091809667208771175
+    second: Bird_ActiveIdle_8
+  - first:
+      213: 2165265651101488600
+    second: Bird_ActiveIdle_9
+  - first:
+      213: 4095081367416295349
+    second: Bird_ActiveIdle_10
+  - first:
+      213: 8077363242201422557
+    second: Bird_ActiveIdle_11
+  - first:
+      213: -1300076038128852247
+    second: Bird_ActiveIdle_12
+  - first:
+      213: -4792699190756723845
+    second: Bird_ActiveIdle_13
+  - first:
+      213: -2752166215918654852
+    second: Bird_ActiveIdle_14
+  - first:
+      213: 3203552810230162161
+    second: Bird_ActiveIdle_15
+  - first:
+      213: -1272662078374281406
+    second: Bird_ActiveIdle_16
+  - first:
+      213: -5143270725596629372
+    second: Bird_ActiveIdle_17
+  - first:
+      213: 5779297742936371740
+    second: Bird_ActiveIdle_18
+  - first:
+      213: 121047344244454856
+    second: Bird_ActiveIdle_19
+  - first:
+      213: -5537525119611714704
+    second: Bird_ActiveIdle_20
+  - first:
+      213: 8688601608263380570
+    second: Bird_ActiveIdle_21
+  - first:
+      213: 3074496712402920143
+    second: Bird_ActiveIdle_22
+  - first:
+      213: 3007637671616852905
+    second: Bird_ActiveIdle_23
+  - first:
+      213: 1625329517277115027
+    second: Bird_ActiveIdle_24
+  - first:
+      213: 6271197463077688788
+    second: Bird_ActiveIdle_25
+  - first:
+      213: 2229841041981532372
+    second: Bird_ActiveIdle_26
+  - first:
+      213: -3662357409601457696
+    second: Bird_ActiveIdle_27
+  - first:
+      213: -2961501303791671546
+    second: Bird_ActiveIdle_28
+  - first:
+      213: -1610774340094008354
+    second: Bird_ActiveIdle_29
+  - first:
+      213: -6372896155621571882
+    second: Bird_ActiveIdle_30
+  - first:
+      213: -1165224789831926596
+    second: Bird_ActiveIdle_31
+  - first:
+      213: 6869766793840258810
+    second: Bird_ActiveIdle_32
+  - first:
+      213: -1604788800082638960
+    second: Bird_ActiveIdle_33
+  - first:
+      213: -4444495962392613415
+    second: Bird_ActiveIdle_34
+  - first:
+      213: -2359152665427094837
+    second: Bird_ActiveIdle_35
+  - first:
+      213: -30646933531215163
+    second: Bird_ActiveIdle_36
+  - first:
+      213: -884819507430215942
+    second: Bird_ActiveIdle_37
+  - first:
+      213: 2775195417209982114
+    second: Bird_ActiveIdle_38
+  - first:
+      213: 197655129653829765
+    second: Bird_ActiveIdle_39
+  - first:
+      213: 6723377411635123379
+    second: Bird_ActiveIdle_40
+  - first:
+      213: 8616643357302238927
+    second: Bird_ActiveIdle_41
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7522e23995ccdf2c0800000000000000
+      internalID: -4396132976150306217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78275b2da19e63e40800000000000000
+      internalID: 5635948285114282631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5bc550665036bed0800000000000000
+      internalID: -2398676603986654371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab08c5736326538e0800000000000000
+      internalID: -1714356098148040518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67dd332be49ea8fd0800000000000000
+      internalID: -2338800532259086986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27e1b4fe33fb5ef50800000000000000
+      internalID: 6910139433048809074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 404f4c5a2d6838290800000000000000
+      internalID: -7889313882940574716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf7c61a88f02a770800000000000000
+      internalID: 8620469716238761946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99907e02d7fa715d0800000000000000
+      internalID: -3091809667208771175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d5524a33a19c0e10800000000000000
+      internalID: 2165265651101488600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bf4b279ec6a4d830800000000000000
+      internalID: 4095081367416295349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda9635b21f881070800000000000000
+      internalID: 8077363242201422557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_12
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e2255e3bb335fde0800000000000000
+      internalID: -1300076038128852247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b73b4a39a79ec7db0800000000000000
+      internalID: -4792699190756723845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a665188675ec9d0800000000000000
+      internalID: -2752166215918654852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f229f8ce4e457c20800000000000000
+      internalID: 3203552810230162161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ff3632598965ee0800000000000000
+      internalID: -1272662078374281406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 486b529768e6f98b0800000000000000
+      internalID: -5143270725596629372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1270fa5da0343050800000000000000
+      internalID: 5779297742936371740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5f1b21beb0ea100800000000000000
+      internalID: 121047344244454856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_20
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 073cdb62e32c623b0800000000000000
+      internalID: -5537525119611714704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5e2d67e02d149870800000000000000
+      internalID: 8688601608263380570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc2e1e5787ecaaa20800000000000000
+      internalID: 3074496712402920143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_23
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a33ec5f6864db920800000000000000
+      internalID: 3007637671616852905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3927248a5945e8610800000000000000
+      internalID: 1625329517277115027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_25
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d5931fcdd4c70750800000000000000
+      internalID: 6271197463077688788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_26
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d865ec0d9cf1fe10800000000000000
+      internalID: 2229841041981532372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e17f280751bc2dc0800000000000000
+      internalID: -3662357409601457696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60724a14142a6e6d0800000000000000
+      internalID: -2961501303791671546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed3e16d954165a9e0800000000000000
+      internalID: -1610774340094008354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_30
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d249b526bcee87a0800000000000000
+      internalID: -6372896155621571882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_31
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbcb69e2a3a44dfe0800000000000000
+      internalID: -1165224789831926596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe6f9c5080565f50800000000000000
+      internalID: 6869766793840258810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_33
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0978c8fb615aab9e0800000000000000
+      internalID: -1604788800082638960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_34
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dd2eeb587af152c0800000000000000
+      internalID: -4444495962392613415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc25d4e662b924fd0800000000000000
+      internalID: -2359152665427094837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_36
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5caba6db6ce139ff0800000000000000
+      internalID: -30646933531215163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_37
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe2941985d78b3f0800000000000000
+      internalID: -884819507430215942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_38
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2acc7114789738620800000000000000
+      internalID: 2775195417209982114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_39
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 580ec0f0b463eb200800000000000000
+      internalID: 197655129653829765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_40
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b49567422c3e4d50800000000000000
+      internalID: 6723377411635123379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_ActiveIdle_41
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fceaa340b77749770800000000000000
+      internalID: 8616643357302238927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

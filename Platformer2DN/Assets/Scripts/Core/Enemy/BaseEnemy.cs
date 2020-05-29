@@ -2,7 +2,7 @@
 using platformer.attributes;
 using platformer.combat;
 using UnityEngine;
-using Vector2 = UnityEngine.Vector2;
+using platformer.utils;
 
 namespace platformer.enemy
 {
@@ -21,6 +21,7 @@ namespace platformer.enemy
         public GameObject[] PatrolPaths;
         [Tooltip("Does enemy fly?")]
         public bool isFlying = false;
+        private bool isDying = false;
         [Tooltip("speed of enemy movement(and jump)")]
         public float Speed = 200f;
         [Tooltip("Distance within which waypoints are checked as done")]
@@ -98,6 +99,17 @@ namespace platformer.enemy
         // Update is called once per frame
         protected virtual void Update()
         {
+            if(isDying)
+            {
+                if(IsInvoking("Behave"))
+                {
+                    CancelInvoke("Behave");
+                }
+                if(!animator.IsPlaying())
+                {
+                    Destroy(gameObject);
+                }
+            }
             if(fireTimer>0)
             {
                 fireTimer-=Time.deltaTime;
@@ -106,7 +118,11 @@ namespace platformer.enemy
             if(reachedEndOfPath && !isChasing)
             {
                 actualWaitTime+=Time.deltaTime;
-                animator.Play("Wait");
+
+                if(animator!=null)
+                {
+                    animator.SetBool("IsWalking",false);
+                }
             }
 
             float additionalWaitTime = 0;
@@ -220,6 +236,7 @@ namespace platformer.enemy
         {
             if(fireTimer<=0)
             {
+                animator.SetTrigger("Attack");
                 fireTimer=FireRate;
                 Bullet bulletInstance = Instantiate(Projectile,new Vector3(transform.position.x,transform.position.y,0), Quaternion.identity,null);
                 bulletInstance.ConfigBullet(EnemyDamage, ProjectileLifespan, ProjectileSpeed, false, ProjectileVFX, true);
@@ -233,10 +250,16 @@ namespace platformer.enemy
             if(reachedEndOfPath||debug)
             {
                 isWaiting=true;
-                var patrolpath =PatrolPaths[ pointNumber ].GetComponent<PatrolPath>();
+                animator.SetBool("IsWalking", false);
+                PatrolPath patrolpath = null;
+                if(PatrolPaths.Length>0)
+                {
+                    patrolpath =PatrolPaths[ pointNumber ].GetComponent<PatrolPath>();
+                }
                 if(patrolpath==null||actualWaitTime>=patrolpath.waitTime)
                 {
                     isWaiting=false;
+                    animator.SetBool("IsWalking", true);
                     actualWaitTime=0;
                     //If so, check if there are more points in patrol nodes container
                     if(pointNumber<(PatrolPaths.Length-1))
@@ -262,9 +285,11 @@ namespace platformer.enemy
         //implementation of die interface
         public virtual void Die()
         {
-            //TODO animation
-            //Destroy this enemy on death
-            Destroy( this.gameObject );
+            if(animator!=null)
+            {
+                animator.SetTrigger("Die");
+            }
+            isDying=true;
         }
 
         
@@ -319,7 +344,7 @@ namespace platformer.enemy
             if(!isWaiting || isChasing)
             {
 
-                if(direction.y>jumpDetectionStart)
+                if(direction.y>jumpDetectionStart&&!isFlying)
                 {
                     //add more force(to simulate jump)
                     force=direction*Speed*jumpforce*Time.deltaTime;
@@ -329,7 +354,7 @@ namespace platformer.enemy
                 {
                     //use normal speed
                     force=direction*Speed*Time.deltaTime;
-                    animator.Play("Walk");
+                    animator.SetBool("IsWalking",true);
                 }
             }
             //Add calculated force to rigid body
