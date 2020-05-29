@@ -49,11 +49,86 @@ namespace platformer.enemy
         //Rigidbody2D that is use to handle movement
         protected Rigidbody2D rb;
 
+        bool isWaiting = false;
+        protected Animator animator;
+
         //Timer properties
         //Time on start of timer
         private float time = 0.0f;
         //how many seconds must pass to do tick
-        public float interpolationPeriod = 6;
+        public float interpolationPeriod = 10;
+
+        //Patrol wait checking
+        private float actualWaitTime = 0.0f;
+        // Start is called before the first frame update
+        protected virtual void Start()
+        {
+            //set point of patrol paths to first
+            pointNumber=0;
+            //Get seeker to handle paths finding
+            seeker=GetComponent<Seeker>();
+            //Get rigidbody to handle movement of enemy
+            rb=GetComponent<Rigidbody2D>();
+            //Find target on scene
+            Target=GameObject.FindGameObjectWithTag("Player").transform;
+            //Set to not chase on start
+            isChasing=false;
+            //Repeat function behave every behave refresh time(in seconds, default 0.2 sec)
+            InvokeRepeating("Behave", 0f, behaveRefreshTime);
+            animator=GetComponent<Animator>();
+        }
+        // Physics update
+        protected virtual void FixedUpdate()
+        {
+            //Call move to handle movement
+            Move();
+        }
+        // Update is called once per frame
+        protected virtual void Update()
+        {
+            time+=Time.deltaTime;
+            if(reachedEndOfPath)
+            {
+                actualWaitTime+=Time.deltaTime;
+                animator.Play("Wait");
+            }
+
+            float additionalWaitTime = 0;
+            //check if timer passed interpolation period
+            var patrolpath =patrolPaths[ pointNumber ].GetComponent<PatrolPath>();
+            if(patrolpath!=null)
+            {
+                additionalWaitTime=patrolpath.waitTime;
+            }
+            if(time>=(interpolationPeriod+additionalWaitTime))
+            {
+                //Timer reset
+                time=0.0f;
+
+                //if there is no last point
+                if(lastPoint==-1)
+                {
+                    //set last point to this point
+                    lastPoint=pointNumber;
+                    //exit
+                    return;
+                }
+                //if last point is the same as {Period} ago
+                if(lastPoint==pointNumber)
+                {
+                    //Then go to the next point with debug flag
+                    GoToTheNextPoint(true);
+                    //Log where node is bugged
+                    Debug.LogError($"Can't reach from {lastPoint} to {lastPoint+1} Patrol waypoints");
+                }
+                //if they are diffrent
+                else
+                {
+                    //Save this point as last
+                    lastPoint=pointNumber;
+                }
+            }
+        }
         //Handles all base anamy behavior: moving, chasing, jumping etc.
         protected virtual void Behave() 
         {    
@@ -119,18 +194,25 @@ namespace platformer.enemy
         protected void GoToTheNextPoint(bool debug = false)
         {
             //check if reached end of his actual path
-            if(reachedEndOfPath || debug)
+            if(reachedEndOfPath||debug)
             {
-                //If so, check if there are more points in patrol nodes container
-                if(pointNumber<(patrolPaths.Length-1))
+                isWaiting=true;
+                var patrolpath =patrolPaths[ pointNumber ].GetComponent<PatrolPath>();
+                if(patrolpath==null||actualWaitTime>=patrolpath.waitTime)
                 {
-                    //if so, set actual point to the next
-                    pointNumber++;
-                }
-                else
-                {
-                    //if not, set actual point to first
-                    pointNumber=0;
+                    isWaiting=false;
+                    actualWaitTime=0;
+                    //If so, check if there are more points in patrol nodes container
+                    if(pointNumber<(patrolPaths.Length-1))
+                    {
+                        //if so, set actual point to the next
+                        pointNumber++;
+                    }
+                    else
+                    {
+                        //if not, set actual point to first
+                        pointNumber=0;
+                    }
                 }
             }
             //If there are any patrol paths
@@ -149,22 +231,7 @@ namespace platformer.enemy
             Destroy( this.gameObject );
         }
 
-        // Start is called before the first frame update
-        protected virtual void Start()
-        {
-            //set point of patrol paths to first
-            pointNumber=0;
-            //Get seeker to handle paths finding
-            seeker=GetComponent<Seeker>();
-            //Get rigidbody to handle movement of enemy
-            rb=GetComponent<Rigidbody2D>();
-            //Find target on scene
-            Target=GameObject.FindGameObjectWithTag("Player").transform;
-            //Set to not chase on start
-            isChasing=false;
-            //Repeat function behave every behave refresh time(in seconds, default 0.2 sec)
-            InvokeRepeating("Behave",0f,behaveRefreshTime);
-        }
+        
         //Function called on path completion(takes path as argument)
         protected virtual void OnPathComplete(Path p)
         {
@@ -183,47 +250,7 @@ namespace platformer.enemy
                 Debug.LogError(p.errorLog);
             }
         }
-        // Physics update
-        protected virtual void FixedUpdate()
-        {
-            //Call move to handle movement
-            Move();
-        }
-        // Update is called once per frame
-        protected virtual void Update()
-        {
-            time+=Time.deltaTime;
-
-            //check if timer passed interpolation period
-            if(time>=interpolationPeriod)
-            {
-                //Timer reset
-                time=0.0f;
-
-                //if there is no last point
-                if(lastPoint==-1)
-                {
-                    //set last point to this point
-                    lastPoint=pointNumber;
-                    //exit
-                    return;
-                }
-                //if last point is the same as {Period} ago
-                if(lastPoint==pointNumber)
-                {
-                    //Then go to the next point with debug flag
-                    GoToTheNextPoint(true);
-                    //Log where node is bugged
-                    Debug.LogError($"Can't reach from {lastPoint} to {lastPoint+1} Patrol waypoints");
-                }
-                //if they are diffrent
-                else
-                {
-                    //Save this point as last
-                    lastPoint=pointNumber;
-                }
-            }
-        }
+       
 
         //Function that handles enemy movement
         protected virtual void Move()
@@ -253,17 +280,21 @@ namespace platformer.enemy
             //calculate direction to next point
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
             //if ai want to go to much upward
-            if(direction.y>jumpDetectionStart)
+            if(!isWaiting)
             {
-                //add more force(to simulate jump)
-                force = direction * speed * jumpforce * Time.deltaTime;
-            }
-            //if enemy go as far as forward
-            else
-            {
-                //use normal speed
-                force = direction * speed * Time.deltaTime;
-                
+
+                if(direction.y>jumpDetectionStart)
+                {
+                    //add more force(to simulate jump)
+                    force=direction*speed*jumpforce*Time.deltaTime;
+                }
+                //if enemy go as far as forward
+                else
+                {
+                    //use normal speed
+                    force=direction*speed*Time.deltaTime;
+                    animator.Play("Walk");
+                }
             }
             //Add calculated force to rigid body
             rb.AddForce(force);

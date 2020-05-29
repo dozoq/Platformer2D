@@ -50,19 +50,19 @@ namespace platformer.combat
         private void Update()
         {
             //Add passed time to timer
-            time += Time.deltaTime;
+            time+=Time.deltaTime;
 
             //check if timer passed interpolation period
-            if (time >= interpolationPeriod)
+            if(time>=interpolationPeriod)
             {
                 //Timer reset
-                time = 0.0f;
+                time=0.0f;
 
                 //remove from actual lifespan passed period
-                alifespan -= interpolationPeriod;
+                alifespan-=interpolationPeriod;
 
                 //if bullet live too long
-                if (alifespan <= 0)
+                if(alifespan<=0)
                 {
                     //Destroy it
                     Destroy(gameObject);
