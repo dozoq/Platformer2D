@@ -4,19 +4,10 @@ using UnityEngine;
 
 namespace platformer.saving
 {
-    public class ISaveable : MonoBehaviour
+    public interface ISaveable
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        object CaptureState();
+        void RestoreState(object state);
     }
 
 }

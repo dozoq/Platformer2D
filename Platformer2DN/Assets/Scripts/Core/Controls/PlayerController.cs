@@ -16,6 +16,7 @@ namespace platformer.control
         [SerializeField] private float lowJumpGravityModifier = 0.5f;
 
         private bool isGrounded = false;
+        private bool isOnLadder = false;
         private Rigidbody2D rb = null;
         private Fighter fighter;
         private SpriteRenderer spriteRenderer;
@@ -72,6 +73,7 @@ namespace platformer.control
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
+
         }
 
         //Called each fixed update

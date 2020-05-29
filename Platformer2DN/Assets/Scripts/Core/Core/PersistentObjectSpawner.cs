@@ -2,29 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PersistentObjectSpawner : MonoBehaviour
+namespace platformer.core
 {
-    [SerializeField] private GameObject persistentObjectToSpawn = null;
-
-    private static bool hasSpawned = false;
-
-    private void Awake()
+    public class PersistentObjectSpawner : MonoBehaviour
     {
-        if (hasSpawned) return;
-        if (persistentObjectToSpawn == null)
+        [SerializeField] private GameObject persistentObjectToSpawn = null;
+
+        private static bool hasSpawned = false;
+
+        private void Awake()
         {
-            Debug.LogError("No persistent object to spawn!");
-            return;
+            if (hasSpawned) return;
+            if (persistentObjectToSpawn == null)
+            {
+                Debug.LogError("No persistent object to spawn!");
+                return;
+            }
+
+            SpawnPersistentObject();
+
+            hasSpawned = true;
         }
 
-        SpawnPersistentObject();
-
-        hasSpawned = true;
+        private void SpawnPersistentObject()
+        {
+            GameObject persistentObject = Instantiate(persistentObjectToSpawn);
+            DontDestroyOnLoad(persistentObject);
+        }
     }
 
-    private void SpawnPersistentObject()
-    {
-        GameObject persistentObject = Instantiate(persistentObjectToSpawn);
-        DontDestroyOnLoad(persistentObject);
-    }
 }
