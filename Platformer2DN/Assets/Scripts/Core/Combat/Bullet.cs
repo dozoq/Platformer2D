@@ -16,6 +16,7 @@ namespace platformer.combat
         public float Lifespan;
         public float Speed;
         public bool canDamagePlayer;
+        public bool isEnemyBullet = false;
         public GameObject vfxObject;
 
         //VFX properties
@@ -122,11 +123,19 @@ namespace platformer.combat
             //take (C) health from hitted target(if exists)
             var health = other.gameObject.GetComponent<Health>();
             //If health exists and it's not player or if health exists and bullet can damage player
-            if (health != null && (!other.CompareTag("Player") || canDamagePlayer))
+            if(isEnemyBullet &health!=null)
+            {
+                if(other.CompareTag("Player"))
+                {
+                    health.TakeDamage(Damage);
+                }
+            }
+            else if (health != null && (!other.CompareTag("Player") || canDamagePlayer))
             {
                 //Do damage
                 health.TakeDamage(Damage);
             }
+
 
             var targetrb = other.gameObject.GetComponent<Rigidbody2D>();
             if (targetrb != null && (!other.CompareTag("Player") || canDamagePlayer))
