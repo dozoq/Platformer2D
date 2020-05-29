@@ -10,7 +10,9 @@ namespace platformer.control
     {
         [SerializeField] private float maxSpeed = 6f;
         [SerializeField] private float jumpHeight = 8f;
+        [SerializeField] private float ladderClimbSpeed = 3f;
         [SerializeField] private Transform groundDetector = null;
+
 
         [Range(0, 1)]
         [SerializeField] private float lowJumpGravityModifier = 0.5f;
@@ -74,6 +76,20 @@ namespace platformer.control
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
 
+            //Ladders
+            if(Input.GetKey(KeyCode.W) && isOnLadder)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, ladderClimbSpeed);
+            }
+            else if(Input.GetKey(KeyCode.S) && isOnLadder)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, -ladderClimbSpeed);
+            }
+            else if(isOnLadder)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+            }    
+
         }
 
         //Called each fixed update
@@ -99,6 +115,26 @@ namespace platformer.control
         {
              fighter.Shoot(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
        Input.mousePosition.y, Camera.main.nearClipPlane)));
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision.CompareTag("Ledder"))
+            {
+                isOnLadder = true;
+                isGrounded = true;
+                rb.gravityScale = 0; // Won`t fall down when is sticked to the ladder
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if(collision.CompareTag("Ledder"))
+            {
+                isOnLadder = false;
+                isGrounded = false;
+                rb.gravityScale = 1;
+            }
         }
 
 
