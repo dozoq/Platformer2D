@@ -1,6 +1,7 @@
 ﻿using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class AstarManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class AstarManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        InvokeRepeating("GraphUpdate",1f,5f);
+        InvokeRepeating("GraphUpdate",5f,5f);
         #if UNITY_EDITOR
                 QualitySettings.vSyncCount=0;  // VSync must be disabled
                 Application.targetFrameRate=60;
@@ -18,14 +19,14 @@ public class AstarManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
     private void FixedUpdate()
     {
         
+        
     }
     private void GraphUpdate()
     {
-        var graphToScan = AstarPath.active.data.gridGraph;
+        AstarData.active.Scan();
     }
 }

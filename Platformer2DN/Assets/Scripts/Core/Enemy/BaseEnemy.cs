@@ -139,7 +139,6 @@ namespace platformer.enemy
                 //set path to actual point from patrol nodes
                 seeker.StartPath(rb.position, patrolPaths[ pointNumber ].transform.position, OnPathComplete);
             }
-            Debug.Log(pointNumber);
         }
 
         //implementation of die interface
