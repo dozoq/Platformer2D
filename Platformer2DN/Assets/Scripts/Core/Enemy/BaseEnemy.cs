@@ -1,5 +1,6 @@
 ﻿using Pathfinding;
 using platformer.attributes;
+using platformer.combat;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
@@ -15,15 +16,23 @@ namespace platformer.enemy
 
             //ToDo can't reach path
         [Tooltip("Max range within which enemy start chasing player")]
-        public float maxDetectionRange;
+        public float MaxDetectionRange = 10f;
         [Tooltip("Container of all patrol paths")]
-        public GameObject[] patrolPaths;
+        public GameObject[] PatrolPaths;
         [Tooltip("Does enemy fly?")]
         public bool isFlying = false;
         [Tooltip("speed of enemy movement(and jump)")]
-        public float speed = 200f;
+        public float Speed = 200f;
         [Tooltip("Distance within which waypoints are checked as done")]
-        public float nextWaypointDistance = 3f;
+        public float MaxAttackRange = 3f;
+        public float NextWaypointDistance = 3f;
+        public int EnemyDamage = 2;
+        public Bullet Projectile;
+        public float ProjectileLifespan = 3f;
+        public float ProjectileSpeed = 3f;
+        public GameObject ProjectileVFX;
+        public float FireRate = 0.5f;
+        protected float fireTimer = 0.0f;
         [Tooltip("How fast ai should refresh(in seconds, default 0.2 sec)")]
         [SerializeField] protected float behaveRefreshTime = 0.2f;
         [Tooltip("Jump force(multiply normal movement speed to simulate jump)")]
@@ -89,6 +98,10 @@ namespace platformer.enemy
         // Update is called once per frame
         protected virtual void Update()
         {
+            if(fireTimer>0)
+            {
+                fireTimer-=Time.deltaTime;
+            }
             time+=Time.deltaTime;
             if(reachedEndOfPath && !isChasing)
             {
@@ -98,7 +111,11 @@ namespace platformer.enemy
 
             float additionalWaitTime = 0;
             //check if timer passed interpolation period
-            var patrolpath =patrolPaths[ pointNumber ].GetComponent<PatrolPath>();
+            PatrolPath patrolpath = null;
+            if(PatrolPaths.Length>0)
+            {
+                patrolpath =PatrolPaths[ pointNumber ].GetComponent<PatrolPath>();
+            }
             if(patrolpath!=null)
             {
                 additionalWaitTime=patrolpath.waitTime;
@@ -164,8 +181,8 @@ namespace platformer.enemy
 
             //If target is in max detection range on X and Y distance
             if(
-                tempX<maxDetectionRange &&
-                tempY<maxDetectionRange
+                tempX<MaxDetectionRange &&
+                tempY<MaxDetectionRange
                 )
             {
                 //set chasing to true
@@ -177,14 +194,19 @@ namespace platformer.enemy
                 //stop chasing
                 isChasing=false;
             }
+            
             //If enemy is chasing a target
             if (isChasing)
             {
                 //Set new path to a target
                 seeker.StartPath(rb.position, Target.position, OnPathComplete);
-                //TODO
-                //Sprawdź czy w zasięgu
-                    //zaatakuj
+                if(
+                tempX<MaxAttackRange&&
+                tempY<MaxAttackRange
+                )
+                {
+                    Attack();
+                }
 
             }
             //If not chasing
@@ -196,7 +218,13 @@ namespace platformer.enemy
 
         protected virtual void Attack()
         {
-
+            if(fireTimer<=0)
+            {
+                fireTimer=FireRate;
+                Bullet bulletInstance = Instantiate(Projectile,new Vector3(transform.position.x,transform.position.y,0), Quaternion.identity,null);
+                bulletInstance.ConfigBullet(EnemyDamage, ProjectileLifespan, ProjectileSpeed, false, ProjectileVFX, true);
+                bulletInstance.SetTarget(bulletInstance.transform.position, new Vector2(Target.position.x, Target.position.y));
+            }
         }
 
         protected void GoToTheNextPoint(bool debug = false)
@@ -205,13 +233,13 @@ namespace platformer.enemy
             if(reachedEndOfPath||debug)
             {
                 isWaiting=true;
-                var patrolpath =patrolPaths[ pointNumber ].GetComponent<PatrolPath>();
+                var patrolpath =PatrolPaths[ pointNumber ].GetComponent<PatrolPath>();
                 if(patrolpath==null||actualWaitTime>=patrolpath.waitTime)
                 {
                     isWaiting=false;
                     actualWaitTime=0;
                     //If so, check if there are more points in patrol nodes container
-                    if(pointNumber<(patrolPaths.Length-1))
+                    if(pointNumber<(PatrolPaths.Length-1))
                     {
                         //if so, set actual point to the next
                         pointNumber++;
@@ -224,10 +252,10 @@ namespace platformer.enemy
                 }
             }
             //If there are any patrol paths
-            if(patrolPaths.Length>0)
+            if(PatrolPaths.Length>0)
             {
                 //set path to actual point from patrol nodes
-                seeker.StartPath(rb.position, patrolPaths[ pointNumber ].transform.position, OnPathComplete);
+                seeker.StartPath(rb.position, PatrolPaths[ pointNumber ].transform.position, OnPathComplete);
             }
         }
 
@@ -288,19 +316,19 @@ namespace platformer.enemy
             //calculate direction to next point
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
             //if ai want to go to much upward
-            if(!isWaiting)
+            if(!isWaiting || isChasing)
             {
 
                 if(direction.y>jumpDetectionStart)
                 {
                     //add more force(to simulate jump)
-                    force=direction*speed*jumpforce*Time.deltaTime;
+                    force=direction*Speed*jumpforce*Time.deltaTime;
                 }
                 //if enemy go as far as forward
                 else
                 {
                     //use normal speed
-                    force=direction*speed*Time.deltaTime;
+                    force=direction*Speed*Time.deltaTime;
                     animator.Play("Walk");
                 }
             }
@@ -311,7 +339,7 @@ namespace platformer.enemy
             float distance = Vector2.Distance(rb.position,path.vectorPath[currentWaypoint]);
 
             //if distance is less than acteptable distance
-            if(distance<nextWaypointDistance)
+            if(distance<NextWaypointDistance)
             {
                 //go to the next waypoint on path
                 currentWaypoint++;

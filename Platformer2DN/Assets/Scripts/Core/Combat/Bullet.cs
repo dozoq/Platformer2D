@@ -45,7 +45,7 @@ namespace platformer.combat
         void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
-
+            gameObject.tag="Bullet";
         }
 
         private void Update()
@@ -73,7 +73,7 @@ namespace platformer.combat
 
         //Confugures bullet
         //called from WeaponConfig.LaunchBullet()
-        public void ConfigBullet(int damage = 1, float lifespan = .5f, float speed = 15f, bool canDoDamageToPlayer = false, GameObject bulletVFX = null)
+        public void ConfigBullet(int damage = 1, float lifespan = .5f, float speed = 15f, bool canDoDamageToPlayer = false, GameObject bulletVFX = null, bool isEnemyFireing = false)
         {
             //Standard Attributes set
             Damage = damage;
@@ -81,6 +81,7 @@ namespace platformer.combat
             alifespan = Lifespan;
             Speed = speed;
             canDamagePlayer = canDoDamageToPlayer;
+            isEnemyBullet=isEnemyFireing;
 
             //VFX handling
             /*Take bullet prefab(
@@ -114,7 +115,11 @@ namespace platformer.combat
         {
             //Check if colliosion is on player
             //Pass if hit player or can damage player
-            if (other.tag != "Player" || canDamagePlayer)
+            if(isEnemyBullet && !other.CompareTag("Enemy") &&!other.CompareTag("Bullet"))
+            {
+                Destroy(gameObject); 
+            }
+            else if (!isEnemyBullet && other.tag!="bullet" && other.tag != "Player" || canDamagePlayer)
             {
                 //Destroys bullet on hit
                 Destroy(gameObject);
@@ -138,7 +143,14 @@ namespace platformer.combat
 
 
             var targetrb = other.gameObject.GetComponent<Rigidbody2D>();
-            if (targetrb != null && (!other.CompareTag("Player") || canDamagePlayer))
+            if(isEnemyBullet&targetrb!=null)
+            {
+                if(other.CompareTag("Player"))
+                {
+                    targetrb.AddForce(bulletDirection*Damage, ForceMode2D.Impulse);
+                }
+            }
+            else if (targetrb != null && (!other.CompareTag("Player") || canDamagePlayer))
             {
                 targetrb.AddForce(bulletDirection * Damage, ForceMode2D.Impulse);
             }

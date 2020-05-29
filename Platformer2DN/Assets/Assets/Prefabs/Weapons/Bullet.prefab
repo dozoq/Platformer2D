@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4426036952912285218}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,9 +49,8 @@ MonoBehaviour:
   Lifespan: 0
   Speed: 0
   canDamagePlayer: 0
-  vfx: {fileID: 8926484042661614526, guid: 973b7f7c8996ad947abd8b42f89b2b26, type: 3}
+  isEnemyBullet: 0
   vfxObject: {fileID: 0}
-  vfxManager: {fileID: 0}
   interpolationPeriod: 0.1
 --- !u!61 &119464272163416840
 BoxCollider2D:

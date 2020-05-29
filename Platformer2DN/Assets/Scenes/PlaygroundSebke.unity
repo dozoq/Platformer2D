@@ -623,10 +623,37 @@ PrefabInstance:
       propertyPath: patrolPaths.Array.data[3]
       value: 
       objectReference: {fileID: 1139208861}
+    - target: {fileID: 2129831416445062247, guid: cb41e3d53b2d5af41a04b44426dbc885,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 53573946345011400, guid: bf27b6e8d7fd3cf4c9d27dfa82de2d96,
+        type: 3}
+    - target: {fileID: 2129831416445062247, guid: cb41e3d53b2d5af41a04b44426dbc885,
+        type: 3}
+      propertyPath: projectileVFX
+      value: 
+      objectReference: {fileID: 1259561624112962100, guid: 4b8cb66ef82503f42bc9e8259e0371b8,
+        type: 3}
+    - target: {fileID: 2129831416445062247, guid: cb41e3d53b2d5af41a04b44426dbc885,
+        type: 3}
+      propertyPath: projectileLifespan
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2129831416445062265, guid: cb41e3d53b2d5af41a04b44426dbc885,
         type: 3}
       propertyPath: m_Name
       value: Demon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2129831416445062265, guid: cb41e3d53b2d5af41a04b44426dbc885,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2129831416445062265, guid: cb41e3d53b2d5af41a04b44426dbc885,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb41e3d53b2d5af41a04b44426dbc885, type: 3}
