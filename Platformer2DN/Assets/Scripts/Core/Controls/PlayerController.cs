@@ -12,11 +12,16 @@ namespace platformer.control
         [SerializeField] private float jumpHeight = 8f;
         [SerializeField] private float ladderClimbSpeed = 3f;
         [SerializeField] private Transform groundDetector = null;
+        [SerializeField] private bool controlsEnabled = true;
 
 
         [Range(0, 1)]
         [SerializeField] private float lowJumpGravityModifier = 0.5f;
 
+        [Range(0, 1)]
+        [SerializeField] private float ladderHorizontalMovementModifier = 0.5f;
+
+        private float currentLadderMovementModifier = 1f;
         private bool isGrounded = false;
         private bool isOnLadder = false;
         private Rigidbody2D rb = null;
@@ -40,8 +45,8 @@ namespace platformer.control
         private void FixedUpdate()
         {
             SetIsPlayerGrounded(); // Check whether player is on ground or not
-            InteractWithMovement(); // along X axis
-            InteractWithJumping(); // along Y axis
+            InteractWithMovement(); // X,Y axis (horizontal and ladders)
+            InteractWithJumping(); // along Y axis (jumping)
         }
 
         // Check whether player is on the ground or not. Called each fixed update
@@ -62,13 +67,13 @@ namespace platformer.control
         {
             if (Input.GetKey(KeyCode.A))
             {
-                rb.velocity = new Vector2(-maxSpeed, rb.velocity.y); // No overriding y velocity
+                rb.velocity = new Vector2(-maxSpeed * currentLadderMovementModifier, rb.velocity.y); // No overriding y velocity
                 spriteRenderer.flipX = true;
 
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                rb.velocity = new Vector2(maxSpeed, rb.velocity.y);
+                rb.velocity = new Vector2(maxSpeed * currentLadderMovementModifier, rb.velocity.y);
                 spriteRenderer.flipX = false;
             }
             else
@@ -80,14 +85,18 @@ namespace platformer.control
             if(Input.GetKey(KeyCode.W) && isOnLadder)
             {
                 rb.velocity = new Vector2(rb.velocity.x, ladderClimbSpeed);
+                currentLadderMovementModifier = ladderHorizontalMovementModifier;
+
             }
             else if(Input.GetKey(KeyCode.S) && isOnLadder)
             {
                 rb.velocity = new Vector2(rb.velocity.x, -ladderClimbSpeed);
+                currentLadderMovementModifier = ladderHorizontalMovementModifier;
             }
             else if(isOnLadder)
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0);
+                currentLadderMovementModifier = ladderHorizontalMovementModifier;
             }    
 
         }
@@ -124,6 +133,7 @@ namespace platformer.control
                 isOnLadder = true;
                 isGrounded = true;
                 rb.gravityScale = 0; // Won`t fall down when is sticked to the ladder
+                
             }
         }
 
@@ -134,6 +144,7 @@ namespace platformer.control
                 isOnLadder = false;
                 isGrounded = false;
                 rb.gravityScale = 1;
+                currentLadderMovementModifier = 1; //Default
             }
         }
 
