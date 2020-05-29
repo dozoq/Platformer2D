@@ -49,7 +49,10 @@ namespace platformer.enemy
         //Rigidbody2D that is use to handle movement
         protected Rigidbody2D rb;
 
+        //is waiting?
         bool isWaiting = false;
+        
+        //Animator component to handle animation
         protected Animator animator;
 
         //Timer properties
@@ -87,7 +90,7 @@ namespace platformer.enemy
         protected virtual void Update()
         {
             time+=Time.deltaTime;
-            if(reachedEndOfPath)
+            if(reachedEndOfPath && !isChasing)
             {
                 actualWaitTime+=Time.deltaTime;
                 animator.Play("Wait");
@@ -189,6 +192,11 @@ namespace platformer.enemy
             {
                 GoToTheNextPoint();
             }
+        }
+
+        protected virtual void Attack()
+        {
+
         }
 
         protected void GoToTheNextPoint(bool debug = false)

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2843539207839200152}
   - component: {fileID: 8732138259970807158}
   - component: {fileID: 2194813554899439977}
+  - component: {fileID: 1847214460}
+  - component: {fileID: 1847214461}
   m_Layer: 10
   m_Name: SmallCreate
   m_TagString: Untagged
@@ -130,3 +132,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1847214460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789266661739002813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7f59bc2370d894ca439629da685276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1847214461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789266661739002813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf54292d79f25242838f8670e3c523c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 4
+  isDead: 0

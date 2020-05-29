@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 136764346}
   - component: {fileID: 4436075436265066427}
   m_Layer: 0
-  m_Name: Tornado
+  m_Name: Demon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   behaveRefreshTime: 0.2
   jumpforce: 4
   jumpDetectionStart: 0.3
-  interpolationPeriod: 6
+  interpolationPeriod: 10
 --- !u!114 &2129831416445062264
 MonoBehaviour:
   m_ObjectHideFlags: 0
