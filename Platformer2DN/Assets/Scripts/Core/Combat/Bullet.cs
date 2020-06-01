@@ -1,4 +1,5 @@
 ﻿using platformer.attributes;
+using platformer.utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -108,8 +109,10 @@ namespace platformer.combat
             //if vgxManager exists and has velocity field
             if( vfxManager!=null && vfxManager.HasVector3("velocity"))
             {
+                print("Velocity:"+bulletDirection);
                 //set velocity field to bullet direction multiplied by 10
-                vfxManager.SetVector3("velocity", bulletDirection*10);
+                Vector3 temp = new Vector3(bulletDirection.x,bulletDirection.y,0);
+                vfxManager.SetVector3("velocity", temp*10);
             }
 
             rb.velocity = bulletDirection * Speed;
@@ -121,6 +124,7 @@ namespace platformer.combat
         {
             float x = direction.x - origin.x;
             float y = direction.y - origin.y;
+            print($"Vector should be ({x},{y})");
             return new Vector2(x, y);
         }
 
