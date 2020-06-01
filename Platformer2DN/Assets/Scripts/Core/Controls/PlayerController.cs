@@ -95,6 +95,7 @@ namespace platformer.control
                 interactedWithLadder = false;
                 isGrounded = false;
                 rb.gravityScale = 1;
+                currentLadderMovementModifier = 1; //default
             }
 
             if(Input.GetKey(KeyCode.W) && isOnLadder)
@@ -145,11 +146,12 @@ namespace platformer.control
             Vector2 playerPosition = new Vector2(this.transform.position.x, this.transform.position.y);
             Vector3 targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 
+            //If target was on the right of player position
             if(targetPosition.x >= playerPosition.x)
             {
                 ChangePlayerRotation(Direction.right);
             }
-            else
+            else // target to the left of player position
             {
                 ChangePlayerRotation(Direction.left);
             }
