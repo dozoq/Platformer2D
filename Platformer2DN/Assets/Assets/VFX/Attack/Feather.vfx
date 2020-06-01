@@ -95,7 +95,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.0,"y":1.0,"z":0.0}'
+      m_SerializableObject: '{"x":0.0,"y":0.0,"z":0.0}'
     min: -Infinity
     max: Infinity
     descendantCount: 0
@@ -1013,7 +1013,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 28
           m_Value: {x: 0, y: 0, z: 0}
         - m_ExpressionIndex: 29
-          m_Value: {x: 0, y: 1, z: 0}
+          m_Value: {x: 0, y: 0, z: 0}
         - m_ExpressionIndex: 30
           m_Value: {x: 2, y: 3, z: 2}
         - m_ExpressionIndex: 31
@@ -3237,7 +3237,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.0,"y":1.0,"z":0.0}'
+      m_SerializableObject: '{"x":0.0,"y":0.0,"z":0.0}'
     m_Space: 2147483647
   m_Property:
     name: o
