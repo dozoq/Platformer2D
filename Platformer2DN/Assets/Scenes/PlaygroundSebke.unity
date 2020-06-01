@@ -1495,6 +1495,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 1056741429252071463, guid: d635bc760f9adb3448a06ce6f7ea9eaa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ledder
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d635bc760f9adb3448a06ce6f7ea9eaa, type: 3}
 --- !u!1001 &5317904472771238361

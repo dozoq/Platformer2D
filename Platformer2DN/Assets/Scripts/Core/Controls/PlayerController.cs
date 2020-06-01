@@ -24,6 +24,7 @@ namespace platformer.control
         private float currentLadderMovementModifier = 1f;
         private bool isGrounded = false;
         private bool isOnLadder = false;
+        private bool interactedWithLadder = false;
         private Rigidbody2D rb = null;
         private Fighter fighter;
         private SpriteRenderer spriteRenderer;
@@ -82,22 +83,35 @@ namespace platformer.control
             }
 
             //Ladders
+            if(Input.GetKey(KeyCode.Space) && isOnLadder && interactedWithLadder)
+            {
+                interactedWithLadder = false;
+                isGrounded = false;
+                rb.gravityScale = 1;
+                print("jumponladder");
+            }
+
             if(Input.GetKey(KeyCode.W) && isOnLadder)
             {
                 rb.velocity = new Vector2(rb.velocity.x, ladderClimbSpeed);
                 currentLadderMovementModifier = ladderHorizontalMovementModifier;
-
+                interactedWithLadder = true;
+                rb.gravityScale = 0;
+                //isGrounded = true;
             }
             else if(Input.GetKey(KeyCode.S) && isOnLadder)
             {
                 rb.velocity = new Vector2(rb.velocity.x, -ladderClimbSpeed);
                 currentLadderMovementModifier = ladderHorizontalMovementModifier;
+                interactedWithLadder = true;
+                rb.gravityScale = 0;
+                //isGrounded = true;
             }
-            else if(isOnLadder)
+            else if(isOnLadder && interactedWithLadder)
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 currentLadderMovementModifier = ladderHorizontalMovementModifier;
-            }    
+            }
 
         }
 
@@ -123,7 +137,7 @@ namespace platformer.control
         private void Shoot()
         {
              fighter.Shoot(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-       Input.mousePosition.y, Camera.main.nearClipPlane)));
+                             Input.mousePosition.y, Camera.main.nearClipPlane)));
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -133,7 +147,7 @@ namespace platformer.control
             {
                 isOnLadder = true;
                 isGrounded = true;
-                rb.gravityScale = 0; // Won`t fall down when is sticked to the ladder
+               // rb.gravityScale = 0; // Won`t fall down when is sticked to the ladder
             }
         }
 
@@ -143,6 +157,7 @@ namespace platformer.control
             {
                 isOnLadder = false;
                 isGrounded = false;
+                interactedWithLadder = false;
                 rb.gravityScale = 1;
                 currentLadderMovementModifier = 1; //Default
             }
