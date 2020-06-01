@@ -6,6 +6,15 @@ using UnityEngine;
 // New player controller from scratch
 namespace platformer.control
 {
+    /// <summary>
+    /// Currently used keys are hard-coded:
+    /// W - Move up (ladders)
+    /// S - Move down (ladders)
+    /// A - move left
+    /// D - move right
+    /// SPACE - Jump
+    /// Button Mouse Left - Shoot
+    /// </summary>
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float maxSpeed = 6f;
@@ -44,6 +53,8 @@ namespace platformer.control
 
         private void Update()
         {
+            if (!controlsEnabled) return; // Can`t do anything if controls are not enabled
+
             if (Input.GetMouseButtonDown(0))
             {
                 Shoot(); // Launch Bullet
@@ -52,6 +63,9 @@ namespace platformer.control
         }
         private void FixedUpdate()
         {
+            if (!controlsEnabled) return; // Can`t do anything if controls are not enabled
+
+
             SetIsPlayerGrounded(); // Check whether player is on ground or not
             InteractWithMovement(); // X,Y axis (horizontal and ladders)
             InteractWithJumping(); // along Y axis (jumping)
