@@ -17,7 +17,7 @@ MonoBehaviour:
   weaponCanDamagePlayer: 0
   weaponRange: 4.83
   weaponRadius: 1.17
-  bulletLifespan: 6
+  bulletLifespan: 20
   delayBetweenAttacks: 0.5
   bulletSpeed: 12.04
   equippedPrefab: {fileID: 2135583107846086721, guid: 31b2642f0bc61294cb98b798ec7ece0d,
