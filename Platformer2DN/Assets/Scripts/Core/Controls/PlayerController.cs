@@ -41,6 +41,7 @@ namespace platformer.control
             fighter = GetComponent<Fighter>();
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
+
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -163,6 +164,7 @@ namespace platformer.control
              //                Input.mousePosition.y, Camera.main.nearClipPlane)));
         }
 
+        // Set player rotation depend on movement / shooting 
         private void ChangePlayerRotation(Direction direction)
         {
             if (direction == Direction.left)
