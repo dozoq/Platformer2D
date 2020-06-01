@@ -29,6 +29,12 @@ namespace platformer.control
         private Fighter fighter;
         private SpriteRenderer spriteRenderer;
 
+        enum Direction
+        {
+            left,
+            right
+        }
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -69,13 +75,14 @@ namespace platformer.control
             if (Input.GetKey(KeyCode.A))
             {
                 rb.velocity = new Vector2(-maxSpeed * currentLadderMovementModifier, rb.velocity.y); // No overriding y velocity
-                spriteRenderer.flipX = true;
-
+                //spriteRenderer.flipX = true;
+                ChangePlayerRotation(Direction.left);
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 rb.velocity = new Vector2(maxSpeed * currentLadderMovementModifier, rb.velocity.y);
-                spriteRenderer.flipX = false;
+                ChangePlayerRotation(Direction.right);
+                //spriteRenderer.flipX = false;
             }
             else
             {
@@ -88,7 +95,6 @@ namespace platformer.control
                 interactedWithLadder = false;
                 isGrounded = false;
                 rb.gravityScale = 1;
-                print("jumponladder");
             }
 
             if(Input.GetKey(KeyCode.W) && isOnLadder)
@@ -136,8 +142,34 @@ namespace platformer.control
         //Launch bullet. Called each update if the button is pressed
         private void Shoot()
         {
-             fighter.Shoot(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-                             Input.mousePosition.y, Camera.main.nearClipPlane)));
+            Vector2 playerPosition = new Vector2(this.transform.position.x, this.transform.position.y);
+            Vector3 targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+
+            if(targetPosition.x >= playerPosition.x)
+            {
+                ChangePlayerRotation(Direction.right);
+            }
+            else
+            {
+                ChangePlayerRotation(Direction.left);
+            }
+
+            fighter.Shoot(targetPosition);
+            
+
+            //fighter.Shoot(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
+             //                Input.mousePosition.y, Camera.main.nearClipPlane)));
+        }
+
+        private void ChangePlayerRotation(Direction direction)
+        {
+            {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else if (direction == Direction.right)
+            {
+                transform.localScale = new Vector3(1, 1f, 1f);
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
