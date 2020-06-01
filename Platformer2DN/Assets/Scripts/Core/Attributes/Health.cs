@@ -15,6 +15,7 @@ namespace platformer.attributes
         public bool isDead;
         [Tooltip("Manages Particle system of object(searched in children)")]
         private ParticleSystem vfxManager;
+        [Tooltip("Manages Animation system of object")]
         private Animator animator;
 
         private void Awake()
@@ -23,7 +24,8 @@ namespace platformer.attributes
             health = maxHealth;
             //Get particle system in childer(if exists)
             vfxManager=gameObject.GetComponentInChildren<ParticleSystem>();
-            animator=gameObject.GetComponentInChildren<Animator>();
+            //Get animator component(if exists);
+            animator=gameObject.GetComponent<Animator>();
         }
         //Handles dealing damage by bullets etc.
         public void TakeDamage(int damage)
@@ -40,8 +42,10 @@ namespace platformer.attributes
                 //Play the effect(with childrens)
                 vfxManager.Play(true);
             }
+            //if object have animator
             if(animator!=null)
             {
+                //launch triger called TakeDamage
                 animator.SetTrigger("TakeDamage");
             }
             //If there is no health left

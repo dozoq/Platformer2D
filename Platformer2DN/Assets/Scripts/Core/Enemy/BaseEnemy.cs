@@ -21,18 +21,27 @@ namespace platformer.enemy
         public GameObject[] PatrolPaths;
         [Tooltip("Does enemy fly?")]
         public bool isFlying = false;
+        [Tooltip("enemy is dying?")]
         private bool isDying = false;
         [Tooltip("speed of enemy movement(and jump)")]
         public float Speed = 200f;
         [Tooltip("Distance within which waypoints are checked as done")]
-        public float MaxAttackRange = 3f;
         public float NextWaypointDistance = 3f;
+        [Tooltip("Max distance of attack")]
+        public float MaxAttackRange = 3f;
+        [Tooltip("how much damage single projectile will do")]
         public int EnemyDamage = 2;
+        [Tooltip("projectile to instantiate")]
         public Bullet Projectile;
+        [Tooltip("How long projectile will live")]
         public float ProjectileLifespan = 3f;
+        [Tooltip("How quickly projectile is")]
         public float ProjectileSpeed = 3f;
+        [Tooltip("Handles effects of projectile")]
         public GameObject ProjectileVFX;
+        [Tooltip("how many seconds need to pass between attacks(Less mean more attacks per sec)")]
         public float FireRate = 0.5f;
+        [Tooltip("Attack timer variable")]
         protected float fireTimer = 0.0f;
         [Tooltip("How fast ai should refresh(in seconds, default 0.2 sec)")]
         [SerializeField] protected float behaveRefreshTime = 0.2f;
@@ -99,43 +108,61 @@ namespace platformer.enemy
         // Update is called once per frame
         protected virtual void Update()
         {
+            //If enemy is dying
             if(isDying)
             {
+                //if enemy is invoking function called behave()
                 if(IsInvoking("Behave"))
                 {
+                    //Then stop invoking
                     CancelInvoke("Behave");
                 }
+                //if animator done playing animation
                 if(!animator.IsPlaying())
                 {
+                    //Destroy this object
                     Destroy(gameObject);
                 }
             }
+            //if fire timer have dealy
             if(fireTimer>0)
             {
+                //remove passed time from delay
                 fireTimer-=Time.deltaTime;
             }
+            //add time to patrol timer
             time+=Time.deltaTime;
+            //if on end of path and not chasing
             if(reachedEndOfPath && !isChasing)
             {
+                //add passed time to wait timer
                 actualWaitTime+=Time.deltaTime;
 
+                //if there exist animator
                 if(animator!=null)
                 {
+                    //set IsWalking boolean to false
                     animator.SetBool("IsWalking",false);
                 }
             }
 
+            //Temp variable for calculation and conditions check
             float additionalWaitTime = 0;
             //check if timer passed interpolation period
             PatrolPath patrolpath = null;
+            //if there are any patrol paths
             if(PatrolPaths.Length>0)
             {
+                //take PatrolPath component from actual path
                 patrolpath =PatrolPaths[ pointNumber ].GetComponent<PatrolPath>();
             }
+            //if there exist patrol path component
             if(patrolpath!=null)
             {
+                //add wait time from component to temp var
                 additionalWaitTime=patrolpath.waitTime;
             }
+            //if wait timer is bigger or equal to wait time + debug time
             if(time>=(interpolationPeriod+additionalWaitTime))
             {
                 //Timer reset
@@ -216,11 +243,13 @@ namespace platformer.enemy
             {
                 //Set new path to a target
                 seeker.StartPath(rb.position, Target.position, OnPathComplete);
+                //if target in attack range
                 if(
                 tempX<MaxAttackRange&&
                 tempY<MaxAttackRange
                 )
                 {
+                    //call attack function
                     Attack();
                 }
 
@@ -234,12 +263,22 @@ namespace platformer.enemy
 
         protected virtual void Attack()
         {
+            //if there is no delay on attack
             if(fireTimer<=0)
             {
-                animator.SetTrigger("Attack");
+                //if animator exists
+                if(animator!=null)
+                {
+                    //Call Attack triger from animator
+                    animator.SetTrigger("Attack");
+                }
+                //add delay to timer
                 fireTimer=FireRate;
+                //instantiate projectile
                 Bullet bulletInstance = Instantiate(Projectile,new Vector3(transform.position.x,transform.position.y,0), Quaternion.identity,null);
+                //Config projectile
                 bulletInstance.ConfigBullet(EnemyDamage, ProjectileLifespan, ProjectileSpeed, false, ProjectileVFX, true);
+                //Set destination and force to bullet
                 bulletInstance.SetTarget(bulletInstance.transform.position, new Vector2(Target.position.x, Target.position.y));
             }
         }
@@ -249,17 +288,26 @@ namespace platformer.enemy
             //check if reached end of his actual path
             if(reachedEndOfPath||debug)
             {
+                //set that enemy is waiting on point
                 isWaiting=true;
+                //set animator booleant IsWalking to false
                 animator.SetBool("IsWalking", false);
+                //create temp var for conditions
                 PatrolPath patrolpath = null;
+                //if there are any patrol path
                 if(PatrolPaths.Length>0)
                 {
+                    //take PatrolPath component from current patrol path
                     patrolpath =PatrolPaths[ pointNumber ].GetComponent<PatrolPath>();
                 }
+                //if PatrolPath component is empty or wait timer is bigger or equal to patrol path wait time
                 if(patrolpath==null||actualWaitTime>=patrolpath.waitTime)
                 {
+                    //stop waiting
                     isWaiting=false;
+                    //set animator boolean IsWalking to true
                     animator.SetBool("IsWalking", true);
+                    //reset wait timer
                     actualWaitTime=0;
                     //If so, check if there are more points in patrol nodes container
                     if(pointNumber<(PatrolPaths.Length-1))
@@ -285,10 +333,13 @@ namespace platformer.enemy
         //implementation of die interface
         public virtual void Die()
         {
+            //if there is animator
             if(animator!=null)
             {
+                //Call Die triger from animator
                 animator.SetTrigger("Die");
             }
+            //set that enemy start dying
             isDying=true;
         }
 
@@ -340,10 +391,10 @@ namespace platformer.enemy
             Vector2 force = Vector2.zero;
             //calculate direction to next point
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            //if ai want to go to much upward
+            //if is not waiting or is chasing
             if(!isWaiting || isChasing)
             {
-
+                //if ai want to go to much upward and enemy is not flying type
                 if(direction.y>jumpDetectionStart&&!isFlying)
                 {
                     //add more force(to simulate jump)
@@ -354,6 +405,7 @@ namespace platformer.enemy
                 {
                     //use normal speed
                     force=direction*Speed*Time.deltaTime;
+                    //set animator boolean IsWalking to true
                     animator.SetBool("IsWalking",true);
                 }
             }

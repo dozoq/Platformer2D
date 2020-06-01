@@ -44,7 +44,9 @@ namespace platformer.combat
 
         void Awake()
         {
+            //Get rigid body for physics
             rb = GetComponent<Rigidbody2D>();
+            //Set gameobject tag to bullet for colision condition
             gameObject.tag="Bullet";
         }
 
@@ -114,11 +116,13 @@ namespace platformer.combat
         private void OnTriggerEnter2D(Collider2D other)
         {
             //Check if colliosion is on player
-            //Pass if hit player or can damage player
+            //if this is enemy bullet and don't hit enemy or other bullet
             if(isEnemyBullet && !other.CompareTag("Enemy") &&!other.CompareTag("Bullet"))
             {
+                //destroy bullet
                 Destroy(gameObject); 
             }
+            //if it not enemy bullet and don't hit bullet and (player or can damage player)
             else if (!isEnemyBullet && other.tag!="bullet" && other.tag != "Player" || canDamagePlayer)
             {
                 //Destroys bullet on hit
@@ -127,14 +131,17 @@ namespace platformer.combat
 
             //take (C) health from hitted target(if exists)
             var health = other.gameObject.GetComponent<Health>();
-            //If health exists and it's not player or if health exists and bullet can damage player
+            //If health exists and it is enemy bullet
             if(isEnemyBullet &health!=null)
             {
+                //if hit player
                 if(other.CompareTag("Player"))
                 {
+                    //do damage
                     health.TakeDamage(Damage);
                 }
             }
+            //if health exists and (hit other object than player or can damage player)
             else if (health != null && (!other.CompareTag("Player") || canDamagePlayer))
             {
                 //Do damage
@@ -142,16 +149,22 @@ namespace platformer.combat
             }
 
 
+            //take target rigid body (if exists)
             var targetrb = other.gameObject.GetComponent<Rigidbody2D>();
+            //If rigid body exists and it is enemy bullet
             if(isEnemyBullet&targetrb!=null)
             {
+                //if hit player
                 if(other.CompareTag("Player"))
                 {
+                    //add force to target rigid body as impulse
                     targetrb.AddForce(bulletDirection*Damage, ForceMode2D.Impulse);
                 }
             }
+            //if it isn't enemy bullet and rigid body exists and (don't hit player or can damage player)
             else if (targetrb != null && (!other.CompareTag("Player") || canDamagePlayer))
             {
+                //Add force to target rigid body as impulse
                 targetrb.AddForce(bulletDirection * Damage, ForceMode2D.Impulse);
             }
         }
