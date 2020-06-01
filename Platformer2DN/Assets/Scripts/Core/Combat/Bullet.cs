@@ -90,12 +90,15 @@ namespace platformer.combat
              * Effects are 3D, so it need to have Z<0 to be visible,
              * if we instantiate vfx prefab as child we can do this without affecting collision)*/
             vfxObject = bulletVFX;
+            if(vfxObject != null)
+            {
+                vfxManager=vfxObject.GetComponent<VisualEffect>();
+                //Instantiate bullet VFX prefab with relative transform (0, 0, -0.1f)
+                var vfxTemp = Instantiate(vfxObject, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f), Quaternion.identity);
+                //Chain vfx under bullet as a child
+                vfxTemp.transform.parent=gameObject.transform;
 
-            vfxManager=vfxObject.GetComponent<VisualEffect>();
-            //Instantiate bullet VFX prefab with relative transform (0, 0, -0.1f)
-            var vfxTemp = Instantiate(vfxObject, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f), Quaternion.identity);
-            //Chain vfx under bullet as a child
-            vfxTemp.transform.parent = gameObject.transform;
+            }
         }
 
         // Called from fighter -> weapon config at instantiate time
