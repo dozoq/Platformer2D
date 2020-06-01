@@ -4,8 +4,13 @@ using UnityEngine;
 
 namespace platformer.core
 {
+    /// <summary>
+    /// Each time that you start playing, this class will spawn persistent objects that won`t be destroyed
+    /// between scenes
+    /// </summary>
     public class PersistentObjectSpawner : MonoBehaviour
     {
+        // Prefab that contains all persistent gameobjects that will be spawned on Load.
         [SerializeField] private GameObject persistentObjectToSpawn = null;
 
         private static bool hasSpawned = false;
@@ -13,7 +18,7 @@ namespace platformer.core
         private void Awake()
         {
             if (hasSpawned) return;
-            if (persistentObjectToSpawn == null)
+            if (persistentObjectToSpawn == null) 
             {
                 Debug.LogError("No persistent object to spawn!");
                 return;
@@ -27,7 +32,7 @@ namespace platformer.core
         private void SpawnPersistentObject()
         {
             GameObject persistentObject = Instantiate(persistentObjectToSpawn);
-            DontDestroyOnLoad(persistentObject);
+            DontDestroyOnLoad(persistentObject); // Add this gameobject to persistent objects between scenes
         }
     }
 
