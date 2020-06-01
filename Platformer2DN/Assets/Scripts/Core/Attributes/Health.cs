@@ -66,5 +66,11 @@ namespace platformer.attributes
             print("Health afteer attack: " + health);
         }
 
+       
+        public int GetCurrentHealth()
+        {
+            return health;
+        }
+
     }
 }

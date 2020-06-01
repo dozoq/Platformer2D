@@ -128,12 +128,12 @@ namespace platformer.control
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            //Check if colliding object is a Ledder
             if(collision.CompareTag("Ledder"))
             {
                 isOnLadder = true;
                 isGrounded = true;
                 rb.gravityScale = 0; // Won`t fall down when is sticked to the ladder
-                
             }
         }
 
