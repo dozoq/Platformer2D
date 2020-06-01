@@ -52,7 +52,7 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: -9.820405, y: 1.8867002, z: 0}
+      - m_Value: {x: -0.8458085, y: 9.964166, z: 0}
         m_Name: velocity
         m_Overridden: 1
     m_Vector4f:
