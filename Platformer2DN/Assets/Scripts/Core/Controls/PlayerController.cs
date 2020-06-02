@@ -1,4 +1,5 @@
-﻿using platformer.combat;
+﻿using platformer.attributes;
+using platformer.combat;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace platformer.control
     /// SPACE - Jump
     /// Button Mouse Left - Shoot
     /// </summary>
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IDieable
     {
         [SerializeField] private float maxSpeed = 6f;
         [SerializeField] private float jumpHeight = 8f;
@@ -214,7 +215,12 @@ namespace platformer.control
             }
         }
 
-
+        public void Die()
+        {
+            Destroy(gameObject);
+            print("Game Over");
+            Application.Quit();
+        }
     }
 
 }
