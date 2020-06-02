@@ -217,11 +217,14 @@ namespace platformer.control
             }
         }
 
+        // ISaveable
+        // Save current position into save file. Called every time game is saved
         public object CaptureState()
         {
             return new SerializableVector3(transform.position);
         }
 
+        // Receive saved position from save file and move to that position. Called when save is loaded
         public void RestoreState(object state)
         {
             SerializableVector3 savedPosition = (SerializableVector3)state;
