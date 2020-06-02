@@ -94,10 +94,7 @@ namespace platformer.combat
             if(vfxObject != null)
             {
                 vfxManager=vfxObject.GetComponent<VisualEffect>();
-                //Instantiate bullet VFX prefab with relative transform (0, 0, -0.1f)
-                var vfxTemp = Instantiate(vfxObject, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f), Quaternion.identity);
-                //Chain vfx under bullet as a child
-                vfxTemp.transform.parent=gameObject.transform;
+                
 
             }
         }
@@ -107,12 +104,17 @@ namespace platformer.combat
         {
             bulletDirection = CalculateDirection(origin, direction).normalized;
             //if vgxManager exists and has velocity field
-            if( vfxManager!=null && vfxManager.HasVector3("velocity"))
+            if( vfxManager!=null && vfxManager.HasFloat("VelX")&&vfxManager.HasFloat("VelY"))
             {
-                print("Velocity:"+bulletDirection);
                 //set velocity field to bullet direction multiplied by 10
-                Vector3 temp = new Vector3(bulletDirection.x,bulletDirection.y,0);
-                vfxManager.SetVector3("velocity", temp*10);
+                    vfxManager.SetFloat("VelX", bulletDirection.x*Speed);
+                
+                    vfxManager.SetFloat("VelY", bulletDirection.y*Speed);
+                
+                //Instantiate bullet VFX prefab with relative transform (0, 0, -0.1f)
+                var vfxTemp = Instantiate(vfxObject, new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f), Quaternion.identity);
+                //Chain vfx under bullet as a child
+                vfxTemp.transform.parent=gameObject.transform;
             }
 
             rb.velocity = bulletDirection * Speed;
@@ -124,7 +126,6 @@ namespace platformer.combat
         {
             float x = direction.x - origin.x;
             float y = direction.y - origin.y;
-            print($"Vector should be ({x},{y})");
             return new Vector2(x, y);
         }
 

@@ -44,15 +44,21 @@ VisualEffect:
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 1536683576
-  m_ResetSeedOnPlay: 0
+  m_ResetSeedOnPlay: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: -10
+        m_Name: VelX
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: VelY
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 3.0984988, y: 9.507855, z: 0}
+      - m_Value: {x: -100, y: 100, z: 0}
         m_Name: velocity
         m_Overridden: 1
     m_Vector4f:
