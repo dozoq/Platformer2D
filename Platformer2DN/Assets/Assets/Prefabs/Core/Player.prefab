@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 1946272555}
   - component: {fileID: 1519359044}
   - component: {fileID: 1977010479}
+  - component: {fileID: 4546803758837676659}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -355,5 +356,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   jumpHeight: 8
+  ladderClimbSpeed: 3
   groundDetector: {fileID: 5762010068627625853}
+  controlsEnabled: 1
   lowJumpGravityModifier: 0.5
+  ladderHorizontalMovementModifier: 0.5
+--- !u!114 &4546803758837676659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7857493898386600276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c9b30b7b2f2e248af734f54a3fa85b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: Player

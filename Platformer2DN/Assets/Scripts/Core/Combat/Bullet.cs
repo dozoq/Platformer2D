@@ -121,6 +121,7 @@ namespace platformer.combat
         }
 
 
+
         // Calculate direction where bullet should go, where origin - barrel position, direction - mouse position
         private Vector2 CalculateDirection(Vector2 origin, Vector2 direction)
         {
