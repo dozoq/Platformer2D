@@ -33,7 +33,7 @@ namespace platformer.attributes
             if (isDead) return;
 
             //Debug info
-            print("Health before attack: " + health);
+            //print("Health before attack: " + health);
             //Remove health from object based on attack
             health -=damage;
             //if object have particle system
@@ -63,7 +63,7 @@ namespace platformer.attributes
                 }
             }
             //Debug infor
-            print("Health afteer attack: " + health);
+            //print("Health afteer attack: " + health);
         }
 
        
