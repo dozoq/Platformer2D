@@ -3,6 +3,8 @@ using platformer.attributes;
 using platformer.combat;
 using UnityEngine;
 using platformer.utils;
+using System;
+using UnityEngine.Rendering.UI;
 
 namespace platformer.enemy
 {
@@ -14,7 +16,7 @@ namespace platformer.enemy
          *Waypoint - is path from object to (determined by pathfinding) node
              */
 
-            //ToDo can't reach path
+        //ToDo can't reach path
         [Tooltip("Max range within which enemy start chasing player")]
         public float MaxDetectionRange = 10f;
         [Tooltip("Container of all patrol paths")]
@@ -72,7 +74,10 @@ namespace platformer.enemy
 
         //is waiting?
         bool isWaiting = false;
-        
+
+        protected bool haveOwnBehavior = false;
+        protected bool haveOwnAttack = false;
+
         //Animator component to handle animation
         protected Animator animator;
 
@@ -135,7 +140,7 @@ namespace platformer.enemy
             //add time to patrol timer
             time+=Time.deltaTime;
             //if on end of path and not chasing
-            if(reachedEndOfPath && !isChasing)
+            if(reachedEndOfPath&&!isChasing)
             {
                 //add passed time to wait timer
                 actualWaitTime+=Time.deltaTime;
@@ -144,7 +149,7 @@ namespace platformer.enemy
                 if(animator!=null)
                 {
                     //set IsWalking boolean to false
-                    animator.SetBool("IsWalking",false);
+                    animator.SetBool("IsWalking", false);
                 }
             }
 
@@ -156,7 +161,7 @@ namespace platformer.enemy
             if(PatrolPaths.Length>0)
             {
                 //take PatrolPath component from actual path
-                patrolpath =PatrolPaths[ pointNumber ].GetComponent<PatrolPath>();
+                patrolpath=PatrolPaths[ pointNumber ].GetComponent<PatrolPath>();
             }
             //if there exist patrol path component
             if(patrolpath!=null)
@@ -195,11 +200,11 @@ namespace platformer.enemy
             }
         }
         //Handles all base anamy behavior: moving, chasing, jumping etc.
-        protected virtual void Behave() 
-        {    
+        protected virtual void Behave()
+        {
 
             //If there isn't any player(object with tag="Player") on map
-            if (Target==null)
+            if(Target==null)
             {
                 //Throw new exception
                 throw new System.Exception("Instantiate player first");
@@ -208,7 +213,7 @@ namespace platformer.enemy
             float tempX;
             float tempY;
             //Check with coordinates are bigger and remove from bigger the smaller one to calculate distance
-            if (Target.transform.position.x>this.gameObject.transform.position.x)
+            if(Target.transform.position.x>this.gameObject.transform.position.x)
             {
                 tempX=Target.transform.position.x-this.gameObject.transform.position.x;
             }
@@ -216,7 +221,7 @@ namespace platformer.enemy
             {
                 tempX=this.gameObject.transform.position.x-Target.transform.position.x;
             }
-            if (Target.transform.position.x>this.gameObject.transform.position.x)
+            if(Target.transform.position.x>this.gameObject.transform.position.x)
             {
                 tempY=Target.transform.position.y-this.gameObject.transform.position.y;
             }
@@ -227,7 +232,7 @@ namespace platformer.enemy
 
             //If target is in max detection range on X and Y distance
             if(
-                tempX<MaxDetectionRange &&
+                tempX<MaxDetectionRange&&
                 tempY<MaxDetectionRange
                 )
             {
@@ -240,9 +245,9 @@ namespace platformer.enemy
                 //stop chasing
                 isChasing=false;
             }
-            
+
             //If enemy is chasing a target
-            if (isChasing)
+            if(isChasing)
             {
                 //Set new path to a target
                 //if target in attack range
@@ -268,7 +273,7 @@ namespace platformer.enemy
                         seeker.StartPath(rb.position, Target.position, OnPathComplete);
                     }
                 }
-                else{
+                else {
                     seeker.StartPath(rb.position, Target.position, OnPathComplete);
 
                 }
@@ -279,27 +284,50 @@ namespace platformer.enemy
             {
                 GoToTheNextPoint();
             }
+            if(haveOwnBehavior)
+            {
+                specialBehave();
+            }
+        }
+
+        //special enemies can override this method to don't change general behavior but add own
+        protected virtual void specialBehave()
+        {
+
+        }
+        //special enemies can override this method to don't change general attack but add own
+        protected virtual void specialAttack()
+        {
+
         }
 
         protected virtual void Attack()
         {
-            //if there is no delay on attack
-            if(fireTimer<=0)
+            if(!haveOwnAttack)
             {
-                //if animator exists
-                if(animator!=null)
+
+                //if there is no delay on attack
+                if(fireTimer<=0)
                 {
-                    //Call Attack triger from animator
-                    animator.SetTrigger("Attack");
+                    //if animator exists
+                    if(animator!=null)
+                    {
+                        //Call Attack triger from animator
+                        animator.SetTrigger("Attack");
+                    }
+                    //add delay to timer
+                    fireTimer=FireRate;
+                    //instantiate projectile
+                    Bullet bulletInstance = Instantiate(Projectile,new Vector3(transform.position.x,transform.position.y,0), Quaternion.identity,null);
+                    //Config projectile
+                    bulletInstance.ConfigBullet(EnemyDamage, ProjectileLifespan, ProjectileSpeed, false, ProjectileVFX, true);
+                    //Set destination and force to bullet
+                    bulletInstance.SetTarget(bulletInstance.transform.position, new Vector2(Target.position.x, Target.position.y));
                 }
-                //add delay to timer
-                fireTimer=FireRate;
-                //instantiate projectile
-                Bullet bulletInstance = Instantiate(Projectile,new Vector3(transform.position.x,transform.position.y,0), Quaternion.identity,null);
-                //Config projectile
-                bulletInstance.ConfigBullet(EnemyDamage, ProjectileLifespan, ProjectileSpeed, false, ProjectileVFX, true);
-                //Set destination and force to bullet
-                bulletInstance.SetTarget(bulletInstance.transform.position, new Vector2(Target.position.x, Target.position.y));
+            }
+            else
+            {
+                specialAttack();
             }
         }
 
