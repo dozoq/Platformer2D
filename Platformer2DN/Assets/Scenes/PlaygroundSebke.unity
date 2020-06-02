@@ -713,6 +713,11 @@ PrefabInstance:
       propertyPath: PatrolPaths.Array.data[3]
       value: 
       objectReference: {fileID: 1139208861}
+    - target: {fileID: 2129831416445062247, guid: cb41e3d53b2d5af41a04b44426dbc885,
+        type: 3}
+      propertyPath: behaveRefreshTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2129831416445062265, guid: cb41e3d53b2d5af41a04b44426dbc885,
         type: 3}
       propertyPath: m_Name
@@ -721,7 +726,7 @@ PrefabInstance:
     - target: {fileID: 2129831416445062265, guid: cb41e3d53b2d5af41a04b44426dbc885,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb41e3d53b2d5af41a04b44426dbc885, type: 3}

@@ -23,6 +23,8 @@ namespace platformer.enemy
         public bool isFlying = false;
         [Tooltip("enemy is dying?")]
         private bool isDying = false;
+        [Tooltip("enemy can attack and move simultaneously?")]
+        public bool canAttackAndMove = false;
         [Tooltip("speed of enemy movement(and jump)")]
         public float Speed = 200f;
         [Tooltip("Distance within which waypoints are checked as done")]
@@ -195,6 +197,7 @@ namespace platformer.enemy
         //Handles all base anamy behavior: moving, chasing, jumping etc.
         protected virtual void Behave() 
         {    
+
             //If there isn't any player(object with tag="Player") on map
             if (Target==null)
             {
@@ -242,15 +245,32 @@ namespace platformer.enemy
             if (isChasing)
             {
                 //Set new path to a target
-                seeker.StartPath(rb.position, Target.position, OnPathComplete);
                 //if target in attack range
                 if(
                 tempX<MaxAttackRange&&
                 tempY<MaxAttackRange
                 )
                 {
+                    if((gameObject.transform.position.x-Target.transform.position.x)>0)
+                    {
+                        //rotate to right
+                        transform.localScale=new Vector3(1f, 1f, 1f);
+                    }
+                    else
+                    {
+                        //rotate to left
+                        transform.localScale=new Vector3(-1f, 1f, 1f);
+                    }
                     //call attack function
                     Attack();
+                    if(canAttackAndMove)
+                    {
+                        seeker.StartPath(rb.position, Target.position, OnPathComplete);
+                    }
+                }
+                else{
+                    seeker.StartPath(rb.position, Target.position, OnPathComplete);
+
                 }
 
             }
