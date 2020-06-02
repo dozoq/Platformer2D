@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using platformer.saving;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,16 +7,40 @@ namespace platformer.scenemanagment
 {
     public class SavingWrapper : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        private const string defaultSaveFileName = "save";
 
-        }
-
-        // Update is called once per frame
         void Update()
         {
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                print("save");
+                Save();
+            }
 
+            if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Load();
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Delete();
+            }
+        }
+
+        private void Save()
+        {
+            GetComponent<SavingSystem>().Save(defaultSaveFileName);
+        }
+
+        private void Load()
+        {
+            GetComponent<SavingSystem>().Load(defaultSaveFileName);
+        }
+
+        private void Delete()
+        {
+            GetComponent<SavingSystem>().Delete(defaultSaveFileName);
         }
     }
 

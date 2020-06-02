@@ -1,7 +1,9 @@
 ﻿using platformer.combat;
+using platformer.saving;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 // New player controller from scratch
 namespace platformer.control
@@ -15,7 +17,7 @@ namespace platformer.control
     /// SPACE - Jump
     /// Button Mouse Left - Shoot
     /// </summary>
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, ISaveable
     {
         [SerializeField] private float maxSpeed = 6f;
         [SerializeField] private float jumpHeight = 8f;
@@ -214,7 +216,16 @@ namespace platformer.control
             }
         }
 
+        public object CaptureState()
+        {
+            return new SerializableVector3(transform.position);
+        }
 
+        public void RestoreState(object state)
+        {
+            SerializableVector3 savedPosition = (SerializableVector3)state;
+            this.transform.position = savedPosition.DeserializeToVector3();
+        }
     }
 
 }
