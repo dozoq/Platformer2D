@@ -161,7 +161,7 @@ namespace platformer.control
             Vector2 playerPosition = new Vector2(this.transform.position.x, this.transform.position.y);
             Vector3 targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 
-            fighter.Shoot(targetPosition);
+            
             //If target was on the right of player position
             if(targetPosition.x >= playerPosition.x)
             {
@@ -172,10 +172,10 @@ namespace platformer.control
                 ChangePlayerRotation(Direction.left);
             }
 
-            
+            fighter.Shoot(targetPosition);
 
             //fighter.Shoot(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
-             //                Input.mousePosition.y, Camera.main.nearClipPlane)));
+            //                Input.mousePosition.y, Camera.main.nearClipPlane)));
         }
 
         // Set player rotation depend on movement / shooting 
