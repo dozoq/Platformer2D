@@ -36,7 +36,7 @@ namespace platformer.scenemanagment
         [SerializeField] private float waitTime = 0.5f;
 
         [Tooltip("How long FadeIn effect will last")]
-        [SerializeField] private float fadeInTime = 1f;
+        [SerializeField] private float fadeInTime = 0.5f;
 
         public void OnTriggerEnter2D(Collider2D collision)
         {
@@ -48,6 +48,7 @@ namespace platformer.scenemanagment
 
         public IEnumerator Teleport()
         {
+            // If not set in scene
             if (sceneToLoad < 0)
             {
                 Debug.LogError("Scene to load not initialized in Portal: " + this.gameObject);
@@ -56,13 +57,17 @@ namespace platformer.scenemanagment
             LoadingFader loadingFader = FindObjectOfType<LoadingFader>();
             SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
 
+            // Will be destroyed at the end of this function
             DontDestroyOnLoad(this.gameObject);
 
+            // Player can`t move for a while after entering portal
             var playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
             playerController.DisableControls();
 
+            // Fader effect
             yield return loadingFader.FadeOut(fadeOutTime);
 
+            // Save state of current(previous) scene
             savingWrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
@@ -71,23 +76,28 @@ namespace platformer.scenemanagment
             playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
             playerController.DisableControls();
 
+            // Load state of new scene (if something was saved here)
             savingWrapper.Load();
 
+            // Find portal with same destination as the entered one
             Portal otherPortal = GetOtherPortal();
             UpdatePlayerPosition(otherPortal);
 
+            // Save current state
             savingWrapper.Save();
 
+            // Configurable time to make sure everything will be loaded correctly
             yield return new WaitForSeconds(waitTime);
 
             //enable playercontroller
             playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
             playerController.EnableControls();
 
+            // Fade In effect
             yield return loadingFader.FadeIn(fadeInTime);
 
+            // Destroy portal that was added to DontDestroyOnLoad() (not in scene);
             Destroy(this.gameObject);
-            print("Should be destroyed");
         }
 
         /// <summary>
