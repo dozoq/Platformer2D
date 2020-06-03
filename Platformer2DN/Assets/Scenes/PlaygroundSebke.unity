@@ -640,6 +640,11 @@ PrefabInstance:
       propertyPath: fadeInTime
       value: 0.23
       objectReference: {fileID: 0}
+    - target: {fileID: 1563220928010646023, guid: a1513ab6eea39d74bb31e9c5a38ee7cc,
+        type: 3}
+      propertyPath: fadeOutTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6955255422430932850, guid: a1513ab6eea39d74bb31e9c5a38ee7cc,
         type: 3}
       propertyPath: m_IsTrigger
@@ -1857,6 +1862,11 @@ PrefabInstance:
         type: 3}
       propertyPath: fadeInTime
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563220928010646023, guid: a1513ab6eea39d74bb31e9c5a38ee7cc,
+        type: 3}
+      propertyPath: fadeOutTime
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6955255422430932850, guid: a1513ab6eea39d74bb31e9c5a38ee7cc,
         type: 3}
