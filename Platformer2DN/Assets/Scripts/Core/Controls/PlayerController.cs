@@ -1,8 +1,10 @@
+using platformer.saving;
 ﻿using platformer.attributes;
 using platformer.combat;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 // New player controller from scratch
 namespace platformer.control
@@ -16,7 +18,7 @@ namespace platformer.control
     /// SPACE - Jump
     /// Button Mouse Left - Shoot
     /// </summary>
-    public class PlayerController : MonoBehaviour, IDieable
+    public class PlayerController : MonoBehaviour, IDieable, ISaveable
     {
         [SerializeField] private float maxSpeed = 6f;
         [SerializeField] private float jumpHeight = 8f;
@@ -215,6 +217,20 @@ namespace platformer.control
             }
         }
 
+        // ISaveable
+        // Save current position into save file. Called every time game is saved
+        public object CaptureState()
+        {
+            return new SerializableVector3(transform.position);
+        }
+
+        // Receive saved position from save file and move to that position. Called when save is loaded
+        public void RestoreState(object state)
+        {
+            SerializableVector3 savedPosition = (SerializableVector3)state;
+            this.transform.position = savedPosition.DeserializeToVector3();
+        }
+        
         public void Die()
         {
             Destroy(gameObject);
