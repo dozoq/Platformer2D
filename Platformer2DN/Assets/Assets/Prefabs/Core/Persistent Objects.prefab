@@ -149,6 +149,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8166419175948357258, guid: ce3074711c9392f48b8a711ea5405e88,
+        type: 3}
+      propertyPath: time
+      value: 8.29
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce3074711c9392f48b8a711ea5405e88, type: 3}
 --- !u!224 &7960657175953169771 stripped
@@ -223,6 +228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7425617614532958278, guid: 4c918736490804f428a9786a8c6678ce,
+        type: 3}
+      propertyPath: loadingFaderTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c918736490804f428a9786a8c6678ce, type: 3}

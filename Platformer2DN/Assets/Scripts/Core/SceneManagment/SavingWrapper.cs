@@ -52,7 +52,8 @@ namespace platformer.scenemanagment
 
         private void Load()
         {
-            StartCoroutine(LoadLastScene());
+            GetComponent<SavingSystem>().Load(defaultSaveFileName);
+            //StartCoroutine(LoadLastScene());
         }
 
         private void Delete()

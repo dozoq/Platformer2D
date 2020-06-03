@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace platformer.scenemanagment
 {
     public class LoadingFader : MonoBehaviour
     {
-        [SerializeField] private float time = 1f;
+        [Tooltip("Color of the fade")]
+        [SerializeField] private Color fadeColor = Color.black;
+
+        [Tooltip("How long does it takes to fade in completly")]
+        [SerializeField] private float loadTime = 1f;
         private Coroutine currentlyActiveFade = null;
 
         private CanvasGroup canvasGroup;
@@ -15,6 +20,7 @@ namespace platformer.scenemanagment
         private void Awake()
         {
             canvasGroup = GetComponent<CanvasGroup>();
+            GetComponent<Image>().color = fadeColor;
         }
 
         public void FadeOutInstantly()
@@ -46,6 +52,7 @@ namespace platformer.scenemanagment
 
         public Coroutine FadeIn(float time)
         {
+
             if(currentlyActiveFade != null)
             {
                 StopCoroutine(currentlyActiveFade);

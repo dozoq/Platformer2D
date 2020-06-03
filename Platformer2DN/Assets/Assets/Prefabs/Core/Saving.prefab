@@ -56,4 +56,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a8bf7993a2de648a93dc2e1b0c6299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingFaderTime: 4
+  loadingFaderTime: 3
