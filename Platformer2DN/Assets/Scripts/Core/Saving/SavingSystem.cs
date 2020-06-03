@@ -13,6 +13,19 @@ namespace platformer.saving
     public class SavingSystem : MonoBehaviour
     {
 
+        public IEnumerator LoadLastScene(string saveFile)
+        {
+            int buildIndex = SceneManager.GetActiveScene().buildIndex;
+            Dictionary<string, object> state = LoadFromFile(saveFile);
+            
+            if(state.ContainsKey("lastSceneBuildIndex"))
+            {
+                buildIndex = (int)state["lastSceneBuildIndex"];
+            }
+            yield return SceneManager.LoadSceneAsync(buildIndex);
+            RestoreState(state);
+        }
+
         //Called from SavingWrapper when we want to save
         public void Save(string saveFile)
         {

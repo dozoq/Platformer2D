@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PlaygroundSebke.unity
+    guid: 3ade6d08b9920964f8fda58be3f51b40
   m_configObjects: {}

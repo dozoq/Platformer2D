@@ -9,6 +9,23 @@ namespace platformer.scenemanagment
     {
         private const string defaultSaveFileName = "save";
 
+        [SerializeField] private float loadingFaderTime = 5f;
+
+        private void Awake()
+        {
+            StartCoroutine(LoadLastScene());
+        }
+
+        // Wil load last saved scene and restore state of all saveable entities
+        private IEnumerator LoadLastScene()
+        {
+            yield return GetComponent<SavingSystem>().LoadLastScene(defaultSaveFileName);
+            LoadingFader loadingFader = FindObjectOfType<LoadingFader>();
+            loadingFader.FadeOutInstantly();
+            yield return loadingFader.FadeIn(loadingFaderTime);
+
+        }
+
         void Update()
         {
             if(Input.GetKeyDown(KeyCode.Alpha1))
@@ -28,14 +45,15 @@ namespace platformer.scenemanagment
             }
         }
 
-        private void Save()
+        public void Save()
         {
             GetComponent<SavingSystem>().Save(defaultSaveFileName);
         }
 
-        private void Load()
+        public void Load()
         {
             GetComponent<SavingSystem>().Load(defaultSaveFileName);
+            //StartCoroutine(LoadLastScene());
         }
 
         private void Delete()
