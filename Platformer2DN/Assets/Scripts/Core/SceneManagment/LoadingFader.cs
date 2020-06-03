@@ -23,11 +23,13 @@ namespace platformer.scenemanagment
             GetComponent<Image>().color = fadeColor;
         }
 
+        // Used when loading first time, so there is no FadeIn effect first
         public void FadeOutInstantly()
         {
             canvasGroup.alpha = 1;
         }
 
+        // Slowly Fade whole screen into configured color (Image)
         public Coroutine FadeOut(float time)
         {
             if(currentlyActiveFade != null)
@@ -39,6 +41,7 @@ namespace platformer.scenemanagment
             return currentlyActiveFade;
         }
 
+        // Invoked in FadeOut
         public IEnumerator FadeOutRoutine(float time)
         {
             deltaAlpha = Time.deltaTime / time;
@@ -50,6 +53,7 @@ namespace platformer.scenemanagment
             }
         }
 
+        //Slowly make the game scene visible
         public Coroutine FadeIn(float time)
         {
 
@@ -62,6 +66,7 @@ namespace platformer.scenemanagment
             return currentlyActiveFade;
         }
 
+        // Invoked by FadeIn
         public IEnumerator FadeInRoutine(float time)
         {
             deltaAlpha = Time.deltaTime / time;
