@@ -45,12 +45,12 @@ namespace platformer.scenemanagment
             }
         }
 
-        private void Save()
+        public void Save()
         {
             GetComponent<SavingSystem>().Save(defaultSaveFileName);
         }
 
-        private void Load()
+        public void Load()
         {
             GetComponent<SavingSystem>().Load(defaultSaveFileName);
             //StartCoroutine(LoadLastScene());

@@ -194,6 +194,17 @@ namespace platformer.control
             }
         }
 
+        public void DisableControls()
+        {
+            controlsEnabled = false;
+            rb.velocity = new Vector2(0, 0);
+        }
+        
+        public void EnableControls()
+        {
+            controlsEnabled = true;
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             //Check if colliding object is a Ledder
