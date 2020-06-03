@@ -75,8 +75,10 @@ namespace platformer.enemy
         //is waiting?
         bool isWaiting = false;
 
+        //override manipulation vars
         protected bool haveOwnBehavior = false;
         protected bool haveOwnAttack = false;
+        protected bool stop = false;
 
         //Animator component to handle animation
         protected Animator animator;
@@ -115,87 +117,92 @@ namespace platformer.enemy
         // Update is called once per frame
         protected virtual void Update()
         {
-            //If enemy is dying
-            if(isDying)
+            //check done for overriding
+            if(!stop)
             {
-                //if enemy is invoking function called behave()
-                if(IsInvoking("Behave"))
-                {
-                    //Then stop invoking
-                    CancelInvoke("Behave");
-                }
-                //if animator done playing animation
-                if(!animator.IsPlaying())
-                {
-                    //Destroy this object
-                    Destroy(gameObject);
-                }
-            }
-            //if fire timer have dealy
-            if(fireTimer>0)
-            {
-                //remove passed time from delay
-                fireTimer-=Time.deltaTime;
-            }
-            //add time to patrol timer
-            time+=Time.deltaTime;
-            //if on end of path and not chasing
-            if(reachedEndOfPath&&!isChasing)
-            {
-                //add passed time to wait timer
-                actualWaitTime+=Time.deltaTime;
 
-                //if there exist animator
-                if(animator!=null)
+                //If enemy is dying
+                if(isDying)
                 {
-                    //set IsWalking boolean to false
-                    animator.SetBool("IsWalking", false);
+                    //if enemy is invoking function called behave()
+                    if(IsInvoking("Behave"))
+                    {
+                        //Then stop invoking
+                        CancelInvoke("Behave");
+                    }
+                    //if animator done playing animation
+                    if(!animator.IsPlaying())
+                    {
+                        //Destroy this object
+                        Destroy(gameObject);
+                    }
                 }
-            }
+                //if fire timer have dealy
+                if(fireTimer>0)
+                {
+                    //remove passed time from delay
+                    fireTimer-=Time.deltaTime;
+                }
+                //add time to patrol timer
+                time+=Time.deltaTime;
+                //if on end of path and not chasing
+                if(reachedEndOfPath&&!isChasing)
+                {
+                    //add passed time to wait timer
+                    actualWaitTime+=Time.deltaTime;
 
-            //Temp variable for calculation and conditions check
-            float additionalWaitTime = 0;
-            //check if timer passed interpolation period
-            PatrolPath patrolpath = null;
-            //if there are any patrol paths
-            if(PatrolPaths.Length>0)
-            {
-                //take PatrolPath component from actual path
-                patrolpath=PatrolPaths[ pointNumber ].GetComponent<PatrolPath>();
-            }
-            //if there exist patrol path component
-            if(patrolpath!=null)
-            {
-                //add wait time from component to temp var
-                additionalWaitTime=patrolpath.waitTime;
-            }
-            //if wait timer is bigger or equal to wait time + debug time
-            if(time>=(interpolationPeriod+additionalWaitTime))
-            {
-                //Timer reset
-                time=0.0f;
+                    //if there exist animator
+                    if(animator!=null)
+                    {
+                        //set IsWalking boolean to false
+                        animator.SetBool("IsWalking", false);
+                    }
+                }
 
-                //if there is no last point
-                if(lastPoint==-1)
+                //Temp variable for calculation and conditions check
+                float additionalWaitTime = 0;
+                //check if timer passed interpolation period
+                PatrolPath patrolpath = null;
+                //if there are any patrol paths
+                if(PatrolPaths.Length>0)
                 {
-                    //set last point to this point
-                    lastPoint=pointNumber;
-                    //exit
-                    return;
+                    //take PatrolPath component from actual path
+                    patrolpath=PatrolPaths[ pointNumber ].GetComponent<PatrolPath>();
                 }
-                //if last point is the same as {Period} ago
-                if(lastPoint==pointNumber)
+                //if there exist patrol path component
+                if(patrolpath!=null)
                 {
-                    //Then go to the next point with debug flag
-                    GoToTheNextPoint(true);
-                    //Log where node is bugged
-                    Debug.LogError($"Can't reach from {lastPoint} to {lastPoint+1} Patrol waypoints");
+                    //add wait time from component to temp var
+                    additionalWaitTime=patrolpath.waitTime;
                 }
-                //if they are diffrent
-                else
+                //if wait timer is bigger or equal to wait time + debug time
+                if(time>=(interpolationPeriod+additionalWaitTime))
                 {
-                    //Save this point as last
-                    lastPoint=pointNumber;
+                    //Timer reset
+                    time=0.0f;
+
+                    //if there is no last point
+                    if(lastPoint==-1)
+                    {
+                        //set last point to this point
+                        lastPoint=pointNumber;
+                        //exit
+                        return;
+                    }
+                    //if last point is the same as {Period} ago
+                    if(lastPoint==pointNumber)
+                    {
+                        //Then go to the next point with debug flag
+                        GoToTheNextPoint(true);
+                        //Log where node is bugged
+                        Debug.LogError($"Can't reach from {lastPoint} to {lastPoint+1} Patrol waypoints");
+                    }
+                    //if they are diffrent
+                    else
+                    {
+                        //Save this point as last
+                        lastPoint=pointNumber;
+                    }
                 }
             }
         }
