@@ -26,7 +26,7 @@ namespace platformer.interactive
         [Tooltip("How fast elevator will accelerate?")]
         [Range(1.01f, 1.1f)]
         [SerializeField] private float accelerationMultiplier = 1.03f;
-        [Tooltip("Distance to waypoint tolerance")]
+        [Tooltip("Torelance between current position and waypoint position")]
         [Range(0.03f, 0.2f)]
         [SerializeField] private float waypointDistanceTolerance = 0.1f;
         [Tooltip("At this distance elevator will start to slow down")]
