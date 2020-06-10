@@ -157,9 +157,10 @@ namespace platformer.interactive
         
 
         /// <summary>
-        /// 
+        /// Whenever elevator reaches waypoint destination it`s calling this function
+        /// so it`s searching for next possible waypoint (first one if current was last one)
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Next waypoint transform</returns>
         private Transform GetNextWaypoint()
         {
 
