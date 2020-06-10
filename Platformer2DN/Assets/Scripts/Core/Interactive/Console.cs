@@ -27,17 +27,17 @@ namespace platformer.interactive
         {
             if (!isConsoleActive) return; // If console is disabled, don`t do anything
 
-            delayTimer += Time.deltaTime;
-
             if (Input.GetKeyDown(KeyCode.E) && canActivateObject && delayBetweenUsages <= delayTimer)
             {
                 if(interactiveObject != null)
                 {
                     interactiveObject.HandleInteraction(this.gameObject);
                     delayTimer = 0f;
-                    print("used and reseted timer");
                 }
             }
+
+            //Timers
+            delayTimer += Time.deltaTime;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

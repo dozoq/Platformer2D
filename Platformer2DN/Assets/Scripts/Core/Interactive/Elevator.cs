@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace platformer.interactive
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class Elevator : MonoBehaviour, IInteractionHandler
     {
         enum ElevatorState
@@ -27,38 +28,27 @@ namespace platformer.interactive
         [Tooltip("How fast elevator will accelerate?")]
         [Range(1.01f, 1.1f)]
         [SerializeField] private float accelerationMultiplier = 1.03f;
-        //[Tooltip("Torelance between current position and waypoint position")]
-        //[Range(0.03f, 0.2f)]
-        //[SerializeField] private float waypointDistanceTolerance = 0.1f;
         [Tooltip("At this distance elevator will start to slow down")]
         [SerializeField] private float brakingDistance = 2f;
 
         private ElevatorState currentState;
 
-        private Transform[] waypoints;
-        private bool isActivated = false;
+        private Rigidbody2D rb;
+        private Vector2 direction;
+        private Transform[] waypoints;       
         private Transform currentWaypointDestination = null;
+
         private bool isAtWaypoint = true; //TODO: change to false
-
-
-        private bool canChangeState = true;
+        private bool isActivated = false;
+        private bool isBrakeDistanceSet = false;
 
         private float currentAccelerationMultiplier = 0.1f;
         private float brakeDistance = 0f;
         private float startingAcceleration = 0.1f;
-        private Rigidbody2D rb;
-
-        private Vector2 direction;
-        private bool isBrakeDistanceSet = false;
+        private float currentBrakeStrength = 1f;
 
         //Timers
         private float timeAtWaypoint = Mathf.Infinity;
-
-
-        private float currentBrakeStrength = 1f;
-
-        
-
 
         public void HandleInteraction(GameObject who)
         {
@@ -68,6 +58,7 @@ namespace platformer.interactive
             {
                 currentState = ElevatorState.waiting;
                 currentBrakeStrength = 1f;
+                //ResetAllForces();
             }
             else if (!isActivated)
             {
@@ -76,11 +67,13 @@ namespace platformer.interactive
             print("Console is activated: " + isActivated);
         }
 
+
         private void Start()
         {
+            // Cast all childrens into waypoints array
             waypoints = elevatorWaypoints.transform.Cast<Transform>().ToArray();
 
-            if(currentWaypointDestination == null)
+            if(currentWaypointDestination == null) // Set default waypoint (Elevator should be placed on 0 on scene)
             {
                 currentWaypointDestination = waypoints[1];
                 print("set waypoint to " + currentWaypointDestination);
@@ -94,35 +87,26 @@ namespace platformer.interactive
 
         private void FixedUpdate()
         {
+            print(isActivated);
+
 
             if (!isActivated && (currentState != ElevatorState.finish && currentState != ElevatorState.waiting))
             {
-                if (currentWaypointDestination == null) return;
-
-                print("Emergency braking");
-                currentBrakeStrength -= 0.01f;
-
-
-                currentBrakeStrength = Mathf.Clamp01(currentBrakeStrength);
-
-                //rb.velocity = direction * elevatorSpeed * currentBrakeStrength;
-
-                rb.velocity *= currentBrakeStrength;
-
-                if (currentBrakeStrength <= 0.01f)
+                if (currentWaypointDestination == null)
                 {
-                    rb.velocity = new Vector2(0, 0);
-                    ResetAllForces();
-                    print("Reseting brake strength to 1");
-                    currentState = ElevatorState.waiting;
+                    rb.velocity = Vector2.zero;
+                    Debug.LogError("Null waypointDestination in elevator. Should be initialized earlier");
+                    return;
                 }
+
+                EmergencyStop();
             }
             
             
             if (!isActivated) return; // Don`t check anything else if elevator is disabled
 
 
-            switch(currentState)
+            switch (currentState)
             {
                 case ElevatorState.accelerating:
                     isAtWaypoint = false;
@@ -147,7 +131,7 @@ namespace platformer.interactive
                     break;
 
                 case ElevatorState.waiting:
-                    if(timeAtWaypoint >= waypointWaitTime || !isAtWaypoint)
+                    if (timeAtWaypoint >= waypointWaitTime || !isAtWaypoint) //Check if should switch to accelerate
                     {
                         direction = CalculateDirection(this.transform.position, currentWaypointDestination.position).normalized;
                         currentState = ElevatorState.accelerating;
@@ -156,10 +140,11 @@ namespace platformer.interactive
 
             }
 
-           // CheckIfReachedNextWaypoint();
-
         }
-
+        
+        /// <summary>
+        /// Used only for timers
+        /// </summary>
         private void Update()
         {
             if (!isActivated) return; // Dont calculate timers if elevator is disabled
@@ -168,9 +153,13 @@ namespace platformer.interactive
             {
                 timeAtWaypoint += Time.deltaTime;
             }
-
         }
+        
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private Transform GetNextWaypoint()
         {
 
@@ -187,6 +176,10 @@ namespace platformer.interactive
             return waypoints[0];
         }
 
+        /// <summary>
+        /// Accelerate the elevator to slowly the max speed
+        /// </summary>
+        /// <param name="direction">Destination that the elevator will move to</param>
         private void Accelerate(Vector2 direction)
         {
             currentAccelerationMultiplier *= accelerationMultiplier;
@@ -194,49 +187,59 @@ namespace platformer.interactive
 
             rb.velocity = direction * elevatorSpeed * currentAccelerationMultiplier;
             
-            if(currentAccelerationMultiplier >= 1f)
+            if(currentAccelerationMultiplier >= 1f) // Reached full speed
             {
                 //currentAccelerationMultiplier = startingAcceleration; // Starting acceleration
                 currentState = ElevatorState.fullSpeed; 
             }
         }
 
+        /// <summary>
+        /// Whenever elevator reached waypoint or player turned off the elevator
+        /// reset all braking and accelerate forces to defaults
+        /// </summary>
         private void ResetAllForces()
         {
-            currentBrakeStrength = 1f;
+            currentBrakeStrength = 1f; //TODO: Check if not causing problems
             currentAccelerationMultiplier = startingAcceleration;
             isBrakeDistanceSet = false;
         }
 
-
+        /// <summary>
+        /// Check if elevator entered the braking zone
+        /// </summary>
         private void CheckIfShouldStartBraking()
         {
-           // if (isAtWaypoint) return;
-
             if (Vector2.Distance(this.transform.position, currentWaypointDestination.position) <= brakingDistance)
             {
                 currentState = ElevatorState.braking;
             }
         }
 
+
+        /// <summary>
+        /// When the elevator is in the configurable brake distance range, it will based on current speed
+        /// smoothly stop
+        /// </summary>
         private void Brake()
         {
-            if(!isBrakeDistanceSet)
+            if(!isBrakeDistanceSet) // Set once when entering the brake state
             {
                 brakeDistance = Vector2.Distance(this.transform.position, currentWaypointDestination.position);              
                 isBrakeDistanceSet = true;
             }
-
+            //current position to the end
             float currentBrakeDistance = Vector2.Distance(this.transform.position, currentWaypointDestination.position);
+            
+            // Fraction is decreasing from 1 to 0 as the distance is getting closer
             float brakeFraction = currentBrakeDistance / brakeDistance;
 
-            brakeFraction = Mathf.Clamp01(brakeFraction);
-            print(brakeFraction);
+            brakeFraction = Mathf.Clamp01(brakeFraction); // Clamp values between 0 and 1 (infinity case)
 
+            // Slow down elevator
             rb.velocity = direction * elevatorSpeed * brakeFraction * currentAccelerationMultiplier;
-            //rb.velocity *= brakeFraction;
 
-            if (brakeFraction <= 0.02f)
+            if (brakeFraction <= 0.03f) // Check if almost stopped
             {
                 rb.velocity = new Vector2(0, 0);
                 isBrakeDistanceSet = false;
@@ -245,7 +248,48 @@ namespace platformer.interactive
            
         }
 
+        /// <summary>
+        /// Called when user deactivate elevator. Slowing down elevator very quick.
+        /// </summary>
+        private void EmergencyStop()
+        {
+            // If the elevator is really close to the checkpoint, stop it instantly
+            if(Vector2.Distance(this.transform.position, currentWaypointDestination.position) <= 0.1f)
+            {
+                currentBrakeStrength = 0f;
+                rb.velocity = Vector2.zero;
+                timeAtWaypoint = 0f;
+                currentWaypointDestination = GetNextWaypoint();
 
+                print("Distance below 0.1f;");
+            }
+            else
+            {
+                currentBrakeStrength -= 0.01f; // Fast slowdown
+            }
+            
+
+            currentBrakeStrength = Mathf.Clamp01(currentBrakeStrength);
+
+            //rb.velocity = direction * elevatorSpeed * currentBrakeStrength;
+
+            rb.velocity *= currentBrakeStrength; // Quick slow
+            
+            if (currentBrakeStrength <= 0.05f)
+            {
+                rb.velocity = new Vector2(0, 0);
+                ResetAllForces();
+                print("Reseting brake strength to 1");
+                currentState = ElevatorState.waiting;
+            }
+        }
+
+        /// <summary>
+        /// Calculating the direction that the elevator should move to
+        /// </summary>
+        /// <param name="origin">Position of object that is going to be moved</param>
+        /// <param name="direction">Position of target</param>
+        /// <returns>Direction that the object should move to</returns>
         private Vector2 CalculateDirection(Vector3 origin, Vector3 direction)
         {
             float x = direction.x - origin.x;
