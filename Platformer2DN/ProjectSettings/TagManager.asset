@@ -50,6 +50,9 @@ TagManager:
   - name: Background
     uniqueID: 3007032771
     locked: 0
+  - name: Objects
+    uniqueID: 4144554751
+    locked: 0
   - name: Elements
     uniqueID: 223497777
     locked: 0
