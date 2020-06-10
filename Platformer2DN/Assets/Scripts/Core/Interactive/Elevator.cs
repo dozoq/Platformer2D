@@ -24,9 +24,13 @@ namespace platformer.interactive
         [Tooltip("Max available full speed of this elevator")]
         [SerializeField] private float elevatorSpeed = 3f;
         [Tooltip("How fast elevator will accelerate?")]
-        [SerializeField] private float accelerationMultiplier = 1.1f;
-        [Tooltip("Distance to waypoint tolerance")]
-        [SerializeField] private float waypointDistanceTolerance = 0.05f;
+        [Range(1.01f, 1.1f)]
+        [SerializeField] private float accelerationMultiplier = 1.03f;
+        [Tooltip("Torelance between current position and waypoint position")]
+        [Range(0.03f, 0.2f)]
+        [SerializeField] private float waypointDistanceTolerance = 0.1f;
+        [Tooltip("At this distance elevator will start to slow down")]
+        [SerializeField] private float brakingDistance = 2f;
 
         private ElevatorState currentState;
 
@@ -36,33 +40,38 @@ namespace platformer.interactive
         private bool isAtWaypoint = true; //TODO: change to false
 
         private float currentAccelerationMultiplier = 0.1f;
+        private float brakeDistance = 0f;
+        private float startingAcceleration = 0.1f;
+        private Rigidbody2D rb;
 
         private Vector2 direction;
+        private bool isBrakeDistanceSet = false;
 
         //Timers
         private float timeAtWaypoint = Mathf.Infinity;
 
-        private Rigidbody2D rb;
+        
 
 
         public void HandleInteraction(GameObject who)
         {
             // if isActivated elevator will automaticly try to reach next waypoints
             isActivated = !isActivated; // Switch whenever pressed the button to true or false
-            if(!isActivated)
+            if(isActivated)
             {
-                rb.velocity = new Vector2(0, 0);
+                currentState = ElevatorState.waiting;
             }
             print(isActivated);
         }
 
         private void Start()
         {
-            //currentWaypoint = transform.GetChildCount(0);
             waypoints = elevatorWaypoints.transform.Cast<Transform>().ToArray();
+
             if(currentWaypointDestination == null)
             {
-                currentWaypointDestination = waypoints[0];
+                currentWaypointDestination = waypoints[1];
+                print("set waypoint to " + currentWaypointDestination);
             }
         }
 
@@ -75,7 +84,7 @@ namespace platformer.interactive
         {
             if (!isActivated) return; // Don`t check anything else if elevator is disabled
 
-            if (isAtWaypoint && timeAtWaypoint >= waypointWaitTime)
+            /*if (isAtWaypoint && timeAtWaypoint >= waypointWaitTime)
             {
                 isAtWaypoint = false;
                 timeAtWaypoint = 0;
@@ -85,44 +94,40 @@ namespace platformer.interactive
 
                 //rb.velocity = direction * elevatorSpeed;
                 currentState = ElevatorState.accelerating;
-            }
+            }*/
 
             switch(currentState)
             {
                 case ElevatorState.accelerating:
-                    // Optimize it later
-                    direction = CalculateDirection(this.transform.position, currentWaypointDestination.position).normalized;
                     Accelerate(direction);
                     break;
 
                 case ElevatorState.fullSpeed:
-                    // Check if distance to currentwaypointdestionation is greater than braking distance
+                    CheckIfShouldStartBraking();
                     break;
 
                 case ElevatorState.braking:
-                    // Slow down elevator
+                    Brake();
                     break;
 
                 case ElevatorState.finish:
-                    // Stop elevator
-                    // GetNextWaypoint
-                    // Switch to waiting
-
+                    currentWaypointDestination = GetNextWaypoint();
+                    timeAtWaypoint = 0f;
+                    currentState = ElevatorState.waiting;
                     break;
 
                 case ElevatorState.waiting:
-                    // Wait for waitTime
-                    // After switch to accelerate
-                    break;
-
-                case ElevatorState.disabled:
-                    // Might change at any time to stop, will implement later
+                    if(timeAtWaypoint >= waypointWaitTime)
+                    {
+                        direction = CalculateDirection(this.transform.position, currentWaypointDestination.position).normalized;
+                        currentState = ElevatorState.accelerating;
+                    }
                     break;
 
             }
 
+           // CheckIfReachedNextWaypoint();
 
-            CheckIfReachedNextWaypoint();
         }
 
         private void Update()
@@ -154,27 +159,60 @@ namespace platformer.interactive
         private void Accelerate(Vector2 direction)
         {
             currentAccelerationMultiplier *= accelerationMultiplier;
-            Mathf.Clamp01(currentAccelerationMultiplier);
+            currentAccelerationMultiplier = Mathf.Clamp01(currentAccelerationMultiplier);
+
             rb.velocity = direction * elevatorSpeed * currentAccelerationMultiplier;
             
             if(currentAccelerationMultiplier >= 1f)
             {
-                currentState = ElevatorState.fullSpeed;
-                currentAccelerationMultiplier = 0.1f; // Starting acceleration
+                currentAccelerationMultiplier = startingAcceleration; // Starting acceleration
+                currentState = ElevatorState.fullSpeed; 
             }
         }
 
         private void CheckIfReachedNextWaypoint()
         {
-            if (isAtWaypoint) return;
+            if (currentState == ElevatorState.finish || currentState == ElevatorState.waiting) return;
 
             if(Vector2.Distance(this.transform.position, currentWaypointDestination.position) <= waypointDistanceTolerance)
             {
-                isAtWaypoint = true;
-                timeAtWaypoint = 0;
+                currentState = ElevatorState.finish;
                 rb.velocity = new Vector2(0, 0);
             }
         }
+
+        private void CheckIfShouldStartBraking()
+        {
+           // if (isAtWaypoint) return;
+
+            if (Vector2.Distance(this.transform.position, currentWaypointDestination.position) <= brakingDistance)
+            {
+                currentState = ElevatorState.braking;
+            }
+        }
+
+        private void Brake()
+        {
+            if(!isBrakeDistanceSet)
+            {
+                brakeDistance = Vector2.Distance(this.transform.position, currentWaypointDestination.position);
+                isBrakeDistanceSet = true;
+            }
+
+            float currentBrakeDistance = Vector2.Distance(this.transform.position, currentWaypointDestination.position);
+            float brakeFraction = currentBrakeDistance / brakeDistance;
+
+            rb.velocity = direction * elevatorSpeed * brakeFraction;
+
+            if (brakeFraction <= 0.01f)
+            {
+                rb.velocity = new Vector2(0, 0);
+                isBrakeDistanceSet = false;
+                currentState = ElevatorState.finish;
+            }
+           
+        }
+
 
         private Vector2 CalculateDirection(Vector3 origin, Vector3 direction)
         {

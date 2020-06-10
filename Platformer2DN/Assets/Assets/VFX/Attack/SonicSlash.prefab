@@ -48,10 +48,10 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: -0.93184596
+      - m_Value: 3.5004597
         m_Name: VelX
         m_Overridden: 1
-      - m_Value: 4.912399
+      - m_Value: -3.5702634
         m_Name: VelY
         m_Overridden: 1
     m_Vector2f:

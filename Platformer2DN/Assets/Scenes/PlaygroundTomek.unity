@@ -359,6 +359,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1187894231, guid: 3c0b8203810104349bac8000faae98dd, type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187894232, guid: 3c0b8203810104349bac8000faae98dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.53
+      objectReference: {fileID: 0}
     - target: {fileID: 7857493898386600276, guid: 3c0b8203810104349bac8000faae98dd,
         type: 3}
       propertyPath: m_Name
@@ -367,12 +375,12 @@ PrefabInstance:
     - target: {fileID: 7857493898386600283, guid: 3c0b8203810104349bac8000faae98dd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -18.38
       objectReference: {fileID: 0}
     - target: {fileID: 7857493898386600283, guid: 3c0b8203810104349bac8000faae98dd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 7857493898386600283, guid: 3c0b8203810104349bac8000faae98dd,
         type: 3}
@@ -699,8 +707,9 @@ MonoBehaviour:
   elevatorWaypoints: {fileID: 79376855}
   waypointWaitTime: 1
   elevatorSpeed: 3
-  accelerationMultiplier: 1.02
-  waypointDistanceTolerance: 0.5
+  accelerationMultiplier: 1.0237
+  waypointDistanceTolerance: 0.1
+  brakingDistance: 2
 --- !u!50 &302007780
 Rigidbody2D:
   serializedVersion: 4
@@ -834,7 +843,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873265642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.12, z: 0}
+  m_LocalPosition: {x: 0, y: 8.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 79376855}
