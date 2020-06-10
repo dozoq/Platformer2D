@@ -50,6 +50,9 @@ namespace platformer.interactive
         //Timers
         private float timeAtWaypoint = Mathf.Infinity;
 
+
+        private float currentBrakeStrength = 1f;
+
         
 
 
@@ -60,6 +63,11 @@ namespace platformer.interactive
             if(isActivated)
             {
                 currentState = ElevatorState.waiting;
+                currentBrakeStrength = 1f;
+            }
+            else if (!isActivated)
+            {
+                ResetAllForces();
             }
             print(isActivated);
         }
@@ -81,25 +89,34 @@ namespace platformer.interactive
         }
 
         private void FixedUpdate()
-        {
+        {   if (!isActivated && (currentState != ElevatorState.finish && currentState != ElevatorState.waiting))
+            {
+                if (currentWaypointDestination == null) return;
+
+                currentBrakeStrength -= 0.01f;
+
+                //rb.velocity = direction * elevatorSpeed * currentBrakeStrength;
+
+                rb.velocity *= currentBrakeStrength;
+
+                if (currentBrakeStrength <= 0.01f)
+                {
+                    rb.velocity = new Vector2(0, 0);
+                    ResetAllForces();
+                    print("Reseting brake strength to 1");
+                    currentState = ElevatorState.waiting;
+                }
+            }
+            
+            
             if (!isActivated) return; // Don`t check anything else if elevator is disabled
 
-            /*if (isAtWaypoint && timeAtWaypoint >= waypointWaitTime)
-            {
-                isAtWaypoint = false;
-                timeAtWaypoint = 0;
-
-                currentWaypointDestination = GetNextWaypoint();
-
-
-                //rb.velocity = direction * elevatorSpeed;
-                currentState = ElevatorState.accelerating;
-            }*/
 
             switch(currentState)
             {
                 case ElevatorState.accelerating:
                     Accelerate(direction);
+                    CheckIfShouldStartBraking();
                     break;
 
                 case ElevatorState.fullSpeed:
@@ -170,6 +187,13 @@ namespace platformer.interactive
             }
         }
 
+        private void ResetAllForces()
+        {
+            currentBrakeStrength = 1f;
+            currentAccelerationMultiplier = startingAcceleration;
+            isBrakeDistanceSet = false;
+        }
+
         private void CheckIfReachedNextWaypoint()
         {
             if (currentState == ElevatorState.finish || currentState == ElevatorState.waiting) return;
@@ -203,6 +227,7 @@ namespace platformer.interactive
             float brakeFraction = currentBrakeDistance / brakeDistance;
 
             rb.velocity = direction * elevatorSpeed * brakeFraction;
+            //rb.velocity *= brakeFraction;
 
             if (brakeFraction <= 0.01f)
             {
@@ -220,6 +245,7 @@ namespace platformer.interactive
             float y = direction.y - origin.y;
             return new Vector2(x, y);
         }
+
     }
 
 }
