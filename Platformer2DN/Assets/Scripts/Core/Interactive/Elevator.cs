@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace platformer.interactive
@@ -26,9 +27,9 @@ namespace platformer.interactive
         [Tooltip("How fast elevator will accelerate?")]
         [Range(1.01f, 1.1f)]
         [SerializeField] private float accelerationMultiplier = 1.03f;
-        [Tooltip("Torelance between current position and waypoint position")]
-        [Range(0.03f, 0.2f)]
-        [SerializeField] private float waypointDistanceTolerance = 0.1f;
+        //[Tooltip("Torelance between current position and waypoint position")]
+        //[Range(0.03f, 0.2f)]
+        //[SerializeField] private float waypointDistanceTolerance = 0.1f;
         [Tooltip("At this distance elevator will start to slow down")]
         [SerializeField] private float brakingDistance = 2f;
 
@@ -38,6 +39,9 @@ namespace platformer.interactive
         private bool isActivated = false;
         private Transform currentWaypointDestination = null;
         private bool isAtWaypoint = true; //TODO: change to false
+
+
+        private bool canChangeState = true;
 
         private float currentAccelerationMultiplier = 0.1f;
         private float brakeDistance = 0f;
@@ -69,7 +73,7 @@ namespace platformer.interactive
             {
                 ResetAllForces();
             }
-            print(isActivated);
+            print("Console is activated: " + isActivated);
         }
 
         private void Start()
@@ -89,11 +93,17 @@ namespace platformer.interactive
         }
 
         private void FixedUpdate()
-        {   if (!isActivated && (currentState != ElevatorState.finish && currentState != ElevatorState.waiting))
+        {
+
+            if (!isActivated && (currentState != ElevatorState.finish && currentState != ElevatorState.waiting))
             {
                 if (currentWaypointDestination == null) return;
 
+                print("Emergency braking");
                 currentBrakeStrength -= 0.01f;
+
+
+                currentBrakeStrength = Mathf.Clamp01(currentBrakeStrength);
 
                 //rb.velocity = direction * elevatorSpeed * currentBrakeStrength;
 
@@ -115,6 +125,7 @@ namespace platformer.interactive
             switch(currentState)
             {
                 case ElevatorState.accelerating:
+                    isAtWaypoint = false;
                     Accelerate(direction);
                     CheckIfShouldStartBraking();
                     break;
@@ -129,12 +140,14 @@ namespace platformer.interactive
 
                 case ElevatorState.finish:
                     currentWaypointDestination = GetNextWaypoint();
+                    ResetAllForces();
+                    isAtWaypoint = true;
                     timeAtWaypoint = 0f;
                     currentState = ElevatorState.waiting;
                     break;
 
                 case ElevatorState.waiting:
-                    if(timeAtWaypoint >= waypointWaitTime)
+                    if(timeAtWaypoint >= waypointWaitTime || !isAtWaypoint)
                     {
                         direction = CalculateDirection(this.transform.position, currentWaypointDestination.position).normalized;
                         currentState = ElevatorState.accelerating;
@@ -155,6 +168,7 @@ namespace platformer.interactive
             {
                 timeAtWaypoint += Time.deltaTime;
             }
+
         }
 
         private Transform GetNextWaypoint()
@@ -182,7 +196,7 @@ namespace platformer.interactive
             
             if(currentAccelerationMultiplier >= 1f)
             {
-                currentAccelerationMultiplier = startingAcceleration; // Starting acceleration
+                //currentAccelerationMultiplier = startingAcceleration; // Starting acceleration
                 currentState = ElevatorState.fullSpeed; 
             }
         }
@@ -194,16 +208,6 @@ namespace platformer.interactive
             isBrakeDistanceSet = false;
         }
 
-        private void CheckIfReachedNextWaypoint()
-        {
-            if (currentState == ElevatorState.finish || currentState == ElevatorState.waiting) return;
-
-            if(Vector2.Distance(this.transform.position, currentWaypointDestination.position) <= waypointDistanceTolerance)
-            {
-                currentState = ElevatorState.finish;
-                rb.velocity = new Vector2(0, 0);
-            }
-        }
 
         private void CheckIfShouldStartBraking()
         {
@@ -219,17 +223,20 @@ namespace platformer.interactive
         {
             if(!isBrakeDistanceSet)
             {
-                brakeDistance = Vector2.Distance(this.transform.position, currentWaypointDestination.position);
+                brakeDistance = Vector2.Distance(this.transform.position, currentWaypointDestination.position);              
                 isBrakeDistanceSet = true;
             }
 
             float currentBrakeDistance = Vector2.Distance(this.transform.position, currentWaypointDestination.position);
             float brakeFraction = currentBrakeDistance / brakeDistance;
 
-            rb.velocity = direction * elevatorSpeed * brakeFraction;
+            brakeFraction = Mathf.Clamp01(brakeFraction);
+            print(brakeFraction);
+
+            rb.velocity = direction * elevatorSpeed * brakeFraction * currentAccelerationMultiplier;
             //rb.velocity *= brakeFraction;
 
-            if (brakeFraction <= 0.01f)
+            if (brakeFraction <= 0.02f)
             {
                 rb.velocity = new Vector2(0, 0);
                 isBrakeDistanceSet = false;

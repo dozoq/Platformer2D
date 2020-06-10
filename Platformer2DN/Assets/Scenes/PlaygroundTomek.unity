@@ -361,11 +361,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1187894231, guid: 3c0b8203810104349bac8000faae98dd, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 7.53
       objectReference: {fileID: 0}
     - target: {fileID: 1187894232, guid: 3c0b8203810104349bac8000faae98dd, type: 3}
       propertyPath: m_LocalPosition.z
       value: -19.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187894232, guid: 3c0b8203810104349bac8000faae98dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.27
       objectReference: {fileID: 0}
     - target: {fileID: 7857493898386600276, guid: 3c0b8203810104349bac8000faae98dd,
         type: 3}
