@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8373219082156949439}
   - component: {fileID: 8373219082156949432}
   - component: {fileID: 8373219082156949433}
+  - component: {fileID: 2385842262676335152}
   m_Layer: 10
   m_Name: Elevator_B_Start
   m_TagString: Untagged
@@ -148,3 +149,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 0.69}
   m_EdgeRadius: 0
+--- !u!114 &2385842262676335152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8373219082156949436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d43cef18e9b934396a02ca3fd5322e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canTransportObjectsHorizontally: 0
