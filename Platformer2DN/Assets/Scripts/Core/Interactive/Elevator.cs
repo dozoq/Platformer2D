@@ -261,8 +261,6 @@ namespace platformer.interactive
                 rb.velocity = Vector2.zero;
                 timeAtWaypoint = 0f;
                 currentWaypointDestination = GetNextWaypoint();
-
-                print("Distance below 0.1f;");
             }
             else
             {
@@ -280,7 +278,6 @@ namespace platformer.interactive
             {
                 rb.velocity = new Vector2(0, 0);
                 ResetAllForces();
-                print("Reseting brake strength to 1");
                 currentState = ElevatorState.waiting;
             }
         }
@@ -297,9 +294,6 @@ namespace platformer.interactive
             float y = direction.y - origin.y;
             return new Vector2(x, y);
         }
-
-      
-
 
     }
 
