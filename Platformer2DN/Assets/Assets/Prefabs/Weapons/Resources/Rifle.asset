@@ -25,3 +25,4 @@ MonoBehaviour:
   bullet: {fileID: 53573946345011400, guid: bf27b6e8d7fd3cf4c9d27dfa82de2d96, type: 3}
   bulletVFX: {fileID: 1259561624112962100, guid: 4b8cb66ef82503f42bc9e8259e0371b8,
     type: 3}
+  weaponSprite: {fileID: 21300000, guid: a939b1a7b1ae7254cb43ad1ee841b3f4, type: 3}

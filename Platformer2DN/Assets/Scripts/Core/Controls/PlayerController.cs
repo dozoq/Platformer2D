@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using platformer.core;
 
 // New player controller from scratch
 namespace platformer.control
@@ -17,6 +18,12 @@ namespace platformer.control
     /// D - move right
     /// SPACE - Jump
     /// Button Mouse Left - Shoot
+    /// PageUp - Save
+    /// PageDown - Load
+    /// Delete - Delete Save
+    /// 1 - Change to WeaponSlot1
+    /// 2 - Change to WeaponSlot2
+    /// 3 - Change to WeaponSlot3
     /// </summary>
     public class PlayerController : MonoBehaviour, IDieable, ISaveable
     {
@@ -39,6 +46,7 @@ namespace platformer.control
         private bool interactedWithLadder = false;
         private Rigidbody2D rb = null;
         private Fighter fighter;
+        private Inventory inventory;
         private SpriteRenderer spriteRenderer;
 
         enum Direction
@@ -52,11 +60,14 @@ namespace platformer.control
             rb = GetComponent<Rigidbody2D>();
             fighter = GetComponent<Fighter>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+            inventory = GetComponent<Inventory>();
         }
 
         private void Update()
         {
             if (!controlsEnabled) return; // Can`t do anything if controls are not enabled
+
+            InteractWithInventory();
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -155,6 +166,26 @@ namespace platformer.control
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * lowJumpGravityModifier);
             }
 
+        }
+
+        /// <summary>
+        /// After switching guns, it calls Fighter attached to player to destroy previous weapon
+        /// and attach new one from inventory at given slot
+        /// </summary>
+        private void InteractWithInventory()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                fighter.ChangeWeapon(inventory.GetWeaponConfig(0));
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                fighter.ChangeWeapon(inventory.GetWeaponConfig(1));
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                fighter.ChangeWeapon(inventory.GetWeaponConfig(2));
+            }
         }
 
 

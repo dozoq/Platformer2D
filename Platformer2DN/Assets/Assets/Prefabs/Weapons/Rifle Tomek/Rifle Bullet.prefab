@@ -74,10 +74,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 0
   Lifespan: 0
-  Speed: 0
+  Speed: 5
   canDamagePlayer: 0
   isEnemyBullet: 0
-  vfxObject: {fileID: 0}
+  vfxObject: {fileID: 1259561624112962100, guid: 4b8cb66ef82503f42bc9e8259e0371b8,
+    type: 3}
   interpolationPeriod: 0.1
 --- !u!50 &-8054318318705088385
 Rigidbody2D:

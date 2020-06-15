@@ -20,8 +20,9 @@ MonoBehaviour:
   bulletLifespan: 20
   delayBetweenAttacks: 0.5
   bulletSpeed: 12.04
-  equippedPrefab: {fileID: 2135583107846086721, guid: 31b2642f0bc61294cb98b798ec7ece0d,
+  equippedPrefab: {fileID: 6561977610102462926, guid: bf85fd4149c0b664e9ef9a05d96bb0d5,
     type: 3}
   bullet: {fileID: -3860610039199629746, guid: f29492f81b4b943449b36102db8f8374, type: 3}
   bulletVFX: {fileID: 1259561624112962100, guid: 4b8cb66ef82503f42bc9e8259e0371b8,
     type: 3}
+  weaponSprite: {fileID: 21300000, guid: 3abc7962f0dc88548aabb943dab4e173, type: 3}
