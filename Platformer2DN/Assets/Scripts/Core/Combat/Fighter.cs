@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using platformer.attributes;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace platformer.combat
         private Weapon currentWeapon; // Current weapon prefab
         private WeaponConfig currentWeaponConfig;
 
+        public event Action inventoryUpdated;
+
         private void Awake()
         {
             currentWeaponConfig = weaponConfig;
@@ -28,6 +31,14 @@ namespace platformer.combat
         private Weapon SetupDefaultWeapon(WeaponConfig defaultWeaponConfig)
         {
             return defaultWeaponConfig.Spawn(handTransform, animator);
+        }
+
+        public void ChangeWeapon(WeaponConfig newWeapon)
+        {
+            weaponConfig = newWeapon;
+            weaponConfig.Spawn(handTransform, animator);
+
+            inventoryUpdated?.Invoke(); // Update UI
         }
 
         /// <summary>

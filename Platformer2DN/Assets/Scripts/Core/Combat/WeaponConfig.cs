@@ -41,6 +41,9 @@ namespace platformer.combat
         [Tooltip("Effect applied to a bullet")]
         [SerializeField] private GameObject bulletVFX = null;
 
+        [Tooltip("Image of this weapon displayed in UI")]
+        [SerializeField] private Sprite weaponSprite = null;
+
         /// <summary>
         /// Rename all instansiated weapons to Weapon so it`s easier to delete them
         /// </summary>

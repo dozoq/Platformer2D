@@ -28,18 +28,18 @@ namespace platformer.scenemanagment
 
         void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Alpha1))
+            if(Input.GetKeyDown(KeyCode.PageDown))
             {
                 print("save");
                 Save();
             }
 
-            if(Input.GetKeyDown(KeyCode.Alpha2))
+            if(Input.GetKeyDown(KeyCode.PageDown))
             {
                 Load();
             }
 
-            if(Input.GetKeyDown(KeyCode.Alpha3))
+            if(Input.GetKeyDown(KeyCode.Delete))
             {
                 Delete();
             }
