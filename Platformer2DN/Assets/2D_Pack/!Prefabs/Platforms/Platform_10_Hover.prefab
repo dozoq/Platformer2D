@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 477310}
   - component: {fileID: 21200812}
   - component: {fileID: 6899460}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Platform_10_Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}

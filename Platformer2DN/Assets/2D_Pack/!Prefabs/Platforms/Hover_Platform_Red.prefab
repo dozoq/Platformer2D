@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 476464}
   - component: {fileID: 21252182}
   - component: {fileID: 6848248}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hover_Platform_Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
