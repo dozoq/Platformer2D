@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 481118}
   - component: {fileID: 21262550}
   - component: {fileID: 6835968}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Platform_Ramp_45_Flipped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
