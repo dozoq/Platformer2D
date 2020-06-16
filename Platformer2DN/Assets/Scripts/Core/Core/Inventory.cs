@@ -23,10 +23,11 @@ namespace platformer.core
 
         private void Update()
         {
+            // DEBUG. LATER INVENTORY WILL BE UPDATED FROM HUB
             if (Input.GetKeyDown(KeyCode.M))
             {
                 WeaponConfig[] weapons = Resources.LoadAll<WeaponConfig>("");
-                weaponSlotOne = weapons[0];
+                weaponSlotOne = weapons[1];
 
                 weaponSlots[0] = weaponSlotOne;
                 inventoryUpdated?.Invoke(1, weaponSlotOne); //Change at weaponSlot1
@@ -34,15 +35,14 @@ namespace platformer.core
         }
 
         /// <summary>
-        /// 
+        /// Get WeaponConfig from slot from Inventory
         /// </summary>
-        /// <param name="slot">0-2 (0 = 1st slot, 1 = 2nd slot, 2 = 3rd slot)</param>
-        /// <returns></returns>
+        /// <param name="slot">0-2(0 = 1st slot, 1 = 2nd slot, 2 = 3rd slot)</param>
+        /// <returns>WeaponConfig at given slot</returns>
         public WeaponConfig GetWeaponConfig(int slot)
         {
             return weaponSlots[slot];
         }
-
 
 
     }

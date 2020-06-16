@@ -114,5 +114,10 @@ namespace platformer.combat
         {
             return weaponRadius;
         }
+
+        public Sprite GetWeaponSprite()
+        {
+            return weaponSprite;
+        }
     }
 }

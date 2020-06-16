@@ -1,18 +1,33 @@
 ﻿using platformer.combat;
+using platformer.core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace platformer.ui
 {
     public class InventorySlot : MonoBehaviour
     {
+        [Range(1,3)]
+        [SerializeField] private int inventorySlotNumber;
+        [Tooltip("Icon to change attached to child of this - Gun")]
+        [SerializeField] private Image gunIcon = null;
+
+        [SerializeField] private CanvasGroup backgroundCanvasGroup = null;
+
         private Fighter fighter = null;
+        private Inventory inventory = null;
+
+        
 
         private void Awake()
         {
             fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
-           // fighter.inventoryUpdated += Redraw;
+            inventory = GameObject.FindWithTag("Player").GetComponent<Inventory>();
+
+            inventory.inventoryUpdated += Redraw;
+            fighter.inventoryActiveWeaponChanged += SetActiveWeapon;
         }
 
         private void OnDisable()
@@ -20,9 +35,24 @@ namespace platformer.ui
            // fighter.inventoryUpdated -= Redraw;
         }
 
-        private void Redraw()
+        public void SetActiveWeapon(int slot)
         {
-            print("Updating UI");
+            if(slot == inventorySlotNumber)
+            {
+                backgroundCanvasGroup.alpha = 0.2f;
+            }
+            else
+            {
+                backgroundCanvasGroup.alpha = 0.1f;
+            }
+        }
+
+        private void Redraw(int slotNumber, WeaponConfig newWeaponConfig)
+        {
+            if(slotNumber == inventorySlotNumber)
+            {
+                gunIcon.sprite = newWeaponConfig.GetWeaponSprite();
+            }
         }
     }
 

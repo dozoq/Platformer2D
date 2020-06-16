@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using platformer.attributes;
 using platformer.core;
+using platformer.ui;
 using UnityEngine;
 
 namespace platformer.combat
@@ -17,9 +18,18 @@ namespace platformer.combat
 
         private Inventory inventory = null;
 
+        public event Action<int> inventoryActiveWeaponChanged;
+
         private int currentlyUsedSlot = 1; //Default 
 
 
+        /// <summary>
+        /// Called from inventory when "swaping" with new weapon on same slot.
+        /// If currently used slot is different than changed slot, no need to update
+        /// current weapon as it will change when switching weapon.
+        /// </summary>
+        /// <param name="slotNumber">Slot that was changed(1-3, 1=1st, 2=2nd, 3=3rd)</param>
+        /// <param name="newWeaponConfig">New WeaponConfig at given slot</param>
         private void UpdateCurrentWeapon(int slotNumber, WeaponConfig newWeaponConfig)
         {
             if(currentlyUsedSlot == slotNumber)
@@ -32,8 +42,6 @@ namespace platformer.combat
 
         private void Awake()
         {
-            
-
             inventory = GetComponent<Inventory>();
             inventory.inventoryUpdated += UpdateCurrentWeapon;
         }
@@ -51,6 +59,7 @@ namespace platformer.combat
         /// <returns>Weapon prefab set scriptableObject</returns>
         private Weapon SetupDefaultWeapon(WeaponConfig defaultWeaponConfig)
         {
+            inventoryActiveWeaponChanged?.Invoke(1);
             return defaultWeaponConfig.Spawn(handTransform, animator);
         }
 
@@ -59,9 +68,10 @@ namespace platformer.combat
             //weaponConfig = newWeapon;
             //weaponConfig.Spawn(handTransform, animator);
 
-            newWeapon.Spawn(handTransform, animator);
+            currentWeapon = newWeapon.Spawn(handTransform, animator);
 
             currentlyUsedSlot = slotNumber;
+            inventoryActiveWeaponChanged?.Invoke(slotNumber);
 
             //inventoryUpdated?.Invoke(); // Update UI
         }
