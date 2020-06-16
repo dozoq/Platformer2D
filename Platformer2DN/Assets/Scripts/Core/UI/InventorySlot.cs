@@ -35,6 +35,10 @@ namespace platformer.ui
            // fighter.inventoryUpdated -= Redraw;
         }
 
+        /// <summary>
+        /// Make current used weapon in UI background more visible
+        /// </summary>
+        /// <param name="slot">To highlight</param>
         public void SetActiveWeapon(int slot)
         {
             if(slot == inventorySlotNumber)
@@ -47,6 +51,11 @@ namespace platformer.ui
             }
         }
 
+        /// <summary>
+        /// Change image based on weapon config
+        /// </summary>
+        /// <param name="slotNumber">Slot to redraw</param>
+        /// <param name="newWeaponConfig">Used to get sprite icon</param>
         private void Redraw(int slotNumber, WeaponConfig newWeaponConfig)
         {
             if(slotNumber == inventorySlotNumber)

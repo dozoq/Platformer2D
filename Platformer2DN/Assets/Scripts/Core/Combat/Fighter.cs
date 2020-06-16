@@ -23,23 +23,6 @@ namespace platformer.combat
         private int currentlyUsedSlot = 1; //Default 
 
 
-        /// <summary>
-        /// Called from inventory when "swaping" with new weapon on same slot.
-        /// If currently used slot is different than changed slot, no need to update
-        /// current weapon as it will change when switching weapon.
-        /// </summary>
-        /// <param name="slotNumber">Slot that was changed(1-3, 1=1st, 2=2nd, 3=3rd)</param>
-        /// <param name="newWeaponConfig">New WeaponConfig at given slot</param>
-        private void UpdateCurrentWeapon(int slotNumber, WeaponConfig newWeaponConfig)
-        {
-            if(currentlyUsedSlot == slotNumber)
-            {
-                ChangeWeapon(newWeaponConfig, slotNumber);
-            }
-        }
-
-
-
         private void Awake()
         {
             inventory = GetComponent<Inventory>();
@@ -63,6 +46,11 @@ namespace platformer.combat
             return defaultWeaponConfig.Spawn(handTransform, animator);
         }
 
+        /// <summary>
+        /// Spawn new prefab. Change weapon config in inventory at given slot
+        /// </summary>
+        /// <param name="newWeapon">New WeaponConfig to replace previous one</param>
+        /// <param name="slotNumber">Inventory slot number (1-3) </param>
         public void ChangeWeapon(WeaponConfig newWeapon, int slotNumber)
         {
             //weaponConfig = newWeapon;
@@ -74,6 +62,21 @@ namespace platformer.combat
             inventoryActiveWeaponChanged?.Invoke(slotNumber);
 
             //inventoryUpdated?.Invoke(); // Update UI
+        }
+
+        /// <summary>
+        /// Called from inventory when "swaping" with new weapon on same slot.
+        /// If currently used slot is different than changed slot, no need to update
+        /// current weapon as it will change when switching weapon.
+        /// </summary>
+        /// <param name="slotNumber">Slot that was changed(1-3, 1=1st, 2=2nd, 3=3rd)</param>
+        /// <param name="newWeaponConfig">New WeaponConfig at given slot</param>
+        private void UpdateCurrentWeapon(int slotNumber, WeaponConfig newWeaponConfig)
+        {
+            if (currentlyUsedSlot == slotNumber)
+            {
+                ChangeWeapon(newWeaponConfig, slotNumber);
+            }
         }
 
         /// <summary>
