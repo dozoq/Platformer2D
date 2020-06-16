@@ -16,10 +16,9 @@ namespace platformer.combat
         private Weapon currentWeapon; // Current weapon prefab
         private WeaponConfig currentWeaponConfig;
 
+        // INVENTORY
         private Inventory inventory = null;
-
         public event Action<int> inventoryActiveWeaponChanged;
-
         private int currentlyUsedSlot = 1; //Default 
 
 

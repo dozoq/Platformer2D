@@ -16,7 +16,12 @@ namespace platformer.scenemanagment
         enum PortalDestination
         {
             A,
-            B
+            B,
+            C,
+            D,
+            E,
+            F,
+            G
             //NEW DESTINATIONS HERE
         }
 

@@ -13,7 +13,6 @@ namespace platformer.ui
         [SerializeField] private int inventorySlotNumber;
         [Tooltip("Icon to change attached to child of this - Gun")]
         [SerializeField] private Image gunIcon = null;
-
         [SerializeField] private CanvasGroup backgroundCanvasGroup = null;
 
         private Fighter fighter = null;
@@ -52,7 +51,7 @@ namespace platformer.ui
         }
 
         /// <summary>
-        /// Change image based on weapon config
+        /// Change image based on weapon config. Called from inventory after assigning new weapon.
         /// </summary>
         /// <param name="slotNumber">Slot to redraw</param>
         /// <param name="newWeaponConfig">Used to get sprite icon</param>
