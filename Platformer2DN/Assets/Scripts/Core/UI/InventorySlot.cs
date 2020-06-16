@@ -12,12 +12,12 @@ namespace platformer.ui
         private void Awake()
         {
             fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
-            fighter.inventoryUpdated += Redraw;
+           // fighter.inventoryUpdated += Redraw;
         }
 
         private void OnDisable()
         {
-            fighter.inventoryUpdated -= Redraw;
+           // fighter.inventoryUpdated -= Redraw;
         }
 
         private void Redraw()

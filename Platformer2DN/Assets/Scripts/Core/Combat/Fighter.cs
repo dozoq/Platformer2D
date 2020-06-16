@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using platformer.attributes;
+using platformer.core;
 using UnityEngine;
 
 namespace platformer.combat
@@ -9,17 +10,37 @@ namespace platformer.combat
     public class Fighter : MonoBehaviour
     {
         public Animator animator = null;
-        public WeaponConfig weaponConfig = null;
         public Transform handTransform = null;
 
         private Weapon currentWeapon; // Current weapon prefab
         private WeaponConfig currentWeaponConfig;
 
-        public event Action inventoryUpdated;
+        private Inventory inventory = null;
+
+        private int currentlyUsedSlot = 1; //Default 
+
+
+        private void UpdateCurrentWeapon(int slotNumber, WeaponConfig newWeaponConfig)
+        {
+            if(currentlyUsedSlot == slotNumber)
+            {
+                ChangeWeapon(newWeaponConfig, slotNumber);
+            }
+        }
+
+
 
         private void Awake()
         {
-            currentWeaponConfig = weaponConfig;
+            
+
+            inventory = GetComponent<Inventory>();
+            inventory.inventoryUpdated += UpdateCurrentWeapon;
+        }
+
+        private void Start()
+        {
+            currentWeaponConfig = inventory.GetWeaponConfig(0);
             currentWeapon = SetupDefaultWeapon(currentWeaponConfig);
         }
 
@@ -33,12 +54,16 @@ namespace platformer.combat
             return defaultWeaponConfig.Spawn(handTransform, animator);
         }
 
-        public void ChangeWeapon(WeaponConfig newWeapon)
+        public void ChangeWeapon(WeaponConfig newWeapon, int slotNumber)
         {
-            weaponConfig = newWeapon;
-            weaponConfig.Spawn(handTransform, animator);
+            //weaponConfig = newWeapon;
+            //weaponConfig.Spawn(handTransform, animator);
 
-            inventoryUpdated?.Invoke(); // Update UI
+            newWeapon.Spawn(handTransform, animator);
+
+            currentlyUsedSlot = slotNumber;
+
+            //inventoryUpdated?.Invoke(); // Update UI
         }
 
         /// <summary>

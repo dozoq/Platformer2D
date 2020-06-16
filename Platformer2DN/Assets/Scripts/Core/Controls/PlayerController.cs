@@ -176,15 +176,15 @@ namespace platformer.control
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                fighter.ChangeWeapon(inventory.GetWeaponConfig(0));
+                fighter.ChangeWeapon(inventory.GetWeaponConfig(0), 1);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                fighter.ChangeWeapon(inventory.GetWeaponConfig(1));
+                fighter.ChangeWeapon(inventory.GetWeaponConfig(1), 2);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                fighter.ChangeWeapon(inventory.GetWeaponConfig(2));
+                fighter.ChangeWeapon(inventory.GetWeaponConfig(2), 3);
             }
         }
 
