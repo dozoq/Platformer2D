@@ -1008,64 +1008,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
         type: 3}
-      propertyPath: EnterFunctionToCall.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
-        type: 3}
-      propertyPath: ExitFunctionToCall.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
-        type: 3}
-      propertyPath: EnterFunctionToCall.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
-        type: 3}
-      propertyPath: EnterFunctionToCall.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
-        type: 3}
       propertyPath: EnterFunctionToCall.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 209159641099481880}
     - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
         type: 3}
-      propertyPath: EnterFunctionToCall.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AcidEnter
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
-        type: 3}
-      propertyPath: EnterFunctionToCall.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
-        type: 3}
-      propertyPath: ExitFunctionToCall.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
-        type: 3}
-      propertyPath: ExitFunctionToCall.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
-        type: 3}
       propertyPath: ExitFunctionToCall.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 209159641099481880}
-    - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
-        type: 3}
-      propertyPath: ExitFunctionToCall.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AcidExit
-      objectReference: {fileID: 0}
-    - target: {fileID: 5433844807572913230, guid: cebc1f5744a10d742abf4b01c000741a,
-        type: 3}
-      propertyPath: ExitFunctionToCall.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5433844807572913231, guid: cebc1f5744a10d742abf4b01c000741a,
         type: 3}
       propertyPath: m_LocalPosition.x
