@@ -65,7 +65,10 @@ namespace platformer.attributes
             //Debug infor
             //print("Health afteer attack: " + health);
         }
-
+        public int getHP()
+        {
+            return health;
+        }
        
         public int GetCurrentHealth()
         {
