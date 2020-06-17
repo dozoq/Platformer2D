@@ -30,6 +30,8 @@ namespace platformer.interactive
         [SerializeField] private float accelerationMultiplier = 1.03f;
         [Tooltip("At this distance elevator will start to slow down")]
         [SerializeField] private float brakingDistance = 2f;
+        [Tooltip("If activated, elevator will turn off after reaching next waypoint")]
+        [SerializeField] private bool oneWaypointMode = false;
 
         private ElevatorState currentState;
 
@@ -128,6 +130,10 @@ namespace platformer.interactive
                     isAtWaypoint = true;
                     timeAtWaypoint = 0f;
                     currentState = ElevatorState.waiting;
+                    if(oneWaypointMode)
+                    {
+                        isActivated = false;
+                    }
                     break;
 
                 case ElevatorState.waiting:
