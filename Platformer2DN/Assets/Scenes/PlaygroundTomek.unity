@@ -1448,27 +1448,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   persistentObjectToSpawn: {fileID: 4843512669112020174, guid: c85a464c060104e45b7e0ac9e59d3da2,
     type: 3}
---- !u!1 &1930690754 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7857493898386600276, guid: 3c0b8203810104349bac8000faae98dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 165368683}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1930690763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930690754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3e51d9a49a87344f9f53e6c87cd96a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponSlotOne: {fileID: 11400000, guid: e95de18ff11cdd748a71338c1bae10b2, type: 2}
-  weaponSlotTwo: {fileID: 11400000, guid: e95de18ff11cdd748a71338c1bae10b2, type: 2}
-  weaponSlotThree: {fileID: 0}
 --- !u!1001 &2498619463587284056
 PrefabInstance:
   m_ObjectHideFlags: 0
