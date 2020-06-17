@@ -90,6 +90,8 @@ namespace platformer.combat
             Destroy(weaponToDestroy.gameObject);
         }
 
+        // GETTERS
+
         public bool HasProjectile()
         {
             return bullet != null;

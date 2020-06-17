@@ -28,21 +28,28 @@ namespace platformer.combat
             inventory.inventoryUpdated += UpdateCurrentWeapon;
         }
 
+
         private void Start()
         {
             currentWeaponConfig = inventory.GetWeaponConfig(0);
             currentWeapon = SetupDefaultWeapon(currentWeaponConfig);
         }
 
+
         /// <summary>
-        /// Initialize weapon from defaultWeaponConfig attached to a player
+        /// Instatiating a bullet from a 
         /// </summary>
-        /// <param name="defaultWeaponConfig"></param>
-        /// <returns>Weapon prefab set scriptableObject</returns>
-        private Weapon SetupDefaultWeapon(WeaponConfig defaultWeaponConfig)
+        /// <param name="worldPoint">Coordinates of mouse position in the world space</param>
+        public void Shoot(Vector3 worldPoint)
         {
-            inventoryActiveWeaponChanged?.Invoke(1);
-            return defaultWeaponConfig.Spawn(handTransform, animator);
+            var vectorPostion = new Vector2(worldPoint.x, worldPoint.y);
+            if (currentWeaponConfig.HasProjectile())
+            {
+                //TODO: Change handtransform into barrel transform of weapon
+                Vector3 weaponBarrelTransform = new Vector3(handTransform.position.x, handTransform.position.y, 0);
+                currentWeaponConfig.LaunchBullet(weaponBarrelTransform, vectorPostion);
+
+            }
         }
 
         /// <summary>
@@ -64,6 +71,18 @@ namespace platformer.combat
         }
 
         /// <summary>
+        /// Initialize weapon from defaultWeaponConfig attached to a player
+        /// </summary>
+        /// <param name="defaultWeaponConfig"></param>
+        /// <returns>Weapon prefab set scriptableObject</returns>
+        private Weapon SetupDefaultWeapon(WeaponConfig defaultWeaponConfig)
+        {
+            inventoryActiveWeaponChanged?.Invoke(1);
+            return defaultWeaponConfig.Spawn(handTransform, animator);
+        }
+
+       
+        /// <summary>
         /// Called from inventory when "swaping" with new weapon on same slot.
         /// If currently used slot is different than changed slot, no need to update
         /// current weapon as it will change when switching weapon.
@@ -75,22 +94,6 @@ namespace platformer.combat
             if (currentlyUsedSlot == slotNumber)
             {
                 ChangeWeapon(newWeaponConfig, slotNumber);
-            }
-        }
-
-        /// <summary>
-        /// Instatiating a bullet from a 
-        /// </summary>
-        /// <param name="worldPoint">Coordinates of mouse position in the world space</param>
-        public void Shoot(Vector3 worldPoint)
-        {
-            var vectorPostion = new Vector2(worldPoint.x, worldPoint.y);
-            if(currentWeaponConfig.HasProjectile())
-            {
-                //TODO: Change handtransform into barrel transform of weapon
-                Vector3 weaponBarrelTransform = new Vector3(handTransform.position.x, handTransform.position.y, 0);
-                currentWeaponConfig.LaunchBullet(weaponBarrelTransform, vectorPostion);
-
             }
         }
 

@@ -19,7 +19,6 @@ namespace platformer.ui
         private Inventory inventory = null;
 
         
-
         private void Awake()
         {
             fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();

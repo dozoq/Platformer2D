@@ -26,7 +26,7 @@ namespace platformer.scenemanagment
 
         }
 
-        void Update()
+        private void Update()
         {
             if(Input.GetKeyDown(KeyCode.PageDown))
             {
