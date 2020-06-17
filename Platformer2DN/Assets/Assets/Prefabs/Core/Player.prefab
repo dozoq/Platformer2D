@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 1519359044}
   - component: {fileID: 1977010479}
   - component: {fileID: 4546803758837676659}
+  - component: {fileID: 7436355017705299947}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -326,7 +327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  weaponConfig: {fileID: 11400000, guid: e95de18ff11cdd748a71338c1bae10b2, type: 2}
   handTransform: {fileID: 5875217167318005488}
 --- !u!114 &1519359044
 MonoBehaviour:
@@ -374,3 +374,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueIdentifier: Player
+--- !u!114 &7436355017705299947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7857493898386600276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e51d9a49a87344f9f53e6c87cd96a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSlotOne: {fileID: 11400000, guid: e95de18ff11cdd748a71338c1bae10b2, type: 2}
+  weaponSlotTwo: {fileID: 11400000, guid: e95de18ff11cdd748a71338c1bae10b2, type: 2}
+  weaponSlotThree: {fileID: 0}

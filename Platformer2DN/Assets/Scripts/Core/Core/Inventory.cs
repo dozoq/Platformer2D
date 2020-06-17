@@ -77,6 +77,10 @@ namespace platformer.core
         /// <returns>WeaponConfig at given slot</returns>
         public WeaponConfig GetWeaponConfig(int slot)
         {
+            if(weaponSlots[slot] == null)
+            {
+                return null;
+            }
             return weaponSlots[slot];
         }
 

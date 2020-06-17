@@ -32,7 +32,10 @@ namespace platformer.combat
         private void Start()
         {
             currentWeaponConfig = inventory.GetWeaponConfig(0);
-            currentWeapon = SetupDefaultWeapon(currentWeaponConfig);
+            if(currentWeaponConfig != null)
+            {
+                currentWeapon = SetupDefaultWeapon(currentWeaponConfig);
+            }      
         }
 
 
@@ -61,6 +64,8 @@ namespace platformer.combat
         {
             //weaponConfig = newWeapon;
             //weaponConfig.Spawn(handTransform, animator);
+
+            if (newWeapon == null) return;
 
             currentWeapon = newWeapon.Spawn(handTransform, animator);
 
